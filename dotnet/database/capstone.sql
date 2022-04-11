@@ -22,7 +22,27 @@ CREATE TABLE users (
 	salt varchar(200) NOT NULL,
 	user_role varchar(50) NOT NULL
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
-)
+);
+
+CREATE TABLE code (
+	code_id int IDENTITY(1,1) NOT NULL,
+	programming_language varchar(50) NOT NULL,
+	title varchar(200) NOT NULL,
+	snippet varchar(MAX) NULL,
+	code_description varchar(50)  NULL,
+	example_date varchar(50)  NULL,
+	difficulty_rank varchar(50)  NULL,
+	category varchar(50)  NULL
+	CONSTRAINT PK_code PRIMARY KEY (code_id)
+);
+CREATE TABLE user_code (
+	user_id int  NOT NULL,
+	code_id int  NOT NULL,
+	submission_status varchar(200) NOT NULL,
+	CONSTRAINT [FK_users] FOREIGN KEY (user_id) REFERENCES [users] (user_id),
+	CONSTRAINT [FK_code] FOREIGN KEY (code_id) REFERENCES [code] (code_id)
+	
+);
 
 --populate default data
 -- user/password
