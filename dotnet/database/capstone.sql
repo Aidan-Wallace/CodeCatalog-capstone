@@ -29,10 +29,10 @@ CREATE TABLE code (
 	programming_language varchar(50) NOT NULL,
 	title varchar(200) NOT NULL,
 	snippet varchar(MAX) NULL,
-	code_description varchar(50)  NULL,
-	example_date varchar(50)  NULL,
+	code_description varchar(MAX)  NULL,
+	example_date varchar(100)  NULL,
 	difficulty_rank varchar(50)  NULL,
-	category varchar(50)  NULL
+	category varchar(MAX)  NULL
 	CONSTRAINT PK_code PRIMARY KEY (code_id)
 );
 CREATE TABLE user_code (
