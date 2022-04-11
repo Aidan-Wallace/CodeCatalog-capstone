@@ -17,9 +17,9 @@ namespace Capstone.DAO
             connectionString = dbConnectionString;
         }
 
-        public User GetUser(string username)
+        public UserModel GetUser(string username)
         {
-            User returnUser = null;
+            UserModel returnUser = null;
 
             try
             {
@@ -45,9 +45,9 @@ namespace Capstone.DAO
             return returnUser;
         }
 
-        public List<User> GetUsers()
+        public List<UserModel> GetUsers()
         {
-            List<User> returnUsers = new List<User>();
+            List<UserModel> returnUsers = new List<UserModel>();
 
             try
             {
@@ -61,7 +61,7 @@ namespace Capstone.DAO
 
                     while (reader.Read())
                     {
-                        User returnUser = GetUserFromReader(reader);
+                        UserModel returnUser = GetUserFromReader(reader);
                         returnUsers.Add(returnUser);
                     }
                 }
@@ -74,7 +74,7 @@ namespace Capstone.DAO
             return returnUsers;
         }
 
-        public User AddUser(string username, string password, string role)
+        public UserModel AddUser(string username, string password, string role)
         {
             IPasswordHasher passwordHasher = new PasswordHasher();
             PasswordHash hash = passwordHasher.ComputeHash(password);
@@ -101,9 +101,9 @@ namespace Capstone.DAO
             return GetUser(username);
         }
 
-        private User GetUserFromReader(SqlDataReader reader)
+        private UserModel GetUserFromReader(SqlDataReader reader)
         {
-            User u = new User()
+            UserModel u = new UserModel()
             {
                 UserId = Convert.ToInt32(reader["user_id"]),
                 Username = Convert.ToString(reader["username"]),

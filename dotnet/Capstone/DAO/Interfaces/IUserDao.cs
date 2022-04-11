@@ -5,8 +5,8 @@ namespace Capstone.DAO.Interfaces
 {
     public interface IUserDao
     {
-        User GetUser(string username);
-        List<User> GetUsers();
-        User AddUser(string username, string password, string role);
+        UserModel GetUser(string username);
+        List<UserModel> GetUsers();
+        UserModel AddUser(string username, string password, string role);
     }
 }
