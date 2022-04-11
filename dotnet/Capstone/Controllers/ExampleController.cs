@@ -10,7 +10,7 @@ namespace Capstone.Controllers
 {
     [Route("examples")]
     [ApiController]
-    public class ExampleController:ControllerBase //shitposty name??
+    public class ExampleController:ControllerBase 
     {
         private readonly IExampleDAO exampleDAO;
 
@@ -37,7 +37,7 @@ namespace Capstone.Controllers
 
         
         // route
-        public 
+        //public 
         // constructor
         // http requests/responses
     }
