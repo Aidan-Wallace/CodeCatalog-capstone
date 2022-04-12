@@ -78,13 +78,14 @@ namespace Capstone.DAO
                 {
                     conn.Open();
                                                     //might have to do a join where user_id = @ user_id - misha
-                    SqlCommand cmd = new SqlCommand("INSERT INTO code (code_id, title, programming_language, code_description, snippet, difficulty_rank, category) " +
-                                                    " VALUES (@codeId, @title, @programmingLanguage, @codeDescription, @snippet, @difficultyRank, @category)", conn);
+                    SqlCommand cmd = new SqlCommand("INSERT INTO code (code_id, title, programming_language, example_date, code_description, snippet, difficulty_rank, category) " +
+                                                    " VALUES (@codeId, @title, @programmingLanguage, @exampleDate, @codeDescription, @snippet, @difficultyRank, @category)", conn);
                     cmd.Parameters.AddWithValue("@codeId", newExample.codeId);
                     cmd.Parameters.AddWithValue("@title", newExample.title);
                     cmd.Parameters.AddWithValue("@programmingLanguage", newExample.programmingLanguage);
                     cmd.Parameters.AddWithValue("@codeDescription", newExample.codeDescription);
                     cmd.Parameters.AddWithValue("@snippet", newExample.codeSnippet);
+                    cmd.Parameters.AddWithValue("@exampleDate", newExample.exampleDate);
                     cmd.Parameters.AddWithValue("@difficultyRank", newExample.difficultyRank);
                     cmd.Parameters.AddWithValue("@category", newExample.category);
                     cmd.ExecuteNonQuery();
@@ -108,6 +109,7 @@ namespace Capstone.DAO
                 codeDescription = Convert.ToString(reader["code_description"]),
                 difficultyRank = Convert.ToInt32(reader["difficulty_rank"]),
                 category = Convert.ToString(reader["category"]),
+                exampleDate = Convert.ToString(reader["exampleDate"])
             };
             return e;
         }

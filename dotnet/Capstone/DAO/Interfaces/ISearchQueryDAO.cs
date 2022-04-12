@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Capstone.DAO.Interfaces
 {
-    public class ISearchQueryDAO
+    public interface ISearchQueryDAO
     {
-        public SearchQuery SearchQuery(string keyword);
+        SearchQuery SearchQuery(string keyWord);
     }
 }
