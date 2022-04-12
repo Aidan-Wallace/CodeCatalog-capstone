@@ -35,6 +35,7 @@ CREATE TABLE code (
 	category varchar(MAX)  NULL
 	CONSTRAINT PK_code PRIMARY KEY (code_id)
 );
+
 CREATE TABLE user_code (
 	user_id int  NOT NULL,
 	code_id int  NOT NULL,
@@ -42,6 +43,12 @@ CREATE TABLE user_code (
 	CONSTRAINT [FK_users] FOREIGN KEY (user_id) REFERENCES [users] (user_id),
 	CONSTRAINT [FK_code] FOREIGN KEY (code_id) REFERENCES [code] (code_id)
 	
+);
+
+CREATE TABLE search_index (
+	code_id int NOT NULL,
+	keyword varchar(200) NOT NULL,
+	CONSTRAINT [FK_code] FOREIGN KEY (code_id) REFERENCES [code] (code_id)
 );
 
 --populate default data
