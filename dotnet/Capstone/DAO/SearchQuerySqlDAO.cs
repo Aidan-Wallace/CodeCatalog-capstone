@@ -53,7 +53,6 @@ namespace Capstone.DAO
                 userId = Convert.ToInt32(reader["user_id"]),
                 keyWord = Convert.ToString(reader["keyword"]),
                 codeId = Convert.ToString(reader["code_id"]),
-                //resultCount = Convert.ToInt32(reader["result_count"]), we can deal w/ this in a method, can't get this info from db
             };
 
             return search;

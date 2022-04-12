@@ -13,18 +13,12 @@ export default {
     CatalogExample,
   },
   methods: {
-
+    
   },
 
   data() {
     return {
       CatalogExample: {
-        category: '',
-        title: '',
-        language: '',
-        level: '',
-        entryDate: '',
-        //codeExample:
       },
     }
   },

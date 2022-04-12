@@ -1,7 +1,7 @@
 <template>
   <div class="example-container">
     <!-- 
-          TITLE
+          TITLE //h
 
           CODE DISPLAY
 
@@ -17,5 +17,14 @@
 <script>
 export default {
   name: "CatalogExample",
+  methods: {
+    category: "",
+    title: "",
+    language: "",
+    level: "",
+    entryDate: "",
+    //codeExample:
+  },
+  data() {},
 };
 </script>
