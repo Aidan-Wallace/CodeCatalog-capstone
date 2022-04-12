@@ -12,5 +12,21 @@ export default {
   components: {
     CatalogExample,
   },
+  methods: {
+
+  },
+
+  data() {
+    return {
+      CatalogExample: {
+        category: '',
+        title: '',
+        language: '',
+        level: '',
+        entryDate: '',
+        //codeExample:
+      },
+    }
+  },
 };
 </script>
