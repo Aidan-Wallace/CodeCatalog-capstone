@@ -18,7 +18,7 @@ namespace Capstone.Controllers
             exampleDAO = _exampleDAO;
         }
 
-        //GetExample Method
+        //GetExample Method  -----WORKS-----
         [HttpGet("{codeId}")]
         public ActionResult<CodeExample> GetExample(int codeId)
         {
@@ -26,15 +26,15 @@ namespace Capstone.Controllers
             return Ok(example);
         }
 
-        //GetExample List Method
-        [HttpGet]
+        //GetExample List Method  -----WORKS-----
+        [HttpGet()]
         public ActionResult<List<CodeExample>> GetExamples()
         {
             List<CodeExample> exampleList = exampleDAO.GetExamples();
             return Ok(exampleList);
         }
 
-        //AddExample Method
+        //AddExample Method -----WORKS-----
         [HttpPost()] //we'll probably have to add a user id here but we can figure it out later, will also have to add a join to our sql script to account for userid in the model
         public ActionResult<NewExample> AddExample(NewExample newExample)
         {

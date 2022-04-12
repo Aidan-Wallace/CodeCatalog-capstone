@@ -78,11 +78,12 @@ namespace Capstone.DAO
                 {
                     conn.Open();
                     //might have to do a join where user_id = @ user_id - misha
-                    SqlCommand cmd = new SqlCommand("INSERT INTO code (code_id, title, programming_language, code_description, snippet, difficulty_rank, category) " +
-                                                    " VALUES (@codeId, @title, @programmingLanguage, @codeDescription, @snippet, @difficultyRank, @category)", conn);
-                    cmd.Parameters.AddWithValue("@codeId", newExample.codeId);
+                    SqlCommand cmd = new SqlCommand("INSERT INTO code ( title, programming_language, example_date, code_description, snippet, difficulty_rank, category) " +
+                                                    " VALUES ( @title, @programmingLanguage, @exampleDate, @codeDescription, @snippet, @difficultyRank, @category)", conn);
+
                     cmd.Parameters.AddWithValue("@title", newExample.title);
                     cmd.Parameters.AddWithValue("@programmingLanguage", newExample.programmingLanguage);
+                    cmd.Parameters.AddWithValue("@exampleDate", newExample.exampleDate);
                     cmd.Parameters.AddWithValue("@codeDescription", newExample.codeDescription);
                     cmd.Parameters.AddWithValue("@snippet", newExample.codeSnippet);
                     cmd.Parameters.AddWithValue("@difficultyRank", newExample.difficultyRank);
