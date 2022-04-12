@@ -32,9 +32,14 @@
             "args": [
                 "watch",
                 "run",
+<<<<<<< HEAD
                 "${workspaceFolder}/Capstone/Capstone.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
+=======
+                "--project",
+                "${workspaceFolder}/Capstone/Capstone.csproj"
+>>>>>>> b3395ea4e711c4cfcc30a8ebb445fa84ecf54425
             ],
             "problemMatcher": "$msCompile"
         }
