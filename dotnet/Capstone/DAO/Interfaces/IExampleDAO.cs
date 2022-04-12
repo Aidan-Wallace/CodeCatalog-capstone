@@ -1,5 +1,8 @@
-using Capstone.Models;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Capstone.Models;
 
 namespace Capstone.DAO.Interfaces
 {
@@ -8,6 +11,5 @@ namespace Capstone.DAO.Interfaces
         CodeExample GetExample(int codeId);
         List<CodeExample> GetExamples();
         NewExample AddExample(NewExample newExample);
-       
     }
 }

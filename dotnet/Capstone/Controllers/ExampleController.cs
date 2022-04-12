@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Capstone.DAO;
 using Capstone.Models;
 using Capstone.Security;
@@ -6,19 +6,19 @@ using System.Collections.Generic;
 using Capstone.DAO.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 
-namespace Capstone.Controllers 
+namespace Capstone.Controllers
 {
-    [Route("examples")]
+    [Route("[controller]")]
     [ApiController]
-    public class ExampleController:ControllerBase 
+    public class ExampleController : ControllerBase
     {
         private readonly IExampleDAO exampleDAO;
-        public ExampleController(IExampleDAO exampleDAO)
+        public ExampleController(IExampleDAO _exampleDAO)
         {
-            this.exampleDAO=exampleDAO;
+            exampleDAO = _exampleDAO;
         }
 
-        //GetExample Method
+        //GetExample Method  -----WORKS-----
         [HttpGet("{codeId}")]
         public ActionResult<CodeExample> GetExample(int codeId)
         {
@@ -26,19 +26,19 @@ namespace Capstone.Controllers
             return Ok(example);
         }
 
-        //GetExample List Method
-        [HttpGet("{codeId}")]
+        //GetExample List Method  -----WORKS-----
+        [HttpGet()]
         public ActionResult<List<CodeExample>> GetExamples()
         {
             List<CodeExample> exampleList = exampleDAO.GetExamples();
             return Ok(exampleList);
         }
 
-        //AddExample Method
+        //AddExample Method -----WORKS-----
         [HttpPost()] //we'll probably have to add a user id here but we can figure it out later, will also have to add a join to our sql script to account for userid in the model
         public ActionResult<NewExample> AddExample(NewExample newExample)
         {
-            NewExample newExampleCode =exampleDAO.AddExample(newExample);
+            NewExample newExampleCode = exampleDAO.AddExample(newExample);
             return Ok(newExampleCode);
         }
     }
