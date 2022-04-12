@@ -48,7 +48,7 @@ CREATE TABLE user_code (
 CREATE TABLE search_index (
 	code_id int NOT NULL,
 	keyword varchar(200) NOT NULL,
-	CONSTRAINT [FK_code] FOREIGN KEY (code_id) REFERENCES [code] (code_id)
+	CONSTRAINT [FK_example] FOREIGN KEY (code_id) REFERENCES [code] (code_id)
 );
 
 --populate default data
