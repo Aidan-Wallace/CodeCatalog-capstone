@@ -52,8 +52,8 @@ namespace Capstone.DAO
             {
                 userId = Convert.ToInt32(reader["user_id"]),
                 keyWord = Convert.ToString(reader["keyword"]),
-                //tagResult not sure how to convert a dictionary
-                resultCount = Convert.ToInt32(reader["result_count"]),
+                codeId = Convert.ToString(reader["code_id"]),
+                //resultCount = Convert.ToInt32(reader["result_count"]), we can deal w/ this in a method, can't get this info from db
             };
 
             return search;

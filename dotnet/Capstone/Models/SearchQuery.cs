@@ -5,7 +5,6 @@ namespace Capstone.Models
     {
         public int userId {get; set;} //should not be nullable
         public string keyWord {get;set;} //fed into db
-        public Dictionary<int, string> tagResult {get; set;} //populated on way back
-        public int? resultCount {get; set;} //number 
+        public string codeId {get; set;} //populated on way back
     }
 }
