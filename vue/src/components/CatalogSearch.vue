@@ -42,7 +42,8 @@ export default {
     return {
       searchQuery: "",
       hasSearchTypeDefined: false,
-      keywords: CatalogService.getKeywords(),
+      // keywords: CatalogService.getKeywords(),
+      keywords: ["lang", "____"]
     };
   },
 };

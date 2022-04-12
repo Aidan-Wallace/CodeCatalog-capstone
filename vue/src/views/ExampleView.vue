@@ -1,6 +1,7 @@
 <template>
   <div>
-    <catalog-example />
+    <!-- 1 IS TEMPORARY REPLACE WITH ROUTER -->
+    <catalog-example v-bind:codeId="1" />
   </div>
 </template>
 
@@ -12,15 +13,12 @@ export default {
   components: {
     CatalogExample,
   },
-  methods: {
-    
-  },
+  methods: {},
 
   data() {
     return {
-      CatalogExample: {
-      },
-    }
+      CatalogExample: {},
+    };
   },
 };
 </script>

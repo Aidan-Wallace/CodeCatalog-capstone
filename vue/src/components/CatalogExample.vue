@@ -1,7 +1,8 @@
 <template>
   <div class="example-container">
+    <!-- <div class="example-title">{{ getExample.title }}</div> -->
     <!-- 
-          TITLE //h
+          TITLE //
 
           CODE DISPLAY
 
@@ -15,16 +16,26 @@
 </template>
 
 <script>
+import CatalogService from "@/services/CatalogService";
+
 export default {
   name: "CatalogExample",
-  methods: {
-    category: "",
-    title: "",
-    language: "",
-    level: "",
-    entryDate: "",
-    //codeExample:
+  props: ["codeId"],
+  data() {
+    return {
+      catalogExample: {
+        category: "",
+        title: "",
+        language: "",
+        level: "",
+        entryDate: "",
+        //codeExample:
+      },
+    };
   },
-  data() {},
+  created() {
+    const example = CatalogService.getExample(1);
+    this.$store.state.currentExample = example;
+  },
 };
 </script>

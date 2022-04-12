@@ -5,7 +5,7 @@ const http = axios.create({ baseURL: baseUrl });
 
 export default {
   getExample(codeId) {
-    http.get(`/example/${codeId}`);
+    return http.get(`/example/${codeId}`);
   },
   getQuery(query) {
     /* **FIX AFTER DAO/CONTROLLER IS IMPLEMENTED** */
