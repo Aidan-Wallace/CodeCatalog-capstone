@@ -13,7 +13,6 @@ namespace Capstone.Controllers
     public class ExampleController:ControllerBase 
     {
         private readonly IExampleDAO exampleDAO;
-
         public ExampleController(IExampleDAO exampleDAO)
         {
             this.exampleDAO=exampleDAO;
@@ -35,10 +34,12 @@ namespace Capstone.Controllers
             return Ok(exampleList);
         }
 
-        
-        // route
-        //public 
-        // constructor
-        // http requests/responses
+        //AddExample Method
+        [HttpPost()] //we'll probably have to add a user id here but we can figure it out later, will also have to add a join to our sql script to account for userid in the model
+        public ActionResult<NewExample> AddExample(NewExample newExample)
+        {
+            NewExample newExampleCode =exampleDAO.AddExample(newExample);
+            return Ok(newExampleCode);
+        }
     }
 }

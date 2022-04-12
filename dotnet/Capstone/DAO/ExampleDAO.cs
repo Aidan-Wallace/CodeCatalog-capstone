@@ -25,8 +25,7 @@ namespace Capstone.DAO
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
-                    conn.Open();
-
+                    conn.Open();                   //might have to do a join where user_id = @ user_id - misha
                     SqlCommand cmd = new SqlCommand("SELECT * FROM code WHERE code_id = @code_id", conn);
                     cmd.Parameters.AddWithValue("@code_id", codeId);
                     SqlDataReader reader = cmd.ExecuteReader();
@@ -52,10 +51,8 @@ namespace Capstone.DAO
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
-                    conn.Open();
-
+                    conn.Open();                     //might have to do a join where user_id = @ user_id - misha
                     SqlCommand cmd = new SqlCommand("SELECT * FROM code WHERE code_id = @code_id", conn);
-
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())
@@ -70,6 +67,34 @@ namespace Capstone.DAO
                 throw;
             }
             return returnExamples;
+        }
+        public NewExample AddExample(NewExample newExample)
+        {
+            NewExample returnNewExample = null;
+                //I feel like something needs to go here - misha
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                                                    //might have to do a join where user_id = @ user_id - misha
+                    SqlCommand cmd = new SqlCommand("INSERT INTO code (code_id, title, programming_language, code_description, snippet, difficulty_rank, category) " +
+                                                    " VALUES (@codeId, @title, @programmingLanguage, @codeDescription, @snippet, @difficultyRank, @category)", conn);
+                    cmd.Parameters.AddWithValue("@codeId", newExample.codeId);
+                    cmd.Parameters.AddWithValue("@title", newExample.title);
+                    cmd.Parameters.AddWithValue("@programmingLanguage", newExample.programmingLanguage);
+                    cmd.Parameters.AddWithValue("@codeDescription", newExample.codeDescription);
+                    cmd.Parameters.AddWithValue("@snippet", newExample.codeSnippet);
+                    cmd.Parameters.AddWithValue("@difficultyRank", newExample.difficultyRank);
+                    cmd.Parameters.AddWithValue("@category", newExample.category);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            return returnNewExample; //not sure if we need to return anything - misha
         }
 
         private CodeExample GetExampleFromReader(SqlDataReader reader)

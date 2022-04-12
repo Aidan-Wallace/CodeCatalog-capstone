@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 namespace Capstone.Models
 {
-    public class SearchQueryModel
+    public class SearchQuery
     {
         public int userId {get; set;} //should not be nullable
         public string queryString {get;set;} //fed into db
