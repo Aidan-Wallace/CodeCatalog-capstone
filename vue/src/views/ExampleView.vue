@@ -1,0 +1,16 @@
+<template>
+  <div>
+    <catalog-example />
+  </div>
+</template>
+
+<script>
+import CatalogExample from "@/components/CatalogExample";
+
+export default {
+  name: "ExampleView",
+  components: {
+    CatalogExample,
+  },
+};
+</script>
