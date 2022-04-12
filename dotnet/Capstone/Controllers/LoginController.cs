@@ -26,7 +26,7 @@ namespace Capstone.Controllers
         [HttpGet]
         public string Ready()
         {
-            List<UserModel> users = userDao.GetUsers();
+            List<User> users = userDao.GetUsers();
             return "Server is ready with " + users.Count.ToString() + " users.";
         }
 
@@ -55,7 +55,7 @@ namespace Capstone.Controllers
             IActionResult result = Unauthorized(new { message = "Username or password is incorrect" });
 
             // Get the user by username
-            UserModel user = userDao.GetUser(userParam.Username);
+            User user = userDao.GetUser(userParam.Username);
 
             // If we found a user and the password hash matches
             if (user != null && passwordHasher.VerifyHashMatch(user.PasswordHash, userParam.Password, user.Salt))
@@ -78,13 +78,13 @@ namespace Capstone.Controllers
         {
             IActionResult result;
 
-            UserModel existingUser = userDao.GetUser(userParam.Username);
+            User existingUser = userDao.GetUser(userParam.Username);
             if (existingUser != null)
             {
                 return Conflict(new { message = "Username already taken. Please choose a different username." });
             }
 
-            UserModel user = userDao.AddUser(userParam.Username, userParam.Password, userParam.Role);
+            User user = userDao.AddUser(userParam.Username, userParam.Password, userParam.Role);
             if (user != null)
             {
                 result = Created(user.Username, null); //values aren't read on client
