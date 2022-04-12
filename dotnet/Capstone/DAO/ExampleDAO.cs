@@ -52,7 +52,7 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();                     //might have to do a join where user_id = @ user_id - misha
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM code WHERE code_id = @code_id", conn);
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM code", conn);
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())
@@ -71,21 +71,20 @@ namespace Capstone.DAO
         public NewExample AddExample(NewExample newExample)
         {
             NewExample returnNewExample = null;
-                //I feel like something needs to go here - misha
+            //I feel like something needs to go here - misha
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                                                    //might have to do a join where user_id = @ user_id - misha
-                    SqlCommand cmd = new SqlCommand("INSERT INTO code (code_id, title, programming_language, example_date, code_description, snippet, difficulty_rank, category) " +
-                                                    " VALUES (@codeId, @title, @programmingLanguage, @exampleDate, @codeDescription, @snippet, @difficultyRank, @category)", conn);
+                    //might have to do a join where user_id = @ user_id - misha
+                    SqlCommand cmd = new SqlCommand("INSERT INTO code (code_id, title, programming_language, code_description, snippet, difficulty_rank, category) " +
+                                                    " VALUES (@codeId, @title, @programmingLanguage, @codeDescription, @snippet, @difficultyRank, @category)", conn);
                     cmd.Parameters.AddWithValue("@codeId", newExample.codeId);
                     cmd.Parameters.AddWithValue("@title", newExample.title);
                     cmd.Parameters.AddWithValue("@programmingLanguage", newExample.programmingLanguage);
                     cmd.Parameters.AddWithValue("@codeDescription", newExample.codeDescription);
                     cmd.Parameters.AddWithValue("@snippet", newExample.codeSnippet);
-                    cmd.Parameters.AddWithValue("@exampleDate", newExample.exampleDate);
                     cmd.Parameters.AddWithValue("@difficultyRank", newExample.difficultyRank);
                     cmd.Parameters.AddWithValue("@category", newExample.category);
                     cmd.ExecuteNonQuery();
@@ -107,9 +106,9 @@ namespace Capstone.DAO
                 programmingLanguage = Convert.ToString(reader["programming_language"]),
                 codeSnippet = Convert.ToString(reader["snippet"]),
                 codeDescription = Convert.ToString(reader["code_description"]),
-                difficultyRank = Convert.ToInt32(reader["difficulty_rank"]),
+                difficultyRank = Convert.ToString(reader["difficulty_rank"]),
                 category = Convert.ToString(reader["category"]),
-                exampleDate = Convert.ToString(reader["exampleDate"])
+                exampleDate = Convert.ToString(reader["example_date"]),
             };
             return e;
         }

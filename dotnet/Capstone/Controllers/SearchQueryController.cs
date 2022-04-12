@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Capstone.Controllers
 {
-    [Route("examples")]
+    [Route("search")]
     [ApiController]
     public class SearchQueryController : ControllerBase
     {
