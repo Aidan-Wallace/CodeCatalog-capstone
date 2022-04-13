@@ -19,10 +19,10 @@ namespace Capstone.Controllers
         }
 
         //SearchQuery Method
-        [HttpGet("{keyWord}")]
-        public ActionResult<SearchQuery> SearchQuery(string keyWord)
+        [HttpGet("{keyword}")]
+        public ActionResult<SearchQuery> SearchQuery(string keyword)
         {
-            SearchQuery returnedSearch = searchQueryDAO.SearchQuery(keyWord);
+            SearchQuery returnedSearch = searchQueryDAO.SearchQuery(keyword);
             return Ok(returnedSearch);
         }
     }
