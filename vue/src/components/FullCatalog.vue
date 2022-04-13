@@ -7,7 +7,9 @@
       :key="example.codeId"
     >
       <div class="example-title">
-        {{ example.title }}
+        <h2>
+          {{ example.title }}
+        </h2>
       </div>
 
       <div class="example-code">
@@ -15,20 +17,18 @@
       </div>
 
       <div class="example-description">
-        {{ example.codeDescription }}
+        <p>
+          {{ example.codeDescription }}
+        </p>
       </div>
 
-      <div class="example-date">
-        {{ example.exampleDate }}
-      </div>
+      <div class="example-date">Updated: {{ example.exampleDate }}</div>
 
       <div class="example-difficulty">
-        {{ example.difficultyRank }}
+        Experience level: {{ example.difficultyRank }}
       </div>
 
-      <div class="example-category">
-        {{ example.catalog }}
-      </div>
+      <div class="example-category">code-statement: {{ example.catalog }}</div>
 
       <div class="example-language">
         {{ example.programmingLanguage }}
@@ -98,5 +98,10 @@ export default {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+
+.example-code {
+  background-color: #eee;
+  padding: 5px;
 }
 </style>
