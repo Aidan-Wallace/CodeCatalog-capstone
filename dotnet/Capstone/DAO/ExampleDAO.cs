@@ -71,13 +71,11 @@ namespace Capstone.DAO
         public NewExample AddExample(NewExample newExample)
         {
             NewExample returnNewExample = null;
-            //I feel like something needs to go here - misha
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    //might have to do a join where user_id = @ user_id - misha
                     SqlCommand cmd = new SqlCommand("INSERT INTO code ( title, programming_language, example_date, code_description, snippet, difficulty_rank, category) " +
                                                     " VALUES ( @title, @programmingLanguage, @exampleDate, @codeDescription, @snippet, @difficultyRank, @category)", conn);
 
@@ -95,7 +93,7 @@ namespace Capstone.DAO
             {
                 throw;
             }
-            return returnNewExample; //not sure if we need to return anything - misha
+            return returnNewExample;
         }
 
         private CodeExample GetExampleFromReader(SqlDataReader reader)

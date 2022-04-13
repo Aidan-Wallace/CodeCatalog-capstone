@@ -18,52 +18,53 @@ namespace Capstone.DAO
             connectionString = dbConnectionString;
         }
 
-        public SearchQuery AddSearchKeyword(string keyword) 
-        {
-            SearchQuery addedKeyword = null;
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO search_index (keyword) " +
-                                                    " VALUES (@keyword)", conn);
-                    cmd.Parameters.AddWithValue("@keyword", keyword);
-                    cmd.ExecuteNonQuery();
-                }
-            }
-            catch (SqlException)
-            {
-                throw;
-            }
-            return addedKeyword; 
-        }
+        // public SearchQuery AddSearchKeyword(string keyword, int userId) 
+        // {
+        //     SearchQuery addedKeyword = null;
+        //     try
+        //     {
+        //         using (SqlConnection conn = new SqlConnection(connectionString))
+        //         {
+        //             conn.Open();
+        //             SqlCommand cmd = new SqlCommand("INSERT INTO search_index (keyword) " +
+        //                                             " VALUES (@keyword) WHERE user_id = @userId", conn);
+        //             cmd.Parameters.AddWithValue("@keyword", keyword);
+        //             cmd.Parameters.AddWithValue("@userId", userId);
+        //             cmd.ExecuteNonQuery();
+        //         }
+        //     }
+        //     catch (SqlException)
+        //     {
+        //         throw;
+        //     }
+        //     return addedKeyword; 
+        // }
 
-        public SearchQuery GetExampleWithSearchKeyword(string keyword) 
-        {
-            SearchQuery returnSearch = null;
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM code c JOIN search_index si ON c.code_id = si.code_id " +
-                                                    "WHERE (c.title LIKE '%' + @keyword + '%' );", conn);
-                    cmd.Parameters.AddWithValue("@keyword", keyword);
-                    SqlDataReader reader = cmd.ExecuteReader();
+        // public SearchQuery GetExampleWithSearchKeyword(string keyword) 
+        // {
+        //     SearchQuery returnSearch = null;
+        //     try
+        //     {
+        //         using (SqlConnection conn = new SqlConnection(connectionString))
+        //         {
+        //             conn.Open();
+        //             SqlCommand cmd = new SqlCommand("SELECT * FROM code c JOIN search_index si ON c.code_id = si.code_id " +
+        //                                             "WHERE (c.title LIKE '%' + @keyword + '%' );", conn);
+        //             cmd.Parameters.AddWithValue("@keyword", keyword);
+        //             SqlDataReader reader = cmd.ExecuteReader();
 
-                    if (reader.Read())
-                    {
-                        returnSearch = GetSearchFromReader(reader);
-                    }
-                }
-            }
-            catch (SqlException)
-            {
-                throw;
-            }
-            return returnSearch;
-        }
+        //             if (reader.Read())
+        //             {
+        //                 returnSearch = GetSearchFromReader(reader);
+        //             }
+        //         }
+        //     }
+        //     catch (SqlException)
+        //     {
+        //         throw;
+        //     }
+        //     return returnSearch;
+        // }
 
         private SearchQuery GetSearchFromReader(SqlDataReader reader)
         {

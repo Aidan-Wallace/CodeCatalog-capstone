@@ -19,19 +19,19 @@ namespace Capstone.Controllers
         }
 
         //AddSearchKeyword Method
-        [HttpPost()]
-        public ActionResult<SearchQuery> AddSearchKeyword(string keyword)
-        {
-            SearchQuery addedKeyword = searchQueryDAO.AddSearchKeyword(keyword);
-            return Ok(addedKeyword);
-        }
+        // [HttpPost()]
+        // public ActionResult<SearchQuery> AddSearchKeyword(string keyword, int userId)
+        // {
+        //     SearchQuery addedKeyword = searchQueryDAO.AddSearchKeyword(keyword, userId);
+        //     return Ok(addedKeyword);
+        // }
 
         //GetExampleWithSearchKeyword Method
-        [HttpGet("{keyword}")]
-        public ActionResult<SearchQuery> GetExampleWithSearchKeyword(string keyword)
-        {
-            SearchQuery returnedSearch = searchQueryDAO.AddSearchKeyword(keyword);
-            return Ok(returnedSearch);
-        }
+        // [HttpGet("{keyword}")]
+        // public ActionResult<SearchQuery> GetExampleWithSearchKeyword(string keyword)
+        // {
+        //     SearchQuery returnedSearch = searchQueryDAO.GetExampleWithSearchKeyword(keyword);
+        //     return Ok(returnedSearch);
+        // }
     }
 }

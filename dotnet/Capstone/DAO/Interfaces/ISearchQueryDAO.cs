@@ -8,7 +8,7 @@ namespace Capstone.DAO.Interfaces
 {
     public interface ISearchQueryDAO
     {
-        SearchQuery AddSearchKeyword(string keyWord);
-        SearchQuery GetExampleWithSearchKeyword(string keyword);
+        // SearchQuery AddSearchKeyword(string keyWord, int userId);
+        // SearchQuery GetExampleWithSearchKeyword(string keyword);
     }
 }
