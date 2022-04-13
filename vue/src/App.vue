@@ -18,6 +18,12 @@
         >
           Logout</router-link
         >
+        <router-link
+          v-bind:to="{ name: 'logout' }"
+          v-if="$store.state.token == ''"
+        >
+          Log In</router-link
+        >
         <i class="fa-solid fa-circle-user"></i>
       </div>
     </div>

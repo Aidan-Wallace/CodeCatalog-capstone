@@ -7,6 +7,7 @@
           name="search-input"
           v-model="searchQuery"
           placeholder="Search..."
+          autocomplete="off"
         />
         <!-- <button type="submit" v-bind:disabled="isDisabled == false">
           Search
