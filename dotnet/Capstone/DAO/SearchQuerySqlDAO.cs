@@ -18,16 +18,35 @@ namespace Capstone.DAO
             connectionString = dbConnectionString;
         }
 
-        public SearchQuery SearchQuery(string keyword) //might have to make add to check unique title in SQL--also, how many search options should we provide?
+        public SearchQuery AddSearchKeyword(string keyword) 
         {
-            SearchQuery returnSearch = null;
-
+            SearchQuery addedKeyword = null;
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
+                    SqlCommand cmd = new SqlCommand("INSERT INTO search_index (keyword) " +
+                                                    " VALUES (@keyword)", conn);
+                    cmd.Parameters.AddWithValue("@keyword", keyword);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            return addedKeyword; 
+        }
 
+        public SearchQuery GetExampleWithSearchKeyword(string keyword) 
+        {
+            SearchQuery returnSearch = null;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
                     SqlCommand cmd = new SqlCommand("SELECT * FROM code c JOIN search_index si ON c.code_id = si.code_id " +
                                                     "WHERE (c.title LIKE '%' + @keyword + '%' );", conn);
                     cmd.Parameters.AddWithValue("@keyword", keyword);
@@ -43,7 +62,6 @@ namespace Capstone.DAO
             {
                 throw;
             }
-
             return returnSearch;
         }
 
