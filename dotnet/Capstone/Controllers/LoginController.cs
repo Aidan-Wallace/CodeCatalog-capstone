@@ -23,7 +23,7 @@ namespace Capstone.Controllers
             userDao = _userDao;
         }
 
-        [HttpGet]
+        [HttpGet()]
         public string Ready()
         {
             List<User> users = userDao.GetUsers();
@@ -48,7 +48,7 @@ namespace Capstone.Controllers
             return $"User name: {username}, User id: {userId}";
         }
 
-        [HttpPost]
+        [HttpPost()]
         public IActionResult Authenticate(LoginUser userParam)
         {
             // Default to bad username/password message
@@ -69,7 +69,6 @@ namespace Capstone.Controllers
                 // Switch to 200 OK
                 result = Ok(retUser);
             }
-
             return result;
         }
 

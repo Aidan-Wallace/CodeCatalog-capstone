@@ -17,7 +17,135 @@ namespace Capstone.DAO
         {
             connectionString = dbConnectionString;
         }
+        public List<CodeExample> SearchByKeyword(string keyword)
+        {
+            List<CodeExample> returnExamples = new List<CodeExample>();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();                     
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM code WHERE (title LIKE '%' + @keyword + '%') " +
+                                                     "OR (category LIKE '%' + @keyword + '%') " +
+                                                     "OR (code_description LIKE '%' + @keyword + '%') " +
+                                                     "OR (programming_language LIKE '%' + @keyword + '%'); ", conn);
 
+                    cmd.Parameters.AddWithValue("@keyword", keyword);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        CodeExample returnExample = GetExampleFromReader(reader);
+                        returnExamples.Add(returnExample);
+                    }
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            return returnExamples;
+        }
+        // UNSHRINK TO SEE public List<CodeExample> SearchByTitle(string title) 
+        // {
+        //     List<CodeExample> returnExamples = new List<CodeExample>();
+        //     try
+        //     {
+        //         using (SqlConnection conn = new SqlConnection(connectionString))
+        //         {
+        //             conn.Open();                     
+        //             SqlCommand cmd = new SqlCommand("SELECT * FROM code", conn);
+        //             SqlDataReader reader = cmd.ExecuteReader();
+
+        //             while (reader.Read())
+        //             {
+        //                 CodeExample returnExample = GetExampleFromReader(reader);
+        //                 returnExamples.Add(returnExample);
+        //             }
+        //         }
+        //     }
+        //     catch (SqlException)
+        //     {
+        //         throw;
+        //     }
+        //     return returnExamples;
+        // }
+
+        // public List<CodeExample> SearchByProgrammingLanguage(string programmingLanguage)
+        // {
+        //     List<CodeExample> returnExamples = new List<CodeExample>();
+        //     try
+        //     {
+        //         using (SqlConnection conn = new SqlConnection(connectionString))
+        //         {
+        //             conn.Open();                     
+        //             SqlCommand cmd = new SqlCommand("SELECT * FROM code", conn);
+        //             SqlDataReader reader = cmd.ExecuteReader();
+
+        //             while (reader.Read())
+        //             {
+        //                 CodeExample returnExample = GetExampleFromReader(reader);
+        //                 returnExamples.Add(returnExample);
+        //             }
+        //         }
+        //     }
+        //     catch (SqlException)
+        //     {
+        //         throw;
+        //     }
+        //     return returnExamples;
+        // }
+
+        // public List<CodeExample> SearchByCategory(string category)
+        // {
+        //     List<CodeExample> returnExamples = new List<CodeExample>();
+        //     try
+        //     {
+        //         using (SqlConnection conn = new SqlConnection(connectionString))
+        //         {
+        //             conn.Open();                     
+        //             SqlCommand cmd = new SqlCommand("SELECT * FROM code", conn);
+        //             SqlDataReader reader = cmd.ExecuteReader();
+
+        //             while (reader.Read())
+        //             {
+        //                 CodeExample returnExample = GetExampleFromReader(reader);
+        //                 returnExamples.Add(returnExample);
+        //             }
+        //         }
+        //     }
+        //     catch (SqlException)
+        //     {
+        //         throw;
+        //     }
+        //     return returnExamples;
+        // }
+
+        // public List<CodeExample> SearchByDescription(string codeDescription)
+        // {
+        //     List<CodeExample> returnExamples = new List<CodeExample>();
+        //     try
+        //     {
+        //         using (SqlConnection conn = new SqlConnection(connectionString))
+        //         {
+        //             conn.Open();                     
+        //             SqlCommand cmd = new SqlCommand("SELECT * FROM code", conn);
+        //             SqlDataReader reader = cmd.ExecuteReader();
+
+        //             while (reader.Read())
+        //             {
+        //                 CodeExample returnExample = GetExampleFromReader(reader);
+        //                 returnExamples.Add(returnExample);
+        //             }
+        //         }
+        //     }
+        //     catch (SqlException)
+        //     {
+        //         throw;
+        //     }
+        //     return returnExamples;
+        // }
         // public SearchQuery AddSearchKeyword(string keyword, int userId) 
         // {
         //     SearchQuery addedKeyword = null;
@@ -66,16 +194,20 @@ namespace Capstone.DAO
         //     return returnSearch;
         // }
 
-        private SearchQuery GetSearchFromReader(SqlDataReader reader)
+       private CodeExample GetExampleFromReader(SqlDataReader reader)
         {
-            SearchQuery search = new SearchQuery()
+            CodeExample e = new CodeExample()
             {
-                userId = Convert.ToInt32(reader["user_id"]),
-                keyword = Convert.ToString(reader["keyword"]),
-                codeId = Convert.ToString(reader["code_id"]),
+                codeId = Convert.ToInt32(reader["code_id"]),
+                title = Convert.ToString(reader["title"]),
+                programmingLanguage = Convert.ToString(reader["programming_language"]),
+                codeSnippet = Convert.ToString(reader["snippet"]),
+                codeDescription = Convert.ToString(reader["code_description"]),
+                difficultyRank = Convert.ToString(reader["difficulty_rank"]),
+                category = Convert.ToString(reader["category"]),
+                exampleDate = Convert.ToString(reader["example_date"]),
             };
-
-            return search;
+            return e;
         }
     }
 }

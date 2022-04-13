@@ -68,6 +68,7 @@ namespace Capstone.DAO
             }
             return returnExamples;
         }
+
         public NewExample AddExample(NewExample newExample)
         {
             NewExample returnNewExample = null;
@@ -95,6 +96,8 @@ namespace Capstone.DAO
             }
             return returnNewExample;
         }
+
+
 
         private CodeExample GetExampleFromReader(SqlDataReader reader)
         {

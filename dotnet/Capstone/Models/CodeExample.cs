@@ -10,6 +10,7 @@ namespace Capstone.Models
         public string codeSnippet { get; set; }
         public string difficultyRank { get; set; }
         public string category { get; set; } //might have to make list/dict
+        public string keyword{get; set;}
     }
     public class NewExample
     {

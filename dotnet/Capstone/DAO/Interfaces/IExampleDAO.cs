@@ -11,5 +11,7 @@ namespace Capstone.DAO.Interfaces
         CodeExample GetExample(int codeId);
         List<CodeExample> GetExamples();
         NewExample AddExample(NewExample newExample);
+        
+
     }
 }
