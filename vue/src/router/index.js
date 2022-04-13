@@ -6,6 +6,7 @@ import Logout from "../views/Logout.vue";
 import Register from "../views/Register.vue";
 import store from "../store/index";
 import ExampleView from "@/views/ExampleView";
+import CatalogView from "@/views/CatalogView"
 
 Vue.use(Router);
 
@@ -39,9 +40,17 @@ const router = new Router({
       },
     },
     {
-      path: "/examples",
-      name: "Examples",
+      path: "/example",
+      name: "Example",
       // component: ExampleView,
+      meta: {
+        requiresAuth: false,
+      },
+    },
+    {
+      path: "/catalog",
+      name: "Catalog",
+      component: CatalogView,
       meta: {
         requiresAuth: false,
       },
