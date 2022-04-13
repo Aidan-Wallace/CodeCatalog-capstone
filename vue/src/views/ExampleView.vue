@@ -13,7 +13,9 @@ export default {
   components: {
     CatalogExample,
   },
-  methods: {},
+  methods: {
+    
+  },
 
   data() {
     return {
