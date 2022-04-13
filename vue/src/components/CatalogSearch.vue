@@ -2,15 +2,22 @@
   <div class="search-container">
     <form v-on:submit.prevent="getQuery">
       <div class="search">
-        <input type="text" name="search-input" v-model="searchQuery" />
-        <button type="submit" v-bind:disabled="isDisabled == false">Search</button>
+        <input
+          type="text"
+          name="search-input"
+          v-model="searchQuery"
+          placeholder="Search..."
+        />
+        <!-- <button type="submit" v-bind:disabled="isDisabled == false">
+          Search
+        </button> -->
       </div>
-      <select name="" id="">
+      <!-- <select name="" id="">
         <option value="">--</option>
         <option v-for="option in keywords" v-bind:key="option.keyword" value="">
           {{ option.keyword }}
         </option>
-      </select>
+      </select> -->
     </form>
   </div>
 </template>
@@ -41,9 +48,9 @@ export default {
   data() {
     return {
       searchQuery: "",
-      hasSearchTypeDefined: false,
+      hasSearchTypeDefined: true,
       // keywords: CatalogService.getKeywords(),
-      keywords: ["lang", "____"]
+      keywords: ["lang", "____"],
     };
   },
 };
@@ -52,9 +59,31 @@ export default {
 <style>
 .search-container {
   padding: 10px 10px;
+  /* width: 100%; */
+}
+
+.search-container input {
+  width: 100%;
+  transition: .2s;
+  border: none;
+  background-color: #EEE;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.search-container input:focus {
+  outline: none;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+}
+
+/* .search-container input::placeholder {} */
+
+.search-container button {
+  width: calc(100% - 10px);
+  border: none;
 }
 
 .search-container select {
-    width: 100%;
+  width: 100%;
 }
 </style>

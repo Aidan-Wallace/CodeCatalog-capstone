@@ -1,6 +1,6 @@
 <template>
   <div class="example-container" :key="reRenderKey">
-    {{ currentExample.title }}
+    <!-- {{ currentExample.title }} -->
     <!-- 
           TITLE
 
