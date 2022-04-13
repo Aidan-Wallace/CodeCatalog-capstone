@@ -1,8 +1,8 @@
 <template>
-  <div class="example-container">
-    <!-- <div class="example-title">{{ getExample.title }}</div> -->
+  <div class="example-container" :key="reRenderKey">
+    {{ currentExample.title }}
     <!-- 
-          TITLE //
+          TITLE
 
           CODE DISPLAY
 
@@ -19,23 +19,35 @@
 import CatalogService from "@/services/CatalogService";
 
 export default {
-  name: "CatalogExample",
+  name: "FullCatalog",
   props: ["codeId"],
+  computed: {},
+  methods: {
+    setKey() {
+      this.reRenderKey++;
+    }
+  },
   data() {
     return {
-      catalogExample: {
-        category: "",
-        title: "",
-        language: "",
-        level: "",
-        entryDate: "",
-        //codeExample:
-      },
+      currentExample: this.$store.state.currentExample,
+      isContentLoaded: false,
+      reRenderKey: 0,
     };
   },
   created() {
-    const example = CatalogService.getExample(1);
-    this.$store.state.currentExample = example;
+    CatalogService.getExample(1)
+      .then((res) => {
+        // this.$store.state.currentExample = res.data;
+
+        this.$store.commit("SET_CURRENT_EXAMPLE", res.data);
+        console.log(this.$store.state.currentExample);
+
+        // this.isContentLoaded = true;
+        // this.$forceUpdate();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   },
 };
 </script>

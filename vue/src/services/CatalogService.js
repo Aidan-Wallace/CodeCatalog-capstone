@@ -1,11 +1,14 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:5001";
+const baseUrl = "https://localhost:5001";
 const http = axios.create({ baseURL: baseUrl });
 
 export default {
   getExample(codeId) {
     return http.get(`/example/${codeId}`);
+  },
+  getExamples() {
+    return http.get(`/example`);
   },
   getQuery(query) {
     /* **FIX AFTER DAO/CONTROLLER IS IMPLEMENTED** */
@@ -19,11 +22,11 @@ export default {
     // TEMPORARY -- DELETE AFTER FIX
     return [
       {
-        keyword: "language"
+        keyword: "language",
       },
       {
-        keyword: "statement"
-      }
+        keyword: "statement",
+      },
     ];
   },
 };
