@@ -18,7 +18,6 @@ namespace Capstone.Controllers
             exampleDAO = _exampleDAO;
         }
 
-        //GetExample Method  -----WORKS-----
         [HttpGet("{codeId}")]
         public ActionResult<CodeExample> FetchScript(int codeId)
         {
@@ -26,7 +25,6 @@ namespace Capstone.Controllers
             return Ok(example);
         }
 
-        //GetExample List Method  -----WORKS-----
         [HttpGet()]
         public ActionResult<List<CodeExample>> FetchAllScripts()
         {
