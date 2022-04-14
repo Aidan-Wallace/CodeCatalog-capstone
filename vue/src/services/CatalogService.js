@@ -17,4 +17,7 @@ export default {
   addExample(newExample) {
     return http.post(`/example`, newExample);
   },
+  fetchScript(codeId) {
+    return http.get(`/script/${codeId}`);
+  },
 };
