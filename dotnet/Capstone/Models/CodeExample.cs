@@ -12,7 +12,7 @@ namespace Capstone.Models
         public string category { get; set; } //might have to make list/dict
         public string keyword{get; set; }
         public string attribution { get; set; }
-        public bool isPublic { get; set; }
+        public bool isPublic { get; set; } = false;
     }
     public class PendingExample
     {
