@@ -68,6 +68,58 @@ namespace Capstone.DAO
             }
             return returnExamples;
         }
+        public CodeExample FetchScript(int codeId)
+        {
+            CodeExample script = null;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();                   //might have to do a join where user_id = @ user_id - misha
+                    SqlCommand cmd = new SqlCommand("SELECT code_id, snippet FROM code WHERE code_id = @code_id", conn);
+                    cmd.Parameters.AddWithValue("@code_id", codeId);
+                    cmd.Parameters.AddWithValue("@snippet", script);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        script = GetExampleFromReader(reader);
+                    }
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            return script;
+        }
+
+        public List<CodeExample> FetchAllScripts()
+        {
+            List<CodeExample> scriptsList = new List<CodeExample>();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();                     //might have to do a join where user_id = @ user_id - misha
+                    SqlCommand cmd = new SqlCommand("SELECT code_id, snippet FROM code", conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        CodeExample script = GetExampleFromReader(reader);
+                        scriptsList.Add(script);
+                    }
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            return scriptsList;
+        }
+
 
         public PendingExample AddExample(PendingExample newExample)
         {

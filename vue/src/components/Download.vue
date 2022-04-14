@@ -1,19 +1,16 @@
 <template>
     <a 
-    :href="{ exampleId }.url"
-    v-text="example.label"
-    @click.prevent="downloadExample(example)" />
+    :href="download.url"
+    v-text="download.label"
+    @click.prevent="downloadExample(download)" />
 </template>
 
 <script>
 import axios from 'axios'
 export default {
     name: 'Download',
-    props: {
-        exampleId: Number
-    },
-    created() {
-        
+    mounted() {
+        this.downloadExample;
     },
     methods: {
         downloadExample ({url, label}) {
@@ -27,6 +24,6 @@ export default {
                 URL.revokeObjectURL(link.href)
                 }).catch(console.error)
         }
-    }
+    },
 }
 </script>

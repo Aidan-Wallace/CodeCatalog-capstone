@@ -11,7 +11,7 @@ namespace Capstone.DAO.Interfaces
         CodeExample GetExample(int codeId);
         List<CodeExample> GetExamples();
         PendingExample AddExample(PendingExample newExample);
-        
-
+        CodeExample FetchScript(int codeId);
+        List<CodeExample> FetchAllScripts();
     }
 }

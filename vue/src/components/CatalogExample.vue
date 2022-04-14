@@ -31,11 +31,17 @@
     <div class="example-container-child example-language">
       <span>Language</span> {{ example.programmingLanguage }}
     </div>
+    <div class="example-container-child example-download">
+      <download />
+    </div>
+
   </div>
 </template>
 
 <script>
+import Download from './Download.vue';
 export default {
+  components: { Download },
   name: "FullCatalog",
   /* *** PROP USES ***
     - "example"    :: A object passed in with each code example.
