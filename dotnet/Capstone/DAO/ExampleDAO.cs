@@ -69,16 +69,16 @@ namespace Capstone.DAO
             return returnExamples;
         }
 
-        public NewExample AddExample(NewExample newExample)
+        public PendingExample AddExample(PendingExample newExample)
         {
-            NewExample returnNewExample = null;
+            PendingExample returnNewExample = null;
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO code ( title, programming_language, example_date, code_description, snippet, difficulty_rank, category) " +
-                                                    " VALUES ( @title, @programmingLanguage, @exampleDate, @codeDescription, @snippet, @difficultyRank, @category)", conn);
+                    SqlCommand cmd = new SqlCommand("INSERT INTO code ( title, programming_language, example_date, code_description, snippet, difficulty_rank, category, attribution) " +
+                                                    " VALUES ( @title, @programmingLanguage, @exampleDate, @codeDescription, @snippet, @difficultyRank, @category, @attribution)", conn);
 
                     cmd.Parameters.AddWithValue("@title", newExample.title);
                     cmd.Parameters.AddWithValue("@programmingLanguage", newExample.programmingLanguage);
@@ -87,6 +87,7 @@ namespace Capstone.DAO
                     cmd.Parameters.AddWithValue("@snippet", newExample.codeSnippet);
                     cmd.Parameters.AddWithValue("@difficultyRank", newExample.difficultyRank);
                     cmd.Parameters.AddWithValue("@category", newExample.category);
+                    cmd.Parameters.AddWithValue("@attribution", newExample.attribution);
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -111,6 +112,7 @@ namespace Capstone.DAO
                 difficultyRank = Convert.ToString(reader["difficulty_rank"]),
                 category = Convert.ToString(reader["category"]),
                 exampleDate = Convert.ToString(reader["example_date"]),
+                attribution = Convert.ToString(reader["attribution"]),
             };
             return e;
         }
