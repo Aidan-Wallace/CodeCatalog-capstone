@@ -32,16 +32,16 @@
       <span>Language</span> {{ example.programmingLanguage }}
     </div>
     <div class="example-container-child example-download">
-      <download />
+      <!-- <download /> -->
     </div>
 
   </div>
 </template>
 
 <script>
-import Download from './Download.vue';
+// import Download from './Download.vue';
 export default {
-  components: { Download },
+  // components: { Download },
   name: "FullCatalog",
   /* *** PROP USES ***
     - "example"    :: A object passed in with each code example.
@@ -120,6 +120,7 @@ export default {
 
 .example-code {
   background-color: #eee;
-  padding: 5px;
+  padding: 15px;
+  width: 64%;
 }
 </style>
