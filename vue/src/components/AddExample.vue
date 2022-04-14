@@ -1,41 +1,61 @@
 <template>
   <div>
     <div class="form-container">
-      <form action="">
+      <form v-on:submit.prevent="submitNewExample">
         <div class="ae-input add-title-container">
           <label for="title">Title</label>
-          <small>(Description of input)</small>
-          <input type="text" name="title" />
+          <small>50 Character Limit</small>
+          <input type="text" name="title" v-model="newExample.title" />
         </div>
 
         <div class="ae-input add-language-container">
           <label for="language">Programming Language</label>
-          <small>(Description of input)</small>
-          <input type="text" name="language" />
+          <small>Please Select</small>
+          <select name="language" v-model="newExample.programmingLanguage">
+            <option value="">--</option>
+            <option value="csharp">C#</option>
+            <option value="css">CSS</option>
+            <option value="html">HTML</option>
+            <option value="javascript">JavaScript</option>
+            <option value="react">React JS</option>
+            <option value="vue">Vue JS</option>
+            <option value="other">Other</option>
+          </select>
         </div>
 
         <div class="ae-input add-description-container">
           <label for="description">Code Description</label>
           <small>(Description of input)</small>
-          <textarea type="text" name="description" resize></textarea>
+          <textarea
+            type="text"
+            name="description"
+            v-model="newExample.codeDescription"
+          ></textarea>
         </div>
 
         <div class="ae-input add-category-container">
           <label for="category">Category</label>
           <small>(Description of input)</small>
-          <input type="text" name="category" />
+          <select name="category" v-model="newExample.category">
+            <option value="">--</option>
+            <option value="">TBD</option>
+          </select>
         </div>
 
         <div class="ae-input add-code-snippet-container">
           <label for="code-snippet">Enter Code</label>
           <small>(Description of input)</small>
-          <textarea type="text" name="code-snippet"></textarea>
+          <textarea
+            type="text"
+            name="code-snippet"
+            v-model="newExample.codeSnippet"
+          ></textarea>
         </div>
 
         <div class="ae-input add-difficulty-container">
           <label for="difficulty">Code Difficulty</label>
           <small>(Description of input)</small>
-          <select name="difficulty">
+          <select name="difficulty" v-model="newExample.difficultyRank">
             <option value="">--</option>
             <option value="easy">Easy</option>
             <option value="medium">Medium</option>
@@ -46,7 +66,11 @@
         <div class="ae-input add-example-container">
           <label for="attribution">Enter References</label>
           <small>(Description of input)</small>
-          <input type="text" name="attribution" />
+          <input
+            type="text"
+            name="attribution"
+            v-model="newExample.references"
+          />
           <!-- NEED ABILITY TO ADD MORE REFERENCES -->
         </div>
         <button type="submit">Add Code Example</button>
@@ -56,7 +80,50 @@
 </template>
 
 <script>
-export default {};
+import CatalogService from "@/services/CatalogService";
+
+export default {
+  name: "AddExample",
+  data() {
+    return {
+      newExample: {
+        title: "",
+        programmingLanguage: "",
+        codeDescription: "",
+        category: "",
+        codeSnippet: "",
+        difficultyRank: "",
+        references: [],
+      },
+    };
+  },
+  methods: {
+    submitNewExample() {
+      console.log(this.newExample);
+
+      CatalogService.addExample()
+        .then((response) => {
+          console.log(response.status);
+          this.clearForm();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+
+    clearForm() {
+      this.newExample = {
+        title: "",
+        programmingLanguage: "",
+        codeDescription: "",
+        category: "",
+        codeSnippet: "",
+        difficultyRank: "",
+        references: [],
+      };
+    },
+  },
+};
 </script>
 
 <style scoped>

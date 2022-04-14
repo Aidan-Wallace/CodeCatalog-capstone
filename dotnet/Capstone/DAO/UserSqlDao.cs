@@ -101,6 +101,11 @@ namespace Capstone.DAO
             return GetUser(username);
         }
 
+        //public User UpdateUser(int id, User user)
+        //{
+        //    User old = user.Get
+        ////}
+
         private User GetUserFromReader(SqlDataReader reader)
         {
             User u = new User()
