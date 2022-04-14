@@ -31,3 +31,5 @@ namespace Capstone.Controllers
             List<CodeExample> exampleList = exampleDAO.FetchAllScripts();
             return Ok(exampleList);
         }
+    }
+}
