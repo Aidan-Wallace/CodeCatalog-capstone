@@ -2,18 +2,18 @@
   <div class="home">
     <h1>Code Catalog</h1>
     <!-- <catalog-example /> -->
-    <download />
+    <!-- <download /> -->
   </div>
 </template>
 
 <script>
-import Download from '../components/Download.vue';
+// import Download from '../components/Download.vue';
 // import CatalogExample from "../components/CatalogExample.vue";
 
 export default {
   name: "home",
   components: {
-    Download
+    // Download
     // CatalogExample,
   },
 
