@@ -14,6 +14,9 @@ export default {
     /* **FIX AFTER DAO/CONTROLLER IS IMPLEMENTED** */
     return http.get(`search/${query}`);
   },
+  fetchScript(codeId) {
+    return http.get(`/script/${codeId}`);
+  },
   getKeywords() {
     // Will return all keywords resulting in a method on FE that will filter
     // based on specifics (language, code-statement, etc)

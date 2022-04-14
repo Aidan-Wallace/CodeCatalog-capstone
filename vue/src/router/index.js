@@ -6,6 +6,7 @@ import Logout from "../views/Logout.vue";
 import Register from "../views/Register.vue";
 import store from "../store/index";
 import ExampleView from "@/views/ExampleView";
+import DownloadView from "@/views/DownloadView";
 import CatalogView from "@/views/CatalogView";
 import SearchView from "@/views/SearchView";
 import AddExampleView from "@/views/AddExampleView";
@@ -53,6 +54,14 @@ const router = new Router({
       path: "/example",
       name: "example",
       component: ExampleView,
+      meta: {
+        requiresAuth: false,
+      },
+    },
+    {
+      path: "/download",
+      name: "download",
+      component: DownloadView,
       meta: {
         requiresAuth: false,
       },
