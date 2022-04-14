@@ -8,6 +8,7 @@ import store from "../store/index";
 import ExampleView from "@/views/ExampleView";
 import CatalogView from "@/views/CatalogView";
 import SearchView from "@/views/SearchView";
+import AddExampleView from "@/views/AddExampleView";
 
 Vue.use(Router);
 
@@ -41,17 +42,17 @@ const router = new Router({
       },
     },
     {
-      path: "/example",
-      name: "example",
-      component: ExampleView,
+      path: "/addExample",
+      name: "addExample",
+      component: AddExampleView,
       meta: {
         requiresAuth: false,
       },
     },
     {
       path: "/example",
-      name: "Example",
-      // component: ExampleView,
+      name: "example",
+      component: ExampleView,
       meta: {
         requiresAuth: false,
       },

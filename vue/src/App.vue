@@ -16,6 +16,7 @@
           >Home
         </router-link>
         <router-link v-bind:to="{ name: 'Catalog' }">Catalog</router-link>
+        <router-link v-bind:to="{ name: 'addExample' }">Add Code</router-link>
         <router-link
           v-bind:to="{ name: 'logout' }"
           v-if="$store.state.token != ''"
