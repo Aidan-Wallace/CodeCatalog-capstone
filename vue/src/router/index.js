@@ -6,7 +6,8 @@ import Logout from "../views/Logout.vue";
 import Register from "../views/Register.vue";
 import store from "../store/index";
 import ExampleView from "@/views/ExampleView";
-import CatalogView from "@/views/CatalogView"
+import CatalogView from "@/views/CatalogView";
+import SearchView from "@/views/SearchView";
 
 Vue.use(Router);
 
@@ -27,6 +28,14 @@ const router = new Router({
       path: "/",
       name: "home",
       component: Home,
+      meta: {
+        requiresAuth: false,
+      },
+    },
+    {
+      path: "/searchResults/:query",
+      name: "searchResults",
+      component: SearchView,
       meta: {
         requiresAuth: false,
       },

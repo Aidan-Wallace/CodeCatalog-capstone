@@ -1,17 +1,21 @@
 <template>
   <div class="home">
     <h1>Code Catalog</h1>
-    <catalog-example />
+    <!-- <catalog-example /> -->
   </div>
 </template>
 
 <script>
-import CatalogExample from "../components/CatalogExample.vue";
+// import CatalogExample from "../components/CatalogExample.vue";
+
 export default {
   name: "home",
   components: {
-    CatalogExample,
+    // CatalogExample,
   },
+
+  created() {
+  }
 };
 </script>
 

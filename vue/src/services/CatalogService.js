@@ -12,7 +12,7 @@ export default {
   },
   getQuery(query) {
     /* **FIX AFTER DAO/CONTROLLER IS IMPLEMENTED** */
-    http.get(`/query/${query}`);
+    return http.get(`search/${query}`);
   },
   getKeywords() {
     // Will return all keywords resulting in a method on FE that will filter

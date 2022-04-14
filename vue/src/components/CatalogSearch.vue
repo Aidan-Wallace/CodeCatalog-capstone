@@ -1,6 +1,6 @@
 <template>
   <div class="search-container">
-    <form v-on:submit.prevent="getQuery">
+    <form v-on:submit.prevent="getSearch">
       <div class="search">
         <input
           type="text"
@@ -24,19 +24,14 @@
 </template>
 
 <script>
-import CatalogService from "@/services/CatalogService";
-
 export default {
   name: "CatalogSearch",
   methods: {
-    getQuery(query) {
-      /* NEED TO TROUBLESHOOT QUERY RESPONSE AFTER QUERY DAO/CONTROLLER IS IMPLEMENTED */
-
-      let response = CatalogService.getQuery(query);
-      console.log(response);
-
+    getSearch() {
+      this.$router.push({ path: "/searchResults", params: { query: this.searchQuery } });
       this.resetForm();
     },
+
     resetForm() {
       this.searchQuery = "";
     },
@@ -65,9 +60,9 @@ export default {
 
 .search-container input {
   width: 100%;
-  transition: .2s;
+  transition: 0.2s;
   border: none;
-  background-color: #EEE;
+  background-color: #eee;
   border-radius: 8px;
   width: 100%;
 }
