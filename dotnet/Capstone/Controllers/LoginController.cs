@@ -95,5 +95,12 @@ namespace Capstone.Controllers
 
             return result;
         }
+        //The ability to update a users role after they have registered and logged in-- might need the ability to the admin to approve/reject role udpate request
+        //[HttpPut("{userId}")]
+        //public ActionResult<ReturnUser> UpdateUser(int id, ReturnUser user)
+        //{
+        //    ReturnUser existingUser = userDao.GetUser(id);
+
+        //}
     }
 }
