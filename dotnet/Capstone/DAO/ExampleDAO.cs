@@ -68,17 +68,69 @@ namespace Capstone.DAO
             }
             return returnExamples;
         }
-
-        public NewExample AddExample(NewExample newExample)
+        public CodeExample FetchScript(int codeId)
         {
-            NewExample returnNewExample = null;
+            CodeExample script = null;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();                   //might have to do a join where user_id = @ user_id - misha
+                    SqlCommand cmd = new SqlCommand("SELECT code_id, snippet FROM code WHERE code_id = @code_id", conn);
+                    cmd.Parameters.AddWithValue("@code_id", codeId);
+                    cmd.Parameters.AddWithValue("@snippet", script);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        script = GetExampleFromReader(reader);
+                    }
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            return script;
+        }
+
+        public List<CodeExample> FetchAllScripts()
+        {
+            List<CodeExample> scriptsList = new List<CodeExample>();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();                     //might have to do a join where user_id = @ user_id - misha
+                    SqlCommand cmd = new SqlCommand("SELECT code_id, snippet FROM code", conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        CodeExample script = GetExampleFromReader(reader);
+                        scriptsList.Add(script);
+                    }
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            return scriptsList;
+        }
+
+
+        public PendingExample AddExample(PendingExample newExample)
+        {
+            PendingExample returnNewExample = null;
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO code ( title, programming_language, example_date, code_description, snippet, difficulty_rank, category) " +
-                                                    " VALUES ( @title, @programmingLanguage, @exampleDate, @codeDescription, @snippet, @difficultyRank, @category)", conn);
+                    SqlCommand cmd = new SqlCommand("INSERT INTO code ( title, programming_language, example_date, code_description, snippet, difficulty_rank, category, attribution) " +
+                                                    " VALUES ( @title, @programmingLanguage, @exampleDate, @codeDescription, @snippet, @difficultyRank, @category, @attribution)", conn);
 
                     cmd.Parameters.AddWithValue("@title", newExample.title);
                     cmd.Parameters.AddWithValue("@programmingLanguage", newExample.programmingLanguage);
@@ -87,6 +139,7 @@ namespace Capstone.DAO
                     cmd.Parameters.AddWithValue("@snippet", newExample.codeSnippet);
                     cmd.Parameters.AddWithValue("@difficultyRank", newExample.difficultyRank);
                     cmd.Parameters.AddWithValue("@category", newExample.category);
+                    cmd.Parameters.AddWithValue("@attribution", newExample.attribution);
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -111,6 +164,7 @@ namespace Capstone.DAO
                 difficultyRank = Convert.ToString(reader["difficulty_rank"]),
                 category = Convert.ToString(reader["category"]),
                 exampleDate = Convert.ToString(reader["example_date"]),
+                attribution = Convert.ToString(reader["attribution"]),
             };
             return e;
         }
