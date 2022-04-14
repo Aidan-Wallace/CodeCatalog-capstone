@@ -21,7 +21,7 @@ export default new Vuex.Store({
     token: currentToken || "",
     user: currentUser || {},
     currentExample: {
-      codeId: null,
+      codeId: 0,
       language: "",
       title: "",
       category: "",

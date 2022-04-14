@@ -1,18 +1,25 @@
 <template>
     <a 
-    :href="item.url"
-    v-text="item.label"
-    @click.prevent="downloadItem(item)" />
+    :href="{ exampleId }.url"
+    v-text="example.label"
+    @click.prevent="downloadExample(example)" />
 </template>
 
 <script>
 import axios from 'axios'
 export default {
+    name: 'Download',
+    props: {
+        exampleId: Number
+    },
+    created() {
+        
+    },
     methods: {
-        downloadItem ({url, label}) {
+        downloadExample ({url, label}) {
             axios.get(url, {responseType: 'blob'})
             .then(response => {
-                const blob = new Blob([response.data], {type: ''})
+                const blob = new Blob([response.data], {type: 'application/JSON'})
                 const link = document.createElement('a')
                 link.href = URL.createObjectURL(blob)
                 link.download = label
