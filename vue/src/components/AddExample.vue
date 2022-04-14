@@ -48,7 +48,7 @@
           <textarea
             type="text"
             name="code-snippet"
-            v-model="newExample.snippet"
+            v-model="newExample.codeSnippet"
           ></textarea>
         </div>
 
@@ -91,7 +91,7 @@ export default {
         programmingLanguage: "",
         codeDescription: "",
         category: "",
-        snippet: "",
+        codeSnippet: "",
         difficultyRank: "",
         attribution: "",
       },
@@ -117,7 +117,7 @@ export default {
         programmingLanguage: "",
         codeDescription: "",
         category: "",
-        snippet: "",
+        codeSnippet: "",
         difficultyRank: "",
         attribution: "",
       };

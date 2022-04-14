@@ -30,7 +30,7 @@ CREATE TABLE code (
 	title varchar(50) NOT NULL,
 	snippet varchar(MAX) NULL,
 	code_description varchar(MAX)  NULL,
-	example_date getdate()  NULL,
+	example_date varchar(50)  NULL,
 	difficulty_rank varchar(50)  NULL,
 	category varchar(MAX)  NULL,
 	submission_status int NULL,
