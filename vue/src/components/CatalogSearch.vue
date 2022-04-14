@@ -9,16 +9,7 @@
           placeholder="Search..."
           autocomplete="off"
         />
-        <!-- <button type="submit" v-bind:disabled="isDisabled == false">
-          Search
-        </button> -->
       </div>
-      <!-- <select name="" id="">
-        <option value="">--</option>
-        <option v-for="option in keywords" v-bind:key="option.keyword" value="">
-          {{ option.keyword }}
-        </option>
-      </select> -->
     </form>
   </div>
 </template>
@@ -28,7 +19,10 @@ export default {
   name: "CatalogSearch",
   methods: {
     getSearch() {
-      this.$router.push({ path: "/searchResults", params: { query: this.searchQuery } });
+      this.$router.push({
+        name: "searchResults",
+        params: { query: this.searchQuery },
+      });
       this.resetForm();
     },
 

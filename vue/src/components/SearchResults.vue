@@ -12,16 +12,27 @@ import CatalogService from "@/services/CatalogService";
 
 export default {
   name: "SearchResults",
-  query: "",
-  created() {
-    this.query = this.$route.params.query;
+  props: ["query"],
+  data() {
+    return {
+      searchResults: [],
+    };
+  },
+  methods: {
+    getSearchResults() {
+      CatalogService.getQuery(this.query)
+        .then((res) => {
+          console.log(res);
+          this.searchResults = res;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
   },
 
-  computed: {
-    searchResults() {
-      console.log(this.query);
-      return CatalogService.getQuery(this.query);
-    },
+  created() {
+    this.getSearchResults();
   },
 };
 </script>
