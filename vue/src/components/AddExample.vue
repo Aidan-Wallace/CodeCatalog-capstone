@@ -5,10 +5,10 @@
         <div class="ae-input add-title-container">
           <label for="title">Title</label>
           <small>50 Character Limit</small>
-          <input type="text" name="title" v-model="newExample.title" />
+          <input type="text" name="title" v-model="newExample.title" required />
         </div>
 
-        <div class="ae-input add-language-container">
+        <div class="ae-input add-language-container" required>
           <label for="language">Programming Language</label>
           <small>Please Select</small>
           <select name="language" v-model="newExample.programmingLanguage">
@@ -48,7 +48,7 @@
           <textarea
             type="text"
             name="code-snippet"
-            v-model="newExample.codeSnippet"
+            v-model="newExample.snippet"
           ></textarea>
         </div>
 
@@ -64,12 +64,12 @@
         </div>
 
         <div class="ae-input add-example-container">
-          <label for="attribution">Enter References</label>
+          <label for="attribution">Enter references</label>
           <small>(Description of input)</small>
           <input
             type="text"
             name="attribution"
-            v-model="newExample.references"
+            v-model="newExample.attribution"
           />
           <!-- NEED ABILITY TO ADD MORE REFERENCES -->
         </div>
@@ -91,9 +91,9 @@ export default {
         programmingLanguage: "",
         codeDescription: "",
         category: "",
-        codeSnippet: "",
+        snippet: "",
         difficultyRank: "",
-        references: [],
+        attribution: "",
       },
     };
   },
@@ -101,7 +101,7 @@ export default {
     submitNewExample() {
       console.log(this.newExample);
 
-      CatalogService.addExample()
+      CatalogService.addExample(this.newExample)
         .then((response) => {
           console.log(response.status);
           this.clearForm();
@@ -117,9 +117,9 @@ export default {
         programmingLanguage: "",
         codeDescription: "",
         category: "",
-        codeSnippet: "",
+        snippet: "",
         difficultyRank: "",
-        references: [],
+        attribution: "",
       };
     },
   },
