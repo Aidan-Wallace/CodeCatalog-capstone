@@ -2,8 +2,12 @@
   <div id="app">
     <div id="nav">
       <div class="title-logo">
-        <img src="@/assets/codecat-logo.png" alt="" />
-        <h5>Code Catalog</h5>
+        <img
+          src="@/assets/codecat-logo.png"
+          alt="CodeCatalog Logo"
+          v-on:click.prevent="goHome"
+        />
+        <h5 v-on:click.prevent="goHome">Code Catalog</h5>
       </div>
       <catalog-search />
 
@@ -12,6 +16,7 @@
           >Home
         </router-link>
         <router-link v-bind:to="{ name: 'Catalog' }">Catalog</router-link>
+        <router-link v-bind:to="{ name: 'addExample' }">Add Code</router-link>
         <router-link
           v-bind:to="{ name: 'logout' }"
           v-if="$store.state.token != ''"
@@ -41,18 +46,30 @@ export default {
   },
   methods: {
     retrieveExample() {},
+    goHome() {
+      this.$router.push({ path: "/" });
+    },
   },
 };
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap");
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
-#app {
+body {
+  /* IMPORTED FONT FAMILIES
+  - Roboto
+    - font weights: 400(regular), 700(bold), 900(black)
+   */
+
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
 }
 
 #nav {
@@ -68,6 +85,10 @@ export default {
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+.title-logo > * {
+  cursor: pointer;
 }
 
 .title-logo img {
