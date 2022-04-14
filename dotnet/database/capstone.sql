@@ -27,19 +27,22 @@ CREATE TABLE users (
 CREATE TABLE code (
 	code_id int IDENTITY(1,1) NOT NULL,
 	programming_language varchar(50) NOT NULL,
-	title varchar(200) NOT NULL,
+	title varchar(50) NOT NULL,
 	snippet varchar(MAX) NULL,
 	code_description varchar(MAX)  NULL,
 	example_date varchar(100)  NULL,
 	difficulty_rank varchar(50)  NULL,
-	category varchar(MAX)  NULL
+	category varchar(MAX)  NULL,
+	submission_status int NULL,
+	is_public bit NULL,
+	attribution varchar(MAX) NULL,
 	CONSTRAINT PK_code PRIMARY KEY (code_id)
 );
 
 CREATE TABLE user_code (
 	user_id int  NOT NULL,
 	code_id int  NOT NULL,
-	submission_status varchar(200) NOT NULL,
+	submission_status int NOT NULL,
 	CONSTRAINT [FK_users] FOREIGN KEY (user_id) REFERENCES [users] (user_id),
 	CONSTRAINT [FK_code] FOREIGN KEY (code_id) REFERENCES [code] (code_id)
 	
