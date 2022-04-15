@@ -202,7 +202,7 @@ namespace Capstone.DAO
             AdministratorExample e = new AdministratorExample()
             {
                 codeId = Convert.ToInt32(reader["code_id"]),
-                submissionStatus = Convert.ToInt32(["submission_status"]),
+                submissionStatus = Convert.ToInt32(reader["submission_status"]),
                 title = Convert.ToString(reader["title"]),
                 programmingLanguage = Convert.ToString(reader["programming_language"]),
                 codeSnippet = Convert.ToString(reader["snippet"]),

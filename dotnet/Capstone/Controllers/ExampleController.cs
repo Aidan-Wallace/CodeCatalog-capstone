@@ -34,18 +34,6 @@ namespace Capstone.Controllers
             return Ok(exampleList);
         }
 
-        [HttpGet("{submissionStatus}")]
-        public ActionResult<List<AdministratorExample>> GetAdministratorExamples()
-        {
-            List<AdministratorExample> administratorExamples = exampleDAO.GetAdministratorExamples();
-            return Ok(administratorExamples);
-        }
-
-
-
-
-
-
         //AddExample Method -----WORKS-----
         [HttpPost()] //we'll probably have to add a user id here but we can figure it out later, will also have to add a join to our sql script to account for userid in the model
         public ActionResult<PendingExample> AddExample(PendingExample newExample)
