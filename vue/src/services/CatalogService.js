@@ -20,4 +20,4 @@ export default {
   fetchScript(codeId) {
     return http.get(`/script/${codeId}`);
   },
-};
+}
