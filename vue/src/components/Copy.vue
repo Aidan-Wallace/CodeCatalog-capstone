@@ -1,21 +1,33 @@
 <template>
-  <div id="copy-button">
-        <button v-if="canCopy" @click="copy(something)">Copy</button>  
-    </div>
+  <div>
+    <input type="text" placeholder="" v-model="message" />
+    <button
+      type="button"
+      v-clipboard:copy="message"
+      v-clipboard:success="onCopy"
+      v-clipboard:error="onError"
+    >
+      Copy code example
+    </button>
+  </div>
 </template>
 
 <script>
 export default {
-  data() {
+  name: "Copy",
+  data: function () {
     return {
-      text: 'Copy test'
+      message: "The code example at hand will be copied to the clipboard.",
     };
   },
   methods: {
-    copy() {
-      this.$refs.clone.focus();
-      document.execCommand('copy');
-    }
-  }
+    onCopy: function (e) {
+      alert("You just copied the following text to the clipboard: " + e.text);
+    },
+    onError: function (e) {
+      alert("Sorry, the example was not copied.");
+      console.log(e);
+    },
+  },
 };
 </script>
