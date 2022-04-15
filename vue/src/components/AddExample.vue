@@ -21,6 +21,13 @@
             <option value="vue">Vue JS</option>
             <option value="other">Other</option>
           </select>
+
+          <input
+            v-if="newExample.programmingLanguage == 'other'"
+            v-model="newExample.addedLanguage"
+            type="text"
+            placeholder="Please enter language used"
+          />
         </div>
 
         <div class="ae-input add-description-container">
@@ -35,9 +42,13 @@
 
         <div class="ae-input add-category-container">
           <label for="category">Category</label>
-          <small>(Description of input)</small>
-          <select name="category" v-model="newExample.category">
+          <small>Please select relevant categories</small>
+          <select name="category" v-on:change="addToCategory($event)">
             <option value="">--</option>
+            <option v-for="c in categories" :key="c" :value="c">
+              {{ c }}
+            </option>
+            <!--
             <option value="algorithms">Algorithms</option>
             <option value="artificial intelligence">A.I/ML</option>
             <option value="data-structure">Data Structure</option>
@@ -45,8 +56,22 @@
             <option value="functional-programming">Functional Programming</option>
             <option value="mathematics">Mathematics</option>
             <option value="web-services">Web Services</option>
-            <option value="other">Other</option>
+            <option value="other">Other</option> -->
           </select>
+
+          <div class="selected-catagories" v-show="newExample.category != ''">
+            <div
+              class="selected-category"
+              v-for="sc in getSelectedCategories"
+              :key="sc"
+            >
+              <i
+                class="fa-solid fa-x"
+                v-on:click="removeFromCategories(sc)"
+              ></i>
+              {{ sc }}
+            </div>
+          </div>
         </div>
 
         <div class="ae-input add-code-snippet-container">
@@ -72,11 +97,14 @@
 
         <div class="ae-input add-example-container">
           <label for="attribution">Enter references</label>
-          <small>(Description of input)</small>
+          <small>Use "https://" format for a valid link</small>
           <input
+            v-for="ref in getReferences"
+            :key="ref"
             type="text"
             name="attribution"
             v-model="newExample.attribution"
+            placeholder="e.g 'https://www.wikipedia.com' or 'John Doe'"
           />
           <!-- NEED ABILITY TO ADD MORE REFERENCES -->
         </div>
@@ -91,22 +119,53 @@ import CatalogService from "@/services/CatalogService";
 
 export default {
   name: "AddExample",
+  computed: {
+    getSelectedCategories() {
+      return this.newExample.category.split(" ");
+    },
+    getReferences() {
+      let refCount = this.newExample.attribution.split(" ").length;
+
+      return refCount;
+    },
+  },
   data() {
     return {
-      newExample: {
-        title: "",
-        programmingLanguage: "",
-        codeDescription: "",
-        category: "",
-        codeSnippet: "",
-        difficultyRank: "",
-        attribution: "",
-      },
+      newExample: this.$store.state.getNewExample,
+      categories: this.$store.state.getCategories,
+      addedLanguage: "",
     };
   },
   methods: {
+    addToCategory(event) {
+      // Determine if space needs to be pre-pended
+      const addSpace = this.newExample.category != "" ? " " : "";
+      let newCategory = addSpace + event.target.value;
+
+      // Add selected category to newExample categories
+      this.newExample.category += newCategory;
+
+      // Remove selected category from categories
+      var index = this.categories.indexOf(event.target.value);
+      if (index > -1) this.categories.splice(index, 1);
+    },
+
+    removeFromCategories(category) {
+      // Add deleted category to list of available categories
+      this.categories.push(category);
+
+      // Remove category from newExample.category
+      let catArr = this.newExample.category.split(" ");
+      let index = catArr.indexOf(category);
+      catArr.splice(index, 1);
+
+      this.newExample.category = catArr.join(" ");
+    },
+
     submitNewExample() {
-      console.log(this.newExample);
+      if (this.newExample.programmingLanguage == "other") {
+        this.newExample.programmingLanguage = this.addedLanguage;
+      }
 
       CatalogService.addExample(this.newExample)
         .then((response) => {
@@ -119,15 +178,9 @@ export default {
     },
 
     clearForm() {
-      this.newExample = {
-        title: "",
-        programmingLanguage: "",
-        codeDescription: "",
-        category: "",
-        codeSnippet: "",
-        difficultyRank: "",
-        attribution: "",
-      };
+      this.newExample = this.$store.state.getNewExample;
+      this.categories = this.$store.state.getCategories;
+      this.addedLanguage = "";
     },
   },
 };
@@ -176,6 +229,23 @@ textarea {
 .add-code-snippet-container textarea {
   height: 10vh;
   max-height: 30vh;
+}
+
+.selected-catagories {
+  display: flex;
+}
+
+.selected-category {
+  border-radius: 16px;
+  background-color: #eee;
+  padding: 5px 12px;
+  margin: 10px;
+}
+
+.selected-category > i {
+  font-size: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 form button {

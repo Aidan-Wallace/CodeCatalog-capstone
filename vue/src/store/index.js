@@ -29,6 +29,16 @@ export default new Vuex.Store({
       entryDate: "",
       //codeExample:
     },
+    getNewExample: {
+      title: "",
+      programmingLanguage: "",
+      codeDescription: "",
+      category: "",
+      codeSnippet: "",
+      difficultyRank: "",
+      attribution: "",
+    },
+    getCategories: ["1", "2", "3"],
   },
 
   mutations: {
