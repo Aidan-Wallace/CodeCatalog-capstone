@@ -68,6 +68,35 @@ namespace Capstone.DAO
             }
             return returnExamples;
         }
+
+
+        public List<AdministratorExample> GetAdministratorExamples(PendingExample pendingExample)
+        {
+            List<AdministratorExample> returnExamples = new List<AdministratorExample>();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();                     
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM code WHERE @submission_status = 0", conn);
+                    cmd.Parameters.AddWithValue("@submission_status", pendingExample.submissionStatus);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        AdministratorExample returnExample = GetPendingExampleFromReader(reader);
+                        returnExamples.Add(returnExample);
+                    }
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            return returnExamples;
+
+        }
         public CodeExample FetchScript(int codeId)
         {
             CodeExample script = null;
@@ -157,6 +186,23 @@ namespace Capstone.DAO
             CodeExample e = new CodeExample()
             {
                 codeId = Convert.ToInt32(reader["code_id"]),
+                title = Convert.ToString(reader["title"]),
+                programmingLanguage = Convert.ToString(reader["programming_language"]),
+                codeSnippet = Convert.ToString(reader["snippet"]),
+                codeDescription = Convert.ToString(reader["code_description"]),
+                difficultyRank = Convert.ToString(reader["difficulty_rank"]),
+                category = Convert.ToString(reader["category"]),
+                exampleDate = Convert.ToString(reader["example_date"]),
+                attribution = Convert.ToString(reader["attribution"]),
+            };
+            return e;
+        }
+        private AdministratorExample GetPendingExampleFromReader(SqlDataReader reader)
+        {
+            AdministratorExample e = new AdministratorExample()
+            {
+                codeId = Convert.ToInt32(reader["code_id"]),
+                submissionStatus = Convert.ToInt32(["submission_status"]),
                 title = Convert.ToString(reader["title"]),
                 programmingLanguage = Convert.ToString(reader["programming_language"]),
                 codeSnippet = Convert.ToString(reader["snippet"]),
