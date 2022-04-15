@@ -1,6 +1,6 @@
 <template>
   <div class="search-container">
-    <form v-on:submit.prevent="getSearch">
+    <form class="search-form" v-on:submit.prevent="getSearch">
       <div class="search">
         <input
           type="text"
@@ -48,8 +48,14 @@ export default {
 
 <style>
 .search-container {
-  padding: 10px 10px;
-  /* width: 100%; */
+  height: 100%;
+  width: 100%;
+}
+
+.search-form {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .search-container input {
@@ -64,16 +70,5 @@ export default {
 .search-container input:focus {
   outline: none;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
-}
-
-/* .search-container input::placeholder {} */
-
-.search-container button {
-  width: calc(100% - 10px);
-  border: none;
-}
-
-.search-container select {
-  width: 100%;
 }
 </style>
