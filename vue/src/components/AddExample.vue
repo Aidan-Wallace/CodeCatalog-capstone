@@ -38,7 +38,14 @@
           <small>(Description of input)</small>
           <select name="category" v-model="newExample.category">
             <option value="">--</option>
-            <option value="">TBD</option>
+            <option value="algorithms">Algorithms</option>
+            <option value="artificial intelligence">A.I/ML</option>
+            <option value="data-structure">Data Structure</option>
+            <option value="databases">Databases</option>
+            <option value="functional-programming">Functional Programming</option>
+            <option value="mathematics">Mathematics</option>
+            <option value="web-services">Web Services</option>
+            <option value="other">Other</option>
           </select>
         </div>
 
