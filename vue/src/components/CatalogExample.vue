@@ -8,16 +8,8 @@
 
     <div class="example-container-child example-code">
       {{ example.codeSnippet }}
-<!--       <button
-        type="button"
-        v-clipboard:copy="example.codeSnippet"
-        v-clipboard:success="handleCopyStatus(true)"
-        v-clipboard:error="handleCopyStatus(false)"
-      >
-        Copy code example
-      </button>
-      <p v-if="copySucceeded === true">Snippet copied successfully.</p>
-      <p v-if="copySucceeded === false">Sorry, there was a problem copying.</p> 
+<!--       <input type="text" v-model="message" />
+      <button type="button" @click="doCopy">Copy code snippet</button>
  -->    </div>
 
     <div class="example-container-child example-description">
@@ -60,19 +52,26 @@ export default {
         few details rather than the whole code block.
   */
   props: ["example", "isExpanded"],
-/*    data() {
+/*   data: function () {
     return {
-      copySucceeded: null,
-      //how to bind code snippet and return it?
+      message: "Copy code snippet",
     };
   },
-
   methods: {
-    handleCopyStatus(status) {
-      this.copySucceeded = status;
+    doCopy: function () {
+      this.$copyText(this.message).then(
+        function (e) {
+          alert("Copied");
+          console.log(e);
+        },
+        function (e) {
+          alert("Can not copy");
+          console.log(e);
+        }
+      );
     },
-  }, */
-};
+  },
+ */};
 </script>
 
 <style scoped>
