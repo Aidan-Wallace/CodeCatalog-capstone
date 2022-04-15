@@ -26,20 +26,5 @@ namespace Capstone.Controllers
             return Ok(exampleList);
         }
 
-        //AddSearchKeyword Method
-        // [HttpPost()]
-        // public ActionResult<SearchQuery> AddSearchKeyword(string keyword, int userId)
-        // {
-        //     SearchQuery addedKeyword = searchQueryDAO.AddSearchKeyword(keyword, userId);
-        //     return Ok(addedKeyword);
-        // }
-
-        //GetExampleWithSearchKeyword Method
-        // [HttpGet("{keyword}")]
-        // public ActionResult<SearchQuery> GetExampleWithSearchKeyword(string keyword)
-        // {
-        //     SearchQuery returnedSearch = searchQueryDAO.GetExampleWithSearchKeyword(keyword);
-        //     return Ok(returnedSearch);
-        // }
     }
 }

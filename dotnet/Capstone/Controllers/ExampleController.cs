@@ -42,9 +42,44 @@ namespace Capstone.Controllers
             return Ok(newExampleCode);
         }
 
-       //[HttpPut("{codeId}")]
-       //[Authorize(Roles = "admin")]
-       //public ActionResult<CodeExample> 
+        //AdminGetsListOfPending Method
+        [HttpGet("status/{submissionStatus}")]
+        public ActionResult<List<PendingExample>> GetExamplesByStatus(int submissionStatus)
+        {
+            List<PendingExample> pendingExamples = exampleDAO.GetExamplesByStatus(submissionStatus);
+            return Ok(pendingExamples);
+        }
+
+        //AdminApprovesSubmissionStatus
+        [HttpPut("approve-status/{codeId}")]
+        //[Authorize(Roles = "admin")]
+        public ActionResult<PendingExample> ApproveStatus(int codeId)
+        {
+            List<PendingExample> existingExamples = exampleDAO.GetExamplesByStatus(codeId);
+            if(existingExamples==null)
+            {
+                return NotFound();
+            }
+            PendingExample result = exampleDAO.ApproveStatus(codeId);
+            return Ok(result);
+        }
+
+        //AdminRejectsSubmissionStatus
+        [HttpPut("reject-status/{codeId}")]
+        //[Authorize(Roles = "admin")]
+        public ActionResult<PendingExample> RejectStatus(int codeId)
+        {
+            List<PendingExample> existingExamples = exampleDAO.GetExamplesByStatus(codeId);
+            if(existingExamples==null)
+            {
+                return NotFound();
+            }
+            PendingExample result = exampleDAO.RejectStatus(codeId);
+            return Ok(result);
+        }
+
+
+     
 
         
     }
