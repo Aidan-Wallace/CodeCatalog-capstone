@@ -48,6 +48,15 @@
             <option v-for="c in categories" :key="c" :value="c">
               {{ c }}
             </option>
+            <!--
+            <option value="algorithms">Algorithms</option>
+            <option value="artificial intelligence">A.I/ML</option>
+            <option value="data-structure">Data Structure</option>
+            <option value="databases">Databases</option>
+            <option value="functional-programming">Functional Programming</option>
+            <option value="mathematics">Mathematics</option>
+            <option value="web-services">Web Services</option>
+            <option value="other">Other</option> -->
           </select>
 
           <div class="selected-catagories" v-show="newExample.category != ''">
@@ -116,8 +125,6 @@ export default {
     },
     getReferences() {
       let refCount = this.newExample.attribution.split(" ").length;
-
-      
 
       return refCount;
     },

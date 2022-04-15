@@ -34,6 +34,18 @@ namespace Capstone.Controllers
             return Ok(exampleList);
         }
 
+        [HttpGet("{submissionStatus}")]
+        public ActionResult<List<AdministratorExample>> GetAdministratorExamples()
+        {
+            List<AdministratorExample> administratorExamples = exampleDAO.GetAdministratorExamples();
+            return Ok(administratorExamples);
+        }
+
+
+
+
+
+
         //AddExample Method -----WORKS-----
         [HttpPost()] //we'll probably have to add a user id here but we can figure it out later, will also have to add a join to our sql script to account for userid in the model
         public ActionResult<PendingExample> AddExample(PendingExample newExample)
@@ -42,44 +54,10 @@ namespace Capstone.Controllers
             return Ok(newExampleCode);
         }
 
-        // //SearchByKeyword Method
-        // [HttpGet("{keyword}")]
-        // public ActionResult<List<CodeExample>> SearchByKeyword(string keyword)
-        // {
-        //     List<CodeExample> exampleList = exampleDAO.SearchByKeyword(keyword);
-        //     return Ok(exampleList);
-        // }
+       //[HttpPut("{codeId}")]
+       //[Authorize(Roles = "admin")]
+       //public ActionResult<CodeExample> 
 
-        // //SearchByTitle Method
-        // [HttpGet("{title}")]
-        // public ActionResult<List<CodeExample>> SearchByTitle()
-        // {
-        //     List<CodeExample> exampleList = exampleDAO.SearchByTitle();
-        //     return Ok(exampleList);
-        // }
-
-        // //SearchByCategory Method
-        // [HttpGet("{category}")]
-        // public ActionResult<List<CodeExample>> SearchByCategory()
-        // {
-        //     List<CodeExample> exampleList = exampleDAO.SearchByCategory();
-        //     return Ok(exampleList);
-        // }
-
-        // //SearchByDescription Method
-        // [HttpGet("{codeDescription}")]
-        // public ActionResult<List<CodeExample>> SearchByDescription()
-        // {
-        //     List<CodeExample> exampleList = exampleDAO.SearchByDescription();
-        //     return Ok(exampleList);
-        // }
-
-        // //SearchByProgrammingLanguage Method
-        // [HttpGet("{programmingLanguage}")]
-        // public ActionResult<List<CodeExample>> SearchByProgrammingLanguage()
-        // {
-        //     List<CodeExample> exampleList = exampleDAO.SearchByProgrammingLanguage();
-        //     return Ok(exampleList);
-        // }
+        
     }
 }
