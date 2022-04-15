@@ -8,9 +8,10 @@
 
     <div class="example-container-child example-code">
       {{ example.codeSnippet }}
-<!--       <input type="text" v-model="message" />
+      <!--       <input type="text" v-model="message" />
       <button type="button" @click="doCopy">Copy code snippet</button>
- -->    </div>
+ -->
+    </div>
 
     <div class="example-container-child example-description">
       <p>
@@ -33,6 +34,14 @@
     <div class="example-container-child example-language">
       <span>Language</span> {{ example.programmingLanguage }}
     </div>
+
+    <div class="example-container-child example-attribution">
+      <span>References</span>
+      <div v-for="ref in getReferences" :key="ref">
+        {{ ref }}
+      </div>
+    </div>
+
     <div class="example-container-child example-download">
       <!-- <download /> -->
     </div>
@@ -52,7 +61,25 @@ export default {
         few details rather than the whole code block.
   */
   props: ["example", "isExpanded"],
-/*   data: function () {
+  computed: {
+    getReferences() {
+      let attrs = this.example.attribution;
+
+      let links = [];
+      let other = [];
+
+      attrs.split(" ").forEach((ref) => {
+        if (ref.includes("http://") || ref.includes("https://")) {
+          links.push(ref);
+        } else {
+          other.push(ref);
+        }
+      });
+
+      return [...links, ...other];
+    },
+  },
+  /*   data: function () {
     return {
       message: "Copy code snippet",
     };
@@ -71,7 +98,8 @@ export default {
       );
     },
   },
- */};
+ */
+};
 </script>
 
 <style scoped>
