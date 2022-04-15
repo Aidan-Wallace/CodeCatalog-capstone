@@ -38,7 +38,16 @@ export default new Vuex.Store({
       difficultyRank: "",
       attribution: "",
     },
-    getCategories: ["1", "2", "3"],
+    getCategories: [
+      "algorithms",
+      "artificial",
+      "data",
+      "databases",
+      "functional",
+      "mathematics",
+      "web",
+      "other",
+    ],
   },
 
   mutations: {
