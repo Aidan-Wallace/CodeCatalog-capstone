@@ -34,18 +34,6 @@ namespace Capstone.Controllers
             return Ok(exampleList);
         }
 
-        [HttpGet("{submissionStatus}")]
-        public ActionResult<List<AdministratorExample>> GetAdministratorExamples()
-        {
-            List<AdministratorExample> administratorExamples = exampleDAO.GetAdministratorExamples();
-            return Ok(administratorExamples);
-        }
-
-
-
-
-
-
         //AddExample Method -----WORKS-----
         [HttpPost()] //we'll probably have to add a user id here but we can figure it out later, will also have to add a join to our sql script to account for userid in the model
         public ActionResult<PendingExample> AddExample(PendingExample newExample)
@@ -54,9 +42,44 @@ namespace Capstone.Controllers
             return Ok(newExampleCode);
         }
 
-       //[HttpPut("{codeId}")]
-       //[Authorize(Roles = "admin")]
-       //public ActionResult<CodeExample> 
+        //AdminGetsListOfPending Method
+        [HttpGet("status/{submissionStatus}")]
+        public ActionResult<List<PendingExample>> GetExamplesByStatus(int submissionStatus)
+        {
+            List<PendingExample> pendingExamples = exampleDAO.GetExamplesByStatus(submissionStatus);
+            return Ok(pendingExamples);
+        }
+
+        //AdminApprovesSubmissionStatus
+        [HttpPut("approve-status/{codeId}")]
+        //[Authorize(Roles = "admin")]
+        public ActionResult<PendingExample> ApproveStatus(int codeId)
+        {
+            List<PendingExample> existingExamples = exampleDAO.GetExamplesByStatus(codeId);
+            if(existingExamples==null)
+            {
+                return NotFound();
+            }
+            PendingExample result = exampleDAO.ApproveStatus(codeId);
+            return Ok(result);
+        }
+
+        //AdminRejectsSubmissionStatus
+        [HttpPut("reject-status/{codeId}")]
+        //[Authorize(Roles = "admin")]
+        public ActionResult<PendingExample> RejectStatus(int codeId)
+        {
+            List<PendingExample> existingExamples = exampleDAO.GetExamplesByStatus(codeId);
+            if(existingExamples==null)
+            {
+                return NotFound();
+            }
+            PendingExample result = exampleDAO.RejectStatus(codeId);
+            return Ok(result);
+        }
+
+
+     
 
         
     }
