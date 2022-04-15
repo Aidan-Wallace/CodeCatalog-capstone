@@ -5,12 +5,14 @@ using Capstone.DAO.Interfaces;
 using Capstone.Models;
 using Capstone.Security;
 using Capstone.Security.Models;
+using System.Net.Http;
+using System.Net.Http.Headers;
 
 namespace Capstone.DAO
 {
     public class ExampleDao : IExampleDAO
     {
-        private List<PendingExample> pendingExamples = new List<PendingExample>();
+        private List<CodeExample> pendingExamples = new List<CodeExample>();
         private readonly string connectionString;
 
         public ExampleDao(string dbConnectionString)
@@ -21,7 +23,6 @@ namespace Capstone.DAO
         public CodeExample GetExample(int codeId)
         {
             CodeExample returnExample = null;
-
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -47,7 +48,6 @@ namespace Capstone.DAO
         public List<CodeExample> GetExamples()
         {
             List<CodeExample> returnExamples = new List<CodeExample>();
-
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -122,9 +122,9 @@ namespace Capstone.DAO
             return scriptsList;
         }
 
-        public PendingExample AddExample(PendingExample newExample)
+        public CodeExample AddExample(CodeExample newExample)
         {
-            PendingExample returnNewExample = null;
+            CodeExample returnNewExample = null;
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -152,7 +152,7 @@ namespace Capstone.DAO
             return returnNewExample;
         }
 
-        public List<PendingExample> GetExamplesByStatus(int submissionStatus)
+        public List<CodeExample> GetExamplesByStatus(int submissionStatus)
         {
             try
             {
@@ -165,7 +165,7 @@ namespace Capstone.DAO
 
                     while (reader.Read())
                     {
-                        PendingExample returnExample = GetPendingExampleFromReader(reader);
+                        CodeExample returnExample = GetExampleFromReader(reader);
                         pendingExamples.Add(returnExample);
                     }
                 }
@@ -177,53 +177,31 @@ namespace Capstone.DAO
             return pendingExamples;
         }
 
-        public PendingExample ApproveStatus(int codeId)
-        {
-            int newSubmissionStatus=1;
-            foreach(PendingExample item in pendingExamples)
+        public CodeExample UpdateStatus(int codeId, CodeExample codeExample)
+        {   
+            CodeExample returnNewExample = null;
+            try
             {
-                if(item.codeId==codeId)
+                using (SqlConnection conn = new SqlConnection(connectionString))
                 {
-                    item.submissionStatus = newSubmissionStatus;
-                    return item;
-                }
-            }
-            return null;
-        }
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("UPDATE code SET submission_status = @submissionStatus WHERE code_id = @codeId", conn);
 
-        public PendingExample RejectStatus(int codeId)
-        {
-            int newSubmissionStatus=2;
-            foreach(PendingExample item in pendingExamples)
-            {
-                if(item.codeId==codeId)
-                {
-                    item.submissionStatus = newSubmissionStatus;
-                    return item;
+                    cmd.Parameters.AddWithValue("@codeId", codeId);
+                    cmd.Parameters.AddWithValue("@submissionStatus", codeExample.submissionStatus);
+                    cmd.ExecuteNonQuery();
                 }
             }
-            return null;
+            catch (SqlException)
+            {
+                throw;
+            }
+            return returnNewExample;
         }
 
         private CodeExample GetExampleFromReader(SqlDataReader reader)
         {
             CodeExample e = new CodeExample()
-            {
-                codeId = Convert.ToInt32(reader["code_id"]),
-                title = Convert.ToString(reader["title"]),
-                programmingLanguage = Convert.ToString(reader["programming_language"]),
-                codeSnippet = Convert.ToString(reader["snippet"]),
-                codeDescription = Convert.ToString(reader["code_description"]),
-                difficultyRank = Convert.ToString(reader["difficulty_rank"]),
-                category = Convert.ToString(reader["category"]),
-                exampleDate = Convert.ToString(reader["example_date"]),
-                attribution = Convert.ToString(reader["attribution"]),
-            };
-            return e;
-        }
-        private PendingExample GetPendingExampleFromReader(SqlDataReader reader)
-        {
-            PendingExample p = new PendingExample()
             {
                 codeId = Convert.ToInt32(reader["code_id"]),
                 title = Convert.ToString(reader["title"]),
@@ -235,9 +213,9 @@ namespace Capstone.DAO
                 category = Convert.ToString(reader["category"]),
                 exampleDate = Convert.ToString(reader["example_date"]),
                 attribution = Convert.ToString(reader["attribution"]),
-                // isPublic = Convert.ToBoolean(reader["is_public"]),
             };
-            return p;
+            return e;
         }
+        
     }
 }

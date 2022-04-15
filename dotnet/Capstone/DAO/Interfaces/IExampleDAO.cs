@@ -18,12 +18,11 @@ namespace Capstone.DAO.Interfaces
         List<CodeExample> FetchAllScripts();
 
 //users can add examples
-        PendingExample AddExample(PendingExample newExample);
+        CodeExample AddExample(CodeExample newExample);
 
 //Admin can edit submission status
-        List<PendingExample> GetExamplesByStatus(int submissionStatus);
-        PendingExample ApproveStatus(int codeId);
-        PendingExample RejectStatus(int codeId);
+        List<CodeExample> GetExamplesByStatus(int submissionStatus);
+        CodeExample UpdateStatus(int codeId, CodeExample codeExample);
 
     }
 }
