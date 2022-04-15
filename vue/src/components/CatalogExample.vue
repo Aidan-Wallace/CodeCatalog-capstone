@@ -8,6 +8,17 @@
 
     <div class="example-container-child example-code">
       {{ example.codeSnippet }}
+      <!--       <button
+        type="button"
+        v-clipboard:copy="example.codeSnippet"
+        v-clipboard:success="handleCopyStatus(true)"
+        v-clipboard:error="handleCopyStatus(false)"
+      >
+        Copy code example
+      </button>
+      <p v-if="copySucceeded === true">Snippet copied successfully.</p>
+      <p v-if="copySucceeded === false">Sorry, there was a problem copying.</p>
+ -->
     </div>
 
     <div class="example-container-child example-description">
@@ -34,7 +45,6 @@
     <div class="example-container-child example-download">
       <!-- <download /> -->
     </div>
-
   </div>
 </template>
 
@@ -51,7 +61,19 @@ export default {
         few details rather than the whole code block.
   */
   props: ["example", "isExpanded"],
-};
+/*   data() {
+    return {
+      copySucceeded: null,
+      //how to return copied snippet??
+    };
+  },
+
+  methods: {
+    handleCopyStatus(status) {
+      this.copySucceeded = status;
+    },
+  },
+ */};
 </script>
 
 <style scoped>
