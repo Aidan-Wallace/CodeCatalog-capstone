@@ -33,7 +33,7 @@ CREATE TABLE code (
 	example_date varchar(50)  NULL,
 	difficulty_rank varchar(50)  NULL,
 	category varchar(MAX)  NULL,
-	submission_status int NULL,
+	submission_status int NOT NULL,
 	is_public bit NULL,
 	attribution varchar(MAX) NULL,
 	CONSTRAINT PK_code PRIMARY KEY (code_id)
