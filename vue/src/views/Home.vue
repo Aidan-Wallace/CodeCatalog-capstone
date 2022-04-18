@@ -1,6 +1,10 @@
 <template>
   <div class="home">
-    <h1>Code Catalog</h1>
+    <img
+      src="@/assets/cloudcode.svg"
+      alt="CodeCatalog Logo"
+      v-on:click.prevent="goHome"
+    />
     <!-- <catalog-example /> -->
     <!-- <download /> -->
   </div>
@@ -17,8 +21,7 @@ export default {
     // CatalogExample,
   },
 
-  created() {
-  }
+  created() {},
 };
 </script>
 
@@ -26,5 +29,9 @@ export default {
 .home {
   display: flex;
   justify-content: center;
+}
+
+img {
+  width: 40vw;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="code-container" :class="{ hide: code == '' }">
-    {{ code }}
+    <pre><code class="language-javascript">{{code}}</code></pre>
   </div>
 </template>
 
