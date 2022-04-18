@@ -24,5 +24,12 @@ namespace Capstone.DAO.Interfaces
         List<CodeExample> GetExamplesByStatus(int submissionStatus);
         CodeExample UpdateStatus(int codeId, CodeExample codeExample);
 
+        CodeExample UpdateVisibility(int codeId, CodeExample codeExample);
+        CodeExample UpdateLanguage(int codeId, CodeExample codeExample);
+
+        CodeExample UpdateGenericSet(int codeId, CodeExample codeExample);
+
+        List<CodeExample> GetGenericExampleList(int genericExample);
+
     }
 }
