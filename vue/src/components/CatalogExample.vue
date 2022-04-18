@@ -8,9 +8,8 @@
 
     <div class="example-container-child example-code">
       {{ example.codeSnippet }}
-<!--       <input type="text" v-model="message" />
-      <button type="button" @click="doCopy">Copy code snippet</button>
- -->    </div>
+      <!-- <button @click="copy">Copy code snippet</button> -->
+    </div>
 
     <div class="example-container-child example-description">
       <p>
@@ -33,16 +32,11 @@
     <div class="example-container-child example-language">
       <span>Language</span> {{ example.programmingLanguage }}
     </div>
-    <div class="example-container-child example-download">
-      <!-- <download /> -->
-    </div>
   </div>
 </template>
 
 <script>
-// import Download from './Download.vue';
 export default {
-  // components: { Download },
   name: "FullCatalog",
   /* *** PROP USES ***
     - "example"    :: A object passed in with each code example.
