@@ -34,8 +34,9 @@ CREATE TABLE code (
 	difficulty_rank varchar(50)  NULL,
 	category varchar(MAX)  NULL,
 	submission_status int NOT NULL,
-	is_public bit NULL,
+	is_public int NOT NULL,
 	attribution varchar(MAX) NULL,
+	generic_example int NOT NULL,
 	CONSTRAINT PK_code PRIMARY KEY (code_id)
 );
 

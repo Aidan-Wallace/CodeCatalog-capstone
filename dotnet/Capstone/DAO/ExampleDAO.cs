@@ -13,6 +13,7 @@ namespace Capstone.DAO
     public class ExampleDao : IExampleDAO
     {
         private List<CodeExample> pendingExamples = new List<CodeExample>();
+        private List<CodeExample> genericExamples = new List<CodeExample>();
         private readonly string connectionString;
 
         public ExampleDao(string dbConnectionString)
@@ -130,8 +131,8 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO code ( title, programming_language, example_date, code_description, snippet, difficulty_rank, category, attribution, submission_status) " +
-                                                    " VALUES ( @title, @programmingLanguage, @exampleDate, @codeDescription, @snippet, @difficultyRank, @category, @attribution, @submissionStatus)", conn);
+                    SqlCommand cmd = new SqlCommand("INSERT INTO code ( title, programming_language, example_date, code_description, snippet, difficulty_rank, category, attribution, submission_status, is_public, generic_example) " +
+                                                    " VALUES ( @title, @programmingLanguage, @exampleDate, @codeDescription, @snippet, @difficultyRank, @category, @attribution, @submissionStatus, @isPublic, @genericExample)", conn);
 
                     cmd.Parameters.AddWithValue("@title", newExample.title);
                     cmd.Parameters.AddWithValue("@programmingLanguage", newExample.programmingLanguage);
@@ -142,6 +143,8 @@ namespace Capstone.DAO
                     cmd.Parameters.AddWithValue("@category", newExample.category);
                     cmd.Parameters.AddWithValue("@attribution", newExample.attribution);
                     cmd.Parameters.AddWithValue("@submissionStatus", newExample.submissionStatus);
+                    cmd.Parameters.AddWithValue("@isPublic", newExample.isPublic);
+                    cmd.Parameters.AddWithValue("@genericExample", newExample.genericExample);
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -199,6 +202,93 @@ namespace Capstone.DAO
             return returnNewExample;
         }
 
+        public CodeExample UpdateVisibility(int codeId, CodeExample codeExample)
+        {
+            CodeExample returnNewExample = null;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("UPDATE code SET is_public = @isPublic WHERE code_id = @codeId AND submission_status = 1", conn);
+
+                    cmd.Parameters.AddWithValue("@codeId", codeId);
+                    cmd.Parameters.AddWithValue("@isPublic", codeExample.isPublic);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            return returnNewExample;
+        }
+        public CodeExample UpdateLanguage(int codeId, CodeExample codeExample)
+        {
+            CodeExample returnNewExample = null;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("UPDATE code SET programming_language = @programmingLanguage WHERE code_id = @codeId", conn);
+
+                    cmd.Parameters.AddWithValue("@codeId", codeId);
+                    cmd.Parameters.AddWithValue("@programmingLanguage", codeExample.programmingLanguage);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            return returnNewExample;
+        }
+        public CodeExample UpdateGenericSet(int codeId, CodeExample codeExample)
+        {
+            CodeExample returnNewExample = null;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("UPDATE code SET generic_example = @genericExample WHERE code_id = @codeId", conn);
+
+                    cmd.Parameters.AddWithValue("@codeId", codeId);
+                    cmd.Parameters.AddWithValue("@genericExample", codeExample.genericExample);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (SqlException) 
+            {
+                throw;
+            }
+            return returnNewExample;
+        }
+        public List<CodeExample> GetGenericExampleList(int genericExample)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM code WHERE generic_example = 1 AND is_public = 1", conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        CodeExample returnExample = GetExampleFromReader(reader);
+                        genericExamples.Add(returnExample);
+                    }
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            return genericExamples;
+        }
+
         private CodeExample GetExampleFromReader(SqlDataReader reader)
         {
             CodeExample e = new CodeExample()
@@ -213,6 +303,8 @@ namespace Capstone.DAO
                 category = Convert.ToString(reader["category"]),
                 exampleDate = Convert.ToString(reader["example_date"]),
                 attribution = Convert.ToString(reader["attribution"]),
+                isPublic = Convert.ToInt32(reader["is_public"]),
+                genericExample = Convert.ToInt32(reader["generic_example"])
             };
             return e;
         }
