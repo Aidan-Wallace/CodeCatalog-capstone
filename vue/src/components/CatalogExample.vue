@@ -7,7 +7,7 @@
     </div>
 
     <div class="example-container-child example-code">
-      {{ example.codeSnippet }}
+      <code-snippet :code="example.codeSnippet" />
       <!--       <input type="text" v-model="message" />
       <button type="button" @click="doCopy">Copy code snippet</button>
  -->
@@ -49,18 +49,14 @@
 </template>
 
 <script>
-// import Download from './Download.vue';
+import CodeSnippet from "./CodeSnippet";
+
 export default {
-  // components: { Download },
   name: "FullCatalog",
-  /* *** PROP USES ***
-    - "example"    :: A object passed in with each code example.
-    - "isExpanded" :: A boolean to add proper styling to .example-container 
-        element to help reuse this component. If set to false(by default),
-        the component will return a closed and clickable element with just a 
-        few details rather than the whole code block.
-  */
   props: ["example", "isExpanded"],
+  components: {
+    CodeSnippet,
+  },
   computed: {
     getReferences() {
       let attrs = this.example.attribution;
@@ -164,11 +160,5 @@ export default {
 
 .example-container.expanded .example-container-child {
   display: flex;
-}
-
-.example-code {
-  background-color: #eee;
-  padding: 15px;
-  width: 64%;
 }
 </style>

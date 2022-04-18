@@ -1,5 +1,5 @@
 <template>
-  <full-screen-example :example="$route.params.example"/>
+  <full-screen-example :example="$route.params.example" />
 </template>
 
 <script>
