@@ -8,9 +8,6 @@
 
     <div class="example-container-child example-code">
       <code-snippet :code="example.codeSnippet" />
-      <!--       <input type="text" v-model="message" />
-      <button type="button" @click="doCopy">Copy code snippet</button>
- -->
     </div>
 
     <div class="example-container-child example-description">
@@ -75,26 +72,6 @@ export default {
       return [...links, ...other];
     },
   },
-  /*   data: function () {
-    return {
-      message: "Copy code snippet",
-    };
-  },
-  methods: {
-    doCopy: function () {
-      this.$copyText(this.message).then(
-        function (e) {
-          alert("Copied");
-          console.log(e);
-        },
-        function (e) {
-          alert("Can not copy");
-          console.log(e);
-        }
-      );
-    },
-  },
- */
 };
 </script>
 

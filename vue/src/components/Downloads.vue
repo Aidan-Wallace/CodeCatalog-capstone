@@ -6,14 +6,14 @@
         :key="example.codeId"
         >
         </div>
-        <download 
+        <download />
     </div>
 </template>
 
 <script>
-import CatalogExample from "@/Services/CatalogExample"
-import Download from '@/Components/Download.vue'
+// import CatalogExample from "@/Services/CatalogExample"
+// import Download from '@/Components/Download.vue'
 export default {
 
 }
-</script>Download
+</script>
