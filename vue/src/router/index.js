@@ -1,17 +1,19 @@
+// already done for us
 import Vue from "vue";
 import Router from "vue-router";
-import Home from "../views/Home.vue";
 import Login from "../views/Login.vue";
 import Logout from "../views/Logout.vue";
 import Register from "../views/Register.vue";
 import store from "../store/index";
-
+// stuff we added
+import Home from "../views/Home.vue";
 import ExampleView from "@/views/ExampleView";
 import DownloadView from "@/views/DownloadView";
 import CatalogView from "@/views/CatalogView";
 import SearchView from "@/views/SearchView";
 import AddExampleView from "@/views/AddExampleView";
 import FullScreenView from "@/views/FullScreenView";
+import ManageProfileView from "@/views/ManageProfileView";
 
 Vue.use(Router);
 
@@ -41,8 +43,16 @@ const router = new Router({
      ** VIEW PATHS
      */
     {
+      path: "/manageProfile",
+      name: "ManageProfile",
+      component: ManageProfileView,
+      meta: {
+        requiresAuth: false,
+      },
+    },
+    {
       path: "/searchResults/:query",
-      name: "searchResults",
+      name: "SearchResults",
       component: SearchView,
       meta: {
         requiresAuth: false,

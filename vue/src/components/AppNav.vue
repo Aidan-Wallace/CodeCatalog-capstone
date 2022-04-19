@@ -2,11 +2,11 @@
   <div id="nav">
     <div class="title-logo">
       <img
-        src="@/assets/cloudcode.svg"
+        src="@/assets/cloudcodefinal.svg"
         alt="CodeCatalog Logo"
         v-on:click.prevent="goHome"
       />
-      <h5 v-on:click.prevent="goHome">Code Catalog</h5>
+      <h5 v-on:click.prevent="goHome">Code Cloud</h5>
     </div>
     <catalog-search />
 
@@ -28,7 +28,13 @@
       >
         Log In</router-link
       >
-      <i class="fa-solid fa-circle-user"></i>
+      <i
+        v-on:click="
+          $router.push({
+            name: 'ManageProfile',
+          })"
+        class="fa-solid fa-circle-user"
+      ></i>
     </div>
   </div>
 </template>

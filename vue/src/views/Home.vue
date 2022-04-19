@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <img
-      src="@/assets/cloudcode.svg"
+      src="@/assets/cloudcodefinal.svg"
       alt="CodeCatalog Logo"
       v-on:click.prevent="goHome"
     />
