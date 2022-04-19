@@ -197,8 +197,26 @@ export default {
     },
 
     clearForm() {
-      this.newExample = this.$store.state.getNewExample;
-      this.categories = this.$store.state.getCategories;
+      this.newExample = {
+        title: "",
+        programmingLanguage: "",
+        codeDescription: "",
+        category: "",
+        codeSnippet: "",
+        difficultyRank: "",
+        attribution: "",
+      };
+      this.categories = [
+        "algorithms",
+        "artificial",
+        "data",
+        "databases",
+        "functional",
+        "mathematics",
+        "web",
+        "other",
+      ];
+
       this.addedLanguage = "";
       this.isProcessing = false;
     },
