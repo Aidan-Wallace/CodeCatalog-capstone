@@ -45,6 +45,33 @@ namespace Capstone.DAO
             }
             return returnExample;
         }
+        public List<CodeExample> GetExamplesByUser(int userId)
+        {
+            List<CodeExample> returnExamples = new List<CodeExample>();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();                   //might have to do a join where user_id = @ user_id - misha
+                    SqlCommand cmd = new SqlCommand("SELECT code.code_id, programming_language, title, snippet, code_description, example_date, " +
+                        "difficulty_rank, category, code.submission_status, is_public, attribution, generic_example " +
+                        "FROM code INNER JOIN user_code ON code.code_id = user_code.code_id", conn);
+                    cmd.Parameters.AddWithValue("@user_id", userId);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        CodeExample returnExample = GetExampleFromReader(reader);
+                        returnExamples.Add(returnExample);
+                    }
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            return returnExamples;
+        }
 
         public List<CodeExample> GetExamples()
         {

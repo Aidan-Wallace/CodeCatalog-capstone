@@ -13,6 +13,7 @@ namespace Capstone.DAO.Interfaces
         CodeExample GetExample(int codeId);
         List<CodeExample> GetExamples();
 
+        List<CodeExample> GetExamplesByUser(int userId);
 //download examples
         CodeExample FetchScript(int codeId);
         List<CodeExample> FetchAllScripts();
