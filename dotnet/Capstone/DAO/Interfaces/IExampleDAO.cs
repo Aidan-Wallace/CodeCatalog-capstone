@@ -12,14 +12,14 @@ namespace Capstone.DAO.Interfaces
 //users can get example(s)
         CodeExample GetExample(int codeId);
         List<CodeExample> GetExamples();
-
+        List<CodeExample> SearchByKeyword(string keyword);
         List<CodeExample> GetExamplesByUser(int userId);
 //download examples
         CodeExample FetchScript(int codeId);
         List<CodeExample> FetchAllScripts();
 
 //users can add examples
-        CodeExample AddExample(CodeExample newExample);
+        CodeExample AddExample(CodeExample newExample, int userId);
 
 //Admin can edit submission status
         List<CodeExample> GetExamplesByStatus(int submissionStatus);

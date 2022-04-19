@@ -20,7 +20,6 @@ namespace Capstone.DAO
         public User GetUser(string username)
         {
             User returnUser = null;
-
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -41,14 +40,12 @@ namespace Capstone.DAO
             {
                 throw;
             }
-
             return returnUser;
         }
 
         public List<User> GetUsers()
         {
             List<User> returnUsers = new List<User>();
-
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))

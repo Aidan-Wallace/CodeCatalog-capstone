@@ -16,7 +16,6 @@ namespace Capstone.Models
         public string category { get; set; } //might have to make list/dict
         public string attribution { get; set; }
         public int isPublic { get; set; } = 0; //0 = NotPublic, 1 = IsPublic
-
         public int genericExample { get; set; } = 0; //0 = Not included 1 = included in list
         
     }

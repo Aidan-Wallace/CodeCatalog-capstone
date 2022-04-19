@@ -26,6 +26,7 @@ CREATE TABLE users (
 
 CREATE TABLE code (
 	code_id int IDENTITY(1,1) NOT NULL,
+	user_id int NOT NULL,
 	programming_language varchar(50) NOT NULL,
 	title varchar(50) NOT NULL,
 	snippet varchar(MAX) NULL,
@@ -37,22 +38,8 @@ CREATE TABLE code (
 	is_public int NOT NULL,
 	attribution varchar(MAX) NULL,
 	generic_example int NOT NULL,
-	CONSTRAINT PK_code PRIMARY KEY (code_id)
-);
-
-CREATE TABLE user_code (
-	user_id int  NOT NULL,
-	code_id int  NOT NULL,
-	submission_status int NOT NULL,
-	CONSTRAINT [FK_users] FOREIGN KEY (user_id) REFERENCES [users] (user_id),
-	CONSTRAINT [FK_code] FOREIGN KEY (code_id) REFERENCES [code] (code_id)
-	
-);
-
-CREATE TABLE search_index (
-	code_id int NOT NULL,
-	keyword varchar(200) NOT NULL,
-	CONSTRAINT [FK_example] FOREIGN KEY (code_id) REFERENCES [code] (code_id)
+	CONSTRAINT PK_code PRIMARY KEY (code_id),
+	-- CONSTRAINT [FK_example] FOREIGN KEY (user_id) REFERENCES [users] (user_id)
 );
 
 --populate default data
