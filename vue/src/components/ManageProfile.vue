@@ -8,29 +8,33 @@
 import ProfileService from "@/services/ProfileService";
 
 export default {
-name: "ManageProfile",
-data(){
+  name: "ManageProfile",
+  data() {
     return {
-        userId:null,
-    }
-},
-computed: {
-    getExamplesByUserId(){
-        let examples;
-        ProfileService.getExamples(this.userId)
+      userId: this.$store.state.currentUser,
+      examples: {},
+    };
+  },
+
+  methods: {
+    getExamplesByUserId() {
+      ProfileService.getExamples(this.userId)
         .then((response) => {
-            console.log(response);
-            if(response==202){
-                examples=response;  
-            }
+          if (200 <= response.status && response.status < 300) {
+            console.log(response.status);
+
+            this.examples = response.data;
+          }
         })
         .catch((err) => {
           console.log(err);
         });
-        return examples;
     },
-},
-}
+  },
+  created() {
+    this.getExamplesByUserId();
+  },
+};
 </script>
 
 <style>
