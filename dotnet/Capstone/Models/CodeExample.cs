@@ -4,6 +4,7 @@ namespace Capstone.Models
 {
     public class CodeExample
     {
+        public int userId { get; set; }
         public int codeId { get; set; }
         public int submissionStatus { get; set; } = 0; //0=pending, 1=approved, 2=declined
         public string title { get; set; }

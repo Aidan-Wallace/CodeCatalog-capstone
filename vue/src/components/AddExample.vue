@@ -99,7 +99,16 @@
           />
           <!-- NEED ABILITY TO ADD MORE REFERENCES -->
         </div>
+          <!-- var arr = ["You added an example"
+                    , "You added a second example."
+                    , "You added a third example."
+                    , "You added a fourth example."
+                    , "You added a fifth example."
+                    , "You added a sixth example."];
 
+          document.querySelector("button").onclick = function() {
+            this.innerHTML = arr.length > 1 ? arr.shift() : arr[0]
+          } -->
         <button type="submit">Add Code Example</button>
       </form>
     </div>

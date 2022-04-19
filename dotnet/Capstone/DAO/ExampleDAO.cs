@@ -56,6 +56,7 @@ namespace Capstone.DAO
                     SqlCommand cmd = new SqlCommand("SELECT code.code_id, programming_language, title, snippet, code_description, example_date, " +
                         "difficulty_rank, category, code.submission_status, is_public, attribution, generic_example " +
                         "FROM code INNER JOIN user_code ON code.code_id = user_code.code_id", conn);
+
                     cmd.Parameters.AddWithValue("@user_id", userId);
                     SqlDataReader reader = cmd.ExecuteReader();
 
@@ -159,7 +160,7 @@ namespace Capstone.DAO
                 {
                     conn.Open();
                     SqlCommand cmd = new SqlCommand("INSERT INTO code ( title, programming_language, example_date, code_description, snippet, difficulty_rank, category, attribution, submission_status, is_public, generic_example) " +
-                                                    " VALUES ( @title, @programmingLanguage, @exampleDate, @codeDescription, @snippet, @difficultyRank, @category, @attribution, @submissionStatus, @isPublic, @genericExample)", conn);
+                                                    " VALUES ( @title, @programmingLanguage, @exampleDate, @codeDescription, @snippet, @difficultyRank, @category, @attribution, @submissionStatus, @isPublic, @genericExample);", conn);
 
                     cmd.Parameters.AddWithValue("@title", newExample.title);
                     cmd.Parameters.AddWithValue("@programmingLanguage", newExample.programmingLanguage);
@@ -173,6 +174,11 @@ namespace Capstone.DAO
                     cmd.Parameters.AddWithValue("@isPublic", newExample.isPublic);
                     cmd.Parameters.AddWithValue("@genericExample", newExample.genericExample);
                     cmd.ExecuteNonQuery();
+
+                    SqlCommand cmd2 = new SqlCommand("INSERT INTO user_code (user_id, code_id) VALUES (@userId, @codeId)",conn);
+                    cmd2.Parameters.AddWithValue("@userId", newExample.userId);
+                    cmd2.Parameters.AddWithValue("@codeId", newExample.codeId);
+                    cmd2.ExecuteNonQuery();
                 }
             }
             catch (SqlException)
