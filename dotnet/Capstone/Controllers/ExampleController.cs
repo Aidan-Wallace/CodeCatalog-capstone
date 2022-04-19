@@ -52,10 +52,10 @@ namespace Capstone.Controllers
         }
 
         //AddExample Method -----WORKS-----
-        [HttpPost()] //we'll probably have to add a user id here but we can figure it out later, will also have to add a join to our sql script to account for userid in the model
-        public ActionResult<CodeExample> AddExample(CodeExample newExample)
+        [HttpPost("{userId}")] //we'll probably have to add a user id here but we can figure it out later, will also have to add a join to our sql script to account for userid in the model
+        public ActionResult<CodeExample> AddExample(CodeExample newExample, int userId)
         {
-            CodeExample newExampleCode = exampleDAO.AddExample(newExample);
+            CodeExample newExampleCode = exampleDAO.AddExample(newExample, userId);
             return Ok(newExampleCode);
         }
 

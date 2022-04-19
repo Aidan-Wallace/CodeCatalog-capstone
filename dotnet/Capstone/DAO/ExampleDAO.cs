@@ -21,7 +21,7 @@ namespace Capstone.DAO
             connectionString = dbConnectionString;
         }
 
-        public CodeExample AddExample(CodeExample newExample)
+        public CodeExample AddExample(CodeExample newExample, int userId)
         {
             CodeExample returnNewExample = null;
             try
@@ -31,7 +31,7 @@ namespace Capstone.DAO
                     conn.Open();
                     SqlCommand cmd = new SqlCommand("INSERT INTO code ( user_id, title, programming_language, example_date, code_description, snippet, difficulty_rank, category, attribution, submission_status, is_public, generic_example) " +
                                                     " VALUES ( @userId, @title, @programmingLanguage, @exampleDate, @codeDescription, @snippet, @difficultyRank, @category, @attribution, @submissionStatus, @isPublic, @genericExample);", conn);
-                    cmd.Parameters.AddWithValue("@userId", newExample.userId);
+                    cmd.Parameters.AddWithValue("@userId", userId);
                     cmd.Parameters.AddWithValue("@title", newExample.title);
                     cmd.Parameters.AddWithValue("@programmingLanguage", newExample.programmingLanguage);
                     cmd.Parameters.AddWithValue("@exampleDate", newExample.exampleDate);
@@ -60,7 +60,7 @@ namespace Capstone.DAO
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
-                    conn.Open();                   //might have to do a join where user_id = @ user_id - misha
+                    conn.Open();                   
                     SqlCommand cmd = new SqlCommand("SELECT * FROM code WHERE code_id = @code_id", conn);
                     cmd.Parameters.AddWithValue("@code_id", codeId);
                     SqlDataReader reader = cmd.ExecuteReader();
