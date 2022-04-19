@@ -15,31 +15,30 @@ const currentUser = JSON.parse(localStorage.getItem("user"));
 if (currentToken != null) {
   axios.defaults.headers.common["Authorization"] = `Bearer ${currentToken}`;
 }
-const getNewExample = {
-  title: "",
-  programmingLanguage: "",
-  codeDescription: "",
-  category: "",
-  codeSnippet: "",
-  difficultyRank: "",
-  attribution: "",
-};
-const getCategories = [
-  "algorithms",
-  "artificial",
-  "data",
-  "databases",
-  "functional",
-  "mathematics",
-  "web",
-  "other",
-];
+
 export default new Vuex.Store({
   state: {
     token: currentToken || "",
     user: currentUser || {},
-    getNewExample: getNewExample,
-    getCategories: getCategories
+    getNewExample: {
+      title: "",
+      programmingLanguage: "",
+      codeDescription: "",
+      category: "",
+      codeSnippet: "",
+      difficultyRank: "",
+      attribution: "",
+    },
+    getCategories: [
+      "algorithms",
+      "artificial",
+      "data",
+      "databases",
+      "functional",
+      "mathematics",
+      "web",
+      "other",
+    ],
   },
 
   mutations: {
