@@ -25,7 +25,3 @@ data: function () {
   },
 }
 </script>
-
-<style>
-
-</style>

@@ -40,7 +40,8 @@
     </div>
 
     <div class="example-container-child example-download">
-      <!-- <download /> -->
+      <span>Download </span>
+      <download />
     </div>
   </div>
 </template>
