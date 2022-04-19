@@ -21,6 +21,38 @@ namespace Capstone.DAO
             connectionString = dbConnectionString;
         }
 
+        public CodeExample AddExample(CodeExample newExample)
+        {
+            CodeExample returnNewExample = null;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("INSERT INTO code ( user_id, title, programming_language, example_date, code_description, snippet, difficulty_rank, category, attribution, submission_status, is_public, generic_example) " +
+                                                    " VALUES ( @userId, @title, @programmingLanguage, @exampleDate, @codeDescription, @snippet, @difficultyRank, @category, @attribution, @submissionStatus, @isPublic, @genericExample);", conn);
+                    cmd.Parameters.AddWithValue("@userId", newExample.userId);
+                    cmd.Parameters.AddWithValue("@title", newExample.title);
+                    cmd.Parameters.AddWithValue("@programmingLanguage", newExample.programmingLanguage);
+                    cmd.Parameters.AddWithValue("@exampleDate", newExample.exampleDate);
+                    cmd.Parameters.AddWithValue("@codeDescription", newExample.codeDescription);
+                    cmd.Parameters.AddWithValue("@snippet", newExample.codeSnippet);
+                    cmd.Parameters.AddWithValue("@difficultyRank", newExample.difficultyRank);
+                    cmd.Parameters.AddWithValue("@category", newExample.category);
+                    cmd.Parameters.AddWithValue("@attribution", newExample.attribution);
+                    cmd.Parameters.AddWithValue("@submissionStatus", newExample.submissionStatus);
+                    cmd.Parameters.AddWithValue("@isPublic", newExample.isPublic);
+                    cmd.Parameters.AddWithValue("@genericExample", newExample.genericExample);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            return returnNewExample;
+        }
+
         public CodeExample GetExample(int codeId)
         {
             CodeExample returnExample = null;
@@ -44,33 +76,6 @@ namespace Capstone.DAO
                 throw;
             }
             return returnExample;
-        }
-        public List<CodeExample> GetExamplesByUser(int userId)
-        {
-            List<CodeExample> returnExamples = new List<CodeExample>();
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    conn.Open();                   //might have to do a join where user_id = @ user_id - misha
-                    SqlCommand cmd = new SqlCommand("SELECT code.code_id, programming_language, title, snippet, code_description, example_date, " +
-                        "difficulty_rank, category, code.submission_status, is_public, attribution, generic_example " +
-                        "FROM code INNER JOIN user_code ON code.code_id = user_code.code_id", conn);
-                    cmd.Parameters.AddWithValue("@user_id", userId);
-                    SqlDataReader reader = cmd.ExecuteReader();
-
-                    if (reader.Read())
-                    {
-                        CodeExample returnExample = GetExampleFromReader(reader);
-                        returnExamples.Add(returnExample);
-                    }
-                }
-            }
-            catch (SqlException)
-            {
-                throw;
-            }
-            return returnExamples;
         }
 
         public List<CodeExample> GetExamples()
@@ -98,48 +103,23 @@ namespace Capstone.DAO
             return returnExamples;
         }
 
-        public CodeExample FetchScript(int codeId)
+        public List<CodeExample> GetExamplesByUser(int userId)
         {
-            CodeExample script = null;
+            List<CodeExample> returnExamples = new List<CodeExample>();
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();                   //might have to do a join where user_id = @ user_id - misha
-                    SqlCommand cmd = new SqlCommand("SELECT code_id, snippet FROM code WHERE code_id = @code_id", conn);
-                    cmd.Parameters.AddWithValue("@code_id", codeId);
-                    cmd.Parameters.AddWithValue("@snippet", script);
-                    SqlDataReader reader = cmd.ExecuteReader();
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM code WHERE user_id = @userId", conn);
 
-                    if (reader.Read())
-                    {
-                        script = GetExampleFromReader(reader);
-                    }
-                }
-            }
-            catch (SqlException)
-            {
-                throw;
-            }
-            return script;
-        }
-
-        public List<CodeExample> FetchAllScripts()
-        {
-            List<CodeExample> scriptsList = new List<CodeExample>();
-
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    conn.Open();                     //might have to do a join where user_id = @ user_id - misha
-                    SqlCommand cmd = new SqlCommand("SELECT code_id, snippet FROM code", conn);
+                    cmd.Parameters.AddWithValue("@userId", userId);
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())
                     {
-                        CodeExample script = GetExampleFromReader(reader);
-                        scriptsList.Add(script);
+                        CodeExample returnExample = GetExampleFromReader(reader);
+                        returnExamples.Add(returnExample);
                     }
                 }
             }
@@ -147,39 +127,36 @@ namespace Capstone.DAO
             {
                 throw;
             }
-            return scriptsList;
+            return returnExamples;
         }
 
-        public CodeExample AddExample(CodeExample newExample)
+        public List<CodeExample> SearchByKeyword(string keyword)
         {
-            CodeExample returnNewExample = null;
+            List<CodeExample> returnExamples = new List<CodeExample>();
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO code ( title, programming_language, example_date, code_description, snippet, difficulty_rank, category, attribution, submission_status, is_public, generic_example) " +
-                                                    " VALUES ( @title, @programmingLanguage, @exampleDate, @codeDescription, @snippet, @difficultyRank, @category, @attribution, @submissionStatus, @isPublic, @genericExample)", conn);
+                    conn.Open();                     
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM code WHERE (title LIKE '%' + @keyword + '%') " +
+                                                     "OR (category LIKE '%' + @keyword + '%') " +
+                                                     "OR (code_description LIKE '%' + @keyword + '%') " +
+                                                     "OR (programming_language LIKE '%' + @keyword + '%'); ", conn);
 
-                    cmd.Parameters.AddWithValue("@title", newExample.title);
-                    cmd.Parameters.AddWithValue("@programmingLanguage", newExample.programmingLanguage);
-                    cmd.Parameters.AddWithValue("@exampleDate", newExample.exampleDate);
-                    cmd.Parameters.AddWithValue("@codeDescription", newExample.codeDescription);
-                    cmd.Parameters.AddWithValue("@snippet", newExample.codeSnippet);
-                    cmd.Parameters.AddWithValue("@difficultyRank", newExample.difficultyRank);
-                    cmd.Parameters.AddWithValue("@category", newExample.category);
-                    cmd.Parameters.AddWithValue("@attribution", newExample.attribution);
-                    cmd.Parameters.AddWithValue("@submissionStatus", newExample.submissionStatus);
-                    cmd.Parameters.AddWithValue("@isPublic", newExample.isPublic);
-                    cmd.Parameters.AddWithValue("@genericExample", newExample.genericExample);
-                    cmd.ExecuteNonQuery();
+                    cmd.Parameters.AddWithValue("@keyword", keyword);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        CodeExample returnExample = GetExampleFromReader(reader);
+                        returnExamples.Add(returnExample);
+                    }
                 }
             }
             catch (SqlException)
             {
                 throw;
             }
-            return returnNewExample;
+            return returnExamples;
         }
 
         public List<CodeExample> GetExamplesByStatus(int submissionStatus)
@@ -250,6 +227,7 @@ namespace Capstone.DAO
             }
             return returnNewExample;
         }
+
         public CodeExample UpdateLanguage(int codeId, CodeExample codeExample)
         {
             CodeExample returnNewExample = null;
@@ -271,6 +249,7 @@ namespace Capstone.DAO
             }
             return returnNewExample;
         }
+
         public CodeExample UpdateGenericSet(int codeId, CodeExample codeExample)
         {
             CodeExample returnNewExample = null;
@@ -292,6 +271,7 @@ namespace Capstone.DAO
             }
             return returnNewExample;
         }
+
         public List<CodeExample> GetGenericExampleList(int genericExample)
         {
             try
@@ -316,10 +296,62 @@ namespace Capstone.DAO
             return genericExamples;
         }
 
+        public CodeExample FetchScript(int codeId)
+        {
+            CodeExample script = null;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();                   //might have to do a join where user_id = @ user_id - misha
+                    SqlCommand cmd = new SqlCommand("SELECT code_id, snippet FROM code WHERE code_id = @code_id", conn);
+                    cmd.Parameters.AddWithValue("@code_id", codeId);
+                    cmd.Parameters.AddWithValue("@snippet", script);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        script = GetExampleFromReader(reader);
+                    }
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            return script;
+        }
+
+        public List<CodeExample> FetchAllScripts()
+        {
+            List<CodeExample> scriptsList = new List<CodeExample>();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();                     //might have to do a join where user_id = @ user_id - misha
+                    SqlCommand cmd = new SqlCommand("SELECT code_id, snippet FROM code", conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        CodeExample script = GetExampleFromReader(reader);
+                        scriptsList.Add(script);
+                    }
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            return scriptsList;
+        }
+
         private CodeExample GetExampleFromReader(SqlDataReader reader)
         {
             CodeExample e = new CodeExample()
             {
+                userId = Convert.ToInt32(reader["user_id"]),
                 codeId = Convert.ToInt32(reader["code_id"]),
                 title = Convert.ToString(reader["title"]),
                 submissionStatus = Convert.ToInt32(reader["submission_status"]),

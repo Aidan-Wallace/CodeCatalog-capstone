@@ -25,8 +25,17 @@ namespace Capstone.Controllers
             CodeExample example = exampleDAO.GetExample(codeId);
             return Ok(example);
         }
-        //Get all examples created by this specific user
-        [HttpGet("user/{userId}")]
+
+        //GetExample by Keyword Method  -----WORKS-----
+        [HttpGet("search/{keyword}")]
+        public ActionResult<List<CodeExample>> SearchByKeyword(string keyword)
+        {
+            List<CodeExample> exampleList = exampleDAO.SearchByKeyword(keyword);
+            return Ok(exampleList);
+        }
+
+        //Get all examples created by this specific user   -----WORKS-----
+        [HttpGet("user-example/{userId}")]
         //[Authorize(Roles = "user")]
         public ActionResult<List<CodeExample>> GetExamplesByUser(int userId)
         {
@@ -50,7 +59,7 @@ namespace Capstone.Controllers
             return Ok(newExampleCode);
         }
 
-        //AdminGetsListOfPending Method
+        //AdminGetsListByStatus Method   -----WORKS-----
         [HttpGet("status/{submissionStatus}")]
         public ActionResult<List<CodeExample>> GetExamplesByStatus(int submissionStatus)
         {
@@ -58,7 +67,7 @@ namespace Capstone.Controllers
             return Ok(pendingExamples);
         }
 
-        //AdminApprovesSubmissionStatus
+        //AdminApprovesSubmissionStatus  -----WORKS-----
         [HttpPut("update-status/{codeId}")]
         [Authorize(Roles = "admin")]
         public ActionResult<CodeExample> UpdateStatus(int codeId, CodeExample codeExample)
@@ -72,7 +81,7 @@ namespace Capstone.Controllers
             return Ok(result);
         }     
 
-        //Make public after AddedCode has been approved by Admin
+        //Make public after AddedCode has been approved by Admin   -----WORKS-----
         [HttpPut("update-public/{codeId}")]
         public ActionResult<CodeExample> UpdateVisibility(int codeId, CodeExample codeExample)
         {
@@ -88,8 +97,9 @@ namespace Capstone.Controllers
             CodeExample result = exampleDAO.UpdateVisibility(codeId, codeExample);
             return Ok(result);
         }
-        //Update the programming language of the code snippet
-        [HttpPut("update-language/{codeId}")]
+
+        //Update the programming language of the code snippet   -----WORKS-----
+        [HttpPut("update-language/{codeId}")]  
         [Authorize(Roles = "admin")]
         public ActionResult<CodeExample> UpdateLanguage(int codeId, CodeExample codeExample)
         {
@@ -102,8 +112,8 @@ namespace Capstone.Controllers
             return Ok(result);
         }
 
-        //Updates the the initial list of generic code to be displayed to new users
-        [HttpPut("update-initial/{codeId}")]
+        //Updates the the initial list of generic code to be displayed to new users   -----WORKS-----
+        [HttpPut("update-set-list/{codeId}")]
         [Authorize(Roles = "admin")]
         public ActionResult<CodeExample> UpdateInitialSet(int codeId, CodeExample codeExample)
         {
@@ -115,8 +125,9 @@ namespace Capstone.Controllers
             CodeExample result = exampleDAO.UpdateGenericSet(codeId, codeExample);
             return Ok(result);
         }
-        //Gets the list of all code examples to be displayed to new users
-        [HttpGet("initialset")]
+
+        //Gets the list of all code examples to be displayed to new users   -----WORKS-----
+        [HttpGet("set-list")]
         public ActionResult<List<CodeExample>> GetGenericExampleList(int genericExample)
         {
             List<CodeExample> currentExamples = exampleDAO.GetGenericExampleList(genericExample);
