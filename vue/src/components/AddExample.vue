@@ -90,15 +90,16 @@
           <label for="attribution">Enter references</label>
           <small>Use "https://" format for a valid link</small>
           <input
-            v-for="ref in getReferences"
+            v-for="(ref, index) in getReferences"
             :key="ref"
             type="text"
             name="attribution"
-            v-model="newExample.attribution"
+            v-model="referenceHolder[index]"
             placeholder="e.g 'https://www.wikipedia.com' or 'John Doe'"
           />
           <!-- NEED ABILITY TO ADD MORE REFERENCES -->
         </div>
+
         <button type="submit">Add Code Example</button>
       </form>
     </div>
@@ -110,22 +111,26 @@ import CatalogService from "@/services/CatalogService";
 
 export default {
   name: "AddExample",
-  computed: {
-    getSelectedCategories() {
-      return this.newExample.category.split(" ");
-    },
-    getReferences() {
-      let refCount = this.newExample.attribution.split(" ").length;
-
-      return refCount;
-    },
-  },
   data() {
     return {
       newExample: this.$store.state.getNewExample,
       categories: this.$store.state.getCategories,
       addedLanguage: "",
+      referenceHolder: [],
     };
+  },
+  computed: {
+    getSelectedCategories() {
+      return this.newExample.category.split(" ");
+    },
+    getReferences() {
+      let references = this.newExample.attribution.split(" ");
+
+      if (references[references.length - 1] != "") {
+        return references.length + 1;
+      }
+      return references.length;
+    },
   },
   methods: {
     addToCategory(event) {

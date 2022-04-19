@@ -1,10 +1,20 @@
 <template>
   <div class="catalog-container">
     <h1>Catalog</h1>
+    <h3>Sort By</h3>
+    <h3>Show: My Code | All Code</h3>
     <div
       class="outer-example"
       v-for="example in examples"
       :key="example.codeId"
+      v-on:click="
+        $router.push({
+          name: 'ViewExample',
+          params: {
+            example: example,
+          },
+        })
+      "
     >
       <catalog-example v-bind:example="example" v-bind:isExpanded="true" />
     </div>
@@ -38,6 +48,14 @@ export default {
           console.log(err);
         });
     },
+  },
+  goFullScreen() {
+    this.$router.push({
+      name: "viewExample",
+      params: {
+        example: "example",
+      },
+    });
   },
   created() {
     this.getExamples();

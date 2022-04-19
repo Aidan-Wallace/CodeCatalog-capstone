@@ -5,11 +5,13 @@ import Login from "../views/Login.vue";
 import Logout from "../views/Logout.vue";
 import Register from "../views/Register.vue";
 import store from "../store/index";
+
 import ExampleView from "@/views/ExampleView";
 import DownloadView from "@/views/DownloadView";
 import CatalogView from "@/views/CatalogView";
 import SearchView from "@/views/SearchView";
 import AddExampleView from "@/views/AddExampleView";
+import FullScreenView from "@/views/FullScreenView";
 
 Vue.use(Router);
 
@@ -34,10 +36,22 @@ const router = new Router({
         requiresAuth: false,
       },
     },
+
+    /*
+     ** VIEW PATHS
+     */
     {
       path: "/searchResults/:query",
       name: "searchResults",
       component: SearchView,
+      meta: {
+        requiresAuth: false,
+      },
+    },
+    {
+      path: "/viewExample/:example",
+      name: "ViewExample",
+      component: FullScreenView,
       meta: {
         requiresAuth: false,
       },
@@ -74,6 +88,10 @@ const router = new Router({
         requiresAuth: false,
       },
     },
+
+    /*
+     ** AUTHENTICATION ROUTES
+     */
     {
       path: "/login",
       name: "login",

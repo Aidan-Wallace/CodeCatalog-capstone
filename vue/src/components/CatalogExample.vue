@@ -7,8 +7,10 @@
     </div>
 
     <div class="example-container-child example-code">
-      {{ example.codeSnippet }}
-      <!-- <button @click="copy">Copy code snippet</button> -->
+      <code-snippet :code="example.codeSnippet" />
+      <!--       <input type="text" v-model="message" />
+      <button type="button" @click="doCopy">Copy code snippet</button>
+ -->
     </div>
 
     <div class="example-container-child example-description">
@@ -32,21 +34,48 @@
     <div class="example-container-child example-language">
       <span>Language</span> {{ example.programmingLanguage }}
     </div>
+
+    <div class="example-container-child example-attribution">
+      <span>References</span>
+      <div v-for="ref in getReferences" :key="ref">
+        {{ ref }}
+      </div>
+    </div>
+
+    <div class="example-container-child example-download">
+      <!-- <download /> -->
+    </div>
   </div>
 </template>
 
 <script>
+import CodeSnippet from "./CodeSnippet";
+
 export default {
   name: "FullCatalog",
-  /* *** PROP USES ***
-    - "example"    :: A object passed in with each code example.
-    - "isExpanded" :: A boolean to add proper styling to .example-container 
-        element to help reuse this component. If set to false(by default),
-        the component will return a closed and clickable element with just a 
-        few details rather than the whole code block.
-  */
   props: ["example", "isExpanded"],
-/*   data: function () {
+  components: {
+    CodeSnippet,
+  },
+  computed: {
+    getReferences() {
+      let attrs = this.example.attribution;
+
+      let links = [];
+      let other = [];
+
+      attrs.split(" ").forEach((ref) => {
+        if (ref.includes("http://") || ref.includes("https://")) {
+          links.push(ref);
+        } else {
+          other.push(ref);
+        }
+      });
+
+      return [...links, ...other];
+    },
+  },
+  /*   data: function () {
     return {
       message: "Copy code snippet",
     };
@@ -65,7 +94,8 @@ export default {
       );
     },
   },
- */};
+ */
+};
 </script>
 
 <style scoped>
@@ -130,11 +160,5 @@ export default {
 
 .example-container.expanded .example-container-child {
   display: flex;
-}
-
-.example-code {
-  background-color: #eee;
-  padding: 15px;
-  width: 64%;
 }
 </style>

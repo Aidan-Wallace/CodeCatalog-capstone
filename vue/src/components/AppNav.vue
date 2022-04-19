@@ -2,7 +2,7 @@
   <div id="nav">
     <div class="title-logo">
       <img
-        src="@/assets/codecat-logo.png"
+        src="@/assets/cloudcode.svg"
         alt="CodeCatalog Logo"
         v-on:click.prevent="goHome"
       />
@@ -53,8 +53,8 @@ export default {
 #nav {
   width: 100vw;
   border: 1px solid;
-  height: 5vh;
-  max-height: 5vh;
+  height: 20%;
+  min-height: 20%;
 
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
