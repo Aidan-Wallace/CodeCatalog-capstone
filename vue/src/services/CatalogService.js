@@ -12,7 +12,7 @@ export default {
   },
   getQuery(query) {
     /* **FIX AFTER DAO/CONTROLLER IS IMPLEMENTED** */
-    return http.get(`search/${query}`);
+    return http.get(`example/search/${query}`);
   },
   addExample(newExample) {
     return http.post(`/example`, newExample);

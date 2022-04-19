@@ -25,8 +25,17 @@ namespace Capstone.Controllers
             CodeExample example = exampleDAO.GetExample(codeId);
             return Ok(example);
         }
+
+        //GetExample by Keyword Method 
+        [HttpGet("search/{keyword}")]
+        public ActionResult<List<CodeExample>> SearchByKeyword(string keyword)
+        {
+            List<CodeExample> exampleList = exampleDAO.SearchByKeyword(keyword);
+            return Ok(exampleList);
+        }
+
         //Get all examples created by this specific user
-        [HttpGet("user/{userId}")]
+        [HttpGet("user-example/{userId}")]
         //[Authorize(Roles = "user")]
         public ActionResult<List<CodeExample>> GetExamplesByUser(int userId)
         {
@@ -88,6 +97,7 @@ namespace Capstone.Controllers
             CodeExample result = exampleDAO.UpdateVisibility(codeId, codeExample);
             return Ok(result);
         }
+
         //Update the programming language of the code snippet
         [HttpPut("update-language/{codeId}")]
         [Authorize(Roles = "admin")]
@@ -115,6 +125,7 @@ namespace Capstone.Controllers
             CodeExample result = exampleDAO.UpdateGenericSet(codeId, codeExample);
             return Ok(result);
         }
+
         //Gets the list of all code examples to be displayed to new users
         [HttpGet("initialset")]
         public ActionResult<List<CodeExample>> GetGenericExampleList(int genericExample)
