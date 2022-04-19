@@ -19,7 +19,7 @@ namespace Capstone.DAO.Interfaces
         List<CodeExample> FetchAllScripts();
 
 //users can add examples
-        CodeExample AddExample(CodeExample newExample);
+        CodeExample AddExample(CodeExample newExample, int userId);
 
 //Admin can edit submission status
         List<CodeExample> GetExamplesByStatus(int submissionStatus);

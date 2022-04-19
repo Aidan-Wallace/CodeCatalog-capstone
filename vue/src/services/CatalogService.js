@@ -14,8 +14,8 @@ export default {
     /* **FIX AFTER DAO/CONTROLLER IS IMPLEMENTED** */
     return http.get(`example/search/${query}`);
   },
-  addExample(newExample) {
-    return http.post(`/example`, newExample);
+  addExample(newExample, userId) {
+    return http.post(`/example/${userId}`, newExample);
   },
   fetchScript(codeId) {
     return http.get(`/script/${codeId}`);

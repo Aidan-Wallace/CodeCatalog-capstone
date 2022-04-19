@@ -3,12 +3,6 @@
     <div class="form-container">
       <form v-on:submit.prevent="submitNewExample">
 
-        <!-- <div class="ae-input add-title-container">
-          <label for="userId">User Id</label>
-          <small>10 Character Limit</small>
-          <input type="text" name="title" v-model="newExample.title" required />
-        </div> -->
-
         <div class="ae-input add-title-container">
           <label for="title">Title</label>
           <small>50 Character Limit</small>
@@ -179,7 +173,7 @@ export default {
         this.newExample.programmingLanguage = this.addedLanguage;
       }
 
-      CatalogService.addExample(this.newExample)
+      CatalogService.addExample(this.newExample, this.$store.state.user.userId)
         .then((response) => {
           console.log(response.status);
           this.clearForm();

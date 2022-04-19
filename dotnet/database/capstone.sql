@@ -39,7 +39,7 @@ CREATE TABLE code (
 	attribution varchar(MAX) NULL,
 	generic_example int NOT NULL,
 	CONSTRAINT PK_code PRIMARY KEY (code_id),
-	CONSTRAINT [FK_example] FOREIGN KEY (user_id) REFERENCES [users] (user_id)
+	-- CONSTRAINT [FK_example] FOREIGN KEY (user_id) REFERENCES [users] (user_id)
 );
 
 --populate default data
