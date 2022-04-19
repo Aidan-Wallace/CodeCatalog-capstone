@@ -159,7 +159,7 @@ namespace Capstone.DAO
             return returnExamples;
         }
 
-                public List<CodeExample> GetExamplesByStatus(int submissionStatus)
+        public List<CodeExample> GetExamplesByStatus(int submissionStatus)
         {
             try
             {
