@@ -25,6 +25,14 @@ namespace Capstone.Controllers
             CodeExample example = exampleDAO.GetExample(codeId);
             return Ok(example);
         }
+        //Get all examples created by this specific user
+        [HttpGet("user/{userId}")]
+        //[Authorize(Roles = "user")]
+        public ActionResult<List<CodeExample>> GetExamplesByUser(int userId)
+        {
+            List<CodeExample> exampleList = exampleDAO.GetExamplesByUser(userId);
+            return Ok(exampleList);
+        }
 
         //GetExample List Method  -----WORKS-----
         [HttpGet()]
