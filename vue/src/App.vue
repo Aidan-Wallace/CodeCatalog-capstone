@@ -22,7 +22,7 @@ export default {
 
 :root {
   /* CSS HEX */
-  --paradise-pink: #ef476fff;
+  --paradise-pink: rgb(239, 71, 71);
   --orange-yellow-crayola: #ffd166ff;
   --caribbean-green: #06d6a0ff;
   --blue-ncs: #118ab2ff;

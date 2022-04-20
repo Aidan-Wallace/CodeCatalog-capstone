@@ -265,13 +265,20 @@ export default {
 }
 
 form {
-  border: 1px solid;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+  background-color: var(--paradise-pink);
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   width: 40vw;
   padding: 50px 0;
+}
+
+form select {
+  background: transparent;
+
 }
 
 .ae-input {
@@ -290,6 +297,7 @@ input,
 textarea {
   width: 100%;
   outline: none;
+  background: transparent;
 }
 
 .add-description-container textarea {
@@ -334,7 +342,7 @@ form button {
   border: none;
   border-radius: 16px;
   margin-top: 10px;
-  background-color: rgb(71, 245, 149);
+  background-color: var(--blue-ncs);
   height: 3rem;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
   transition: all 0.1s linear;
