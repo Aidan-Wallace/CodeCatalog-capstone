@@ -8,28 +8,6 @@
         src="@/assets/cloudbanner3.svg"
         alt="CloudBanner"
       />
-      <!-- <img
-        class="cloud-banner2"
-
-
-        src="@/assets/cloudbanner.svg"
-        alt="CloudBanner"
-      />
-      <img
-        class="cloud-banner3"
-        src="@/assets/cloudbanner.svg"
-        alt="CloudBanner"
-      />
-      <img
-        class="cloud-banner4"
-        src="@/assets/cloudbanner.svg"
-        alt="CloudBanner"
-      />
-      <img
-        class="cloud-banner5"
-        src="@/assets/cloudbanner.svg"
-        alt="CloudBanner"
-      /> -->
     </div>
 
     <div id="logo-div">
@@ -63,7 +41,7 @@
     </div>
 
     <div id="MeetTeam">
-      <h4>Meet The Team!</h4>
+      <h3>Meet The Team!</h3>
     </div> 
 
     <div id="team-row1">
@@ -150,6 +128,13 @@
         </ul>
       </div>
     </div>
+    <div id="cloud-footer-div">
+      <img
+        class="cloud-footer"
+        src="@/assets/cloudbannerfooter.svg"
+        alt="Cloudfooter"
+      />
+    </div>
     <!-- <catalog-example /> -->
     <!-- <download /> -->
   </div>
@@ -182,7 +167,8 @@ export default {
   "site-desc"
   "site-func"
   "team1"
-  "team2";
+  "team2"
+  "footer";
   row-gap: 7pt;
 }
 /* -------------------------------------------------------------------- */
@@ -255,14 +241,16 @@ font-weight: bold;
   justify-content: center;
   
 }
-#MeetTeam h4{
+#MeetTeam h3{
   font-weight: bold;
+  text-decoration: underline;
+  padding-top: 50pt;
 }
 /* -------------------------------------------------------------------- */
 #team-row1{
   grid-area: "team1";
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 
   align-items: center;
   justify-content: center;
@@ -280,6 +268,13 @@ font-weight: bold;
 }
 #team-row1 #Misha img{
   width:25vh;
+  padding-right: 20pt;
+}
+#team-row1 #aboutMisha{
+  font-style:italic;
+  max-width: 100%;
+  padding-right: 50pt;
+  padding-left: 50pt;
 }
 /* -------------------------- */
 #team-row1 #Aidan{
@@ -295,12 +290,19 @@ font-weight: bold;
 }
 #team-row1 #Aidan img{
   width:25vh;
+  padding-right: 20pt;
+}
+#team-row1 #aboutAidan{
+  font-style:italic;
+  max-width: 100%;
+  padding-right: 50pt;
+  padding-left: 50pt;
 }
 /* -------------------------- */
 #team-row2{
   grid-area: "team2";
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 
   align-items: center;
   justify-content: center;
@@ -318,6 +320,13 @@ font-weight: bold;
 }
 #team-row2 #Jack img{
   width:25vh;
+  padding-right: 20pt;
+}
+#team-row2 #aboutJack{
+  font-style:italic;
+  max-width: 100%;
+  padding-right: 50pt;
+  padding-left: 50pt;
 }
 /* -------------------------- */
 #team-row2 #Patrick{
@@ -333,6 +342,24 @@ font-weight: bold;
 }
 #team-row2 #Patrick img{
   width:25vh;
+  padding-right: 20pt;
+}
+#team-row2 #aboutPatrick{
+  font-style:italic;
+  max-width: 100%;
+  padding-right: 50pt;
+  padding-left: 50pt;
 }
 /* -------------------------- */
+#cloud-footer-div{
+  grid-area:"footer";
+  display:flex;
+
+  align-items: center;
+  justify-content: center;
+}
+#cloud-footer-div img{
+  max-height: 100vw;
+  background-repeat:repeat;
+}
 </style>
