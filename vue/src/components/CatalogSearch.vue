@@ -63,6 +63,7 @@ export default {
   background-color: #eee;
   border-radius: 8px;
   padding-left: 8px;
+  font-size: 1.4rem;
 }
 
 .search-container input:focus {
