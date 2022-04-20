@@ -41,23 +41,20 @@
       <div v-for="ref in getReferences.other" :key="ref">
         {{ ref }}
       </div>
-    </div> -->
-
-    <!-- <div class="example-container-child example-download">
-      <span>Download</span>
-      <download />
-    </div> -->
+    </div> -->    
   </div>
 </template>
 
 <script>
 import CodeSnippet from "./CodeSnippet";
+// import Download from "./Download";
 
 export default {
   name: "FullCatalog",
   props: ["example", "isExpanded"],
   components: {
     CodeSnippet,
+    // Download
   },
 };
 </script>

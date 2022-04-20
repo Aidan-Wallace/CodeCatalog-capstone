@@ -28,10 +28,15 @@
         <strong>Description</strong>: {{ example.codeDescription }}
       </div>
     </div>
+    
+    <div class="full-screen-copy-button">
+    <button type="button" class="button" v-clipboard="example.codeSnippet"> Copy snippet:</button>    
+    </div>
 
     <div class="full-screen-code-snippet">
       {{ example.codeSnippet }}
     </div>
+
   </div>
 </template>
 
@@ -100,4 +105,14 @@ export default {
   border-radius: 6px;
   overflow-y: scroll;
 }
+
+.full-screen-copy-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25em 0.75em;
+  min-width: 10ch;
+  min-height: 44px;
+}
+
 </style>
