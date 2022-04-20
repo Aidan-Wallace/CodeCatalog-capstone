@@ -41,21 +41,30 @@
 
     <div class="example-container-child example-download">
       <span>Download </span>
-      <download />
+      <div>
+        <!-- <download :download="{href}" /> -->
+      </div>
     </div>
+    
   </div>
 </template>
 
 <script>
 import CodeSnippet from "./CodeSnippet";
+// import Download from "./Download";
 
 export default {
   name: "FullCatalog",
   props: ["example", "isExpanded"],
   components: {
     CodeSnippet,
+    // Download,
   },
   computed: {
+    getUrl() {
+      let href = new URL(window.location.href);
+      return href
+    },
     getReferences() {
       let attrs = this.example.attribution;
 
