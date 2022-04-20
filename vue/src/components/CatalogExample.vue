@@ -32,6 +32,7 @@
       <span>Language</span> {{ example.programmingLanguage }}
     </div>
 
+
     <!-- <div class="example-container-child example-attribution">
       <span>References</span>
       <div v-for="ref in getReferences.links" :key="ref">
@@ -47,14 +48,12 @@
 
 <script>
 import CodeSnippet from "./CodeSnippet";
-// import Download from "./Download";
 
 export default {
   name: "FullCatalog",
   props: ["example", "isExpanded"],
   components: {
     CodeSnippet,
-    // Download
   },
 };
 </script>
