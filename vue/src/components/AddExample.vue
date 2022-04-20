@@ -6,13 +6,23 @@
       <div class="ae-input add-title-container">
         <label for="title">Title</label>
         <small>50 Character Limit</small>
-        <input type="text" name="title" v-model="newExample.title" required />
+        <input
+          type="text"
+          name="title"
+          v-model="newExample.title"
+          required
+          maxlength="50"
+        />
       </div>
 
-      <div class="ae-input add-language-container" required>
+      <div class="ae-input add-language-container">
         <label for="language">Programming Language</label>
         <small>Please Select</small>
-        <select name="language" v-model="newExample.programmingLanguage">
+        <select
+          name="language"
+          v-model="newExample.programmingLanguage"
+          required
+        >
           <option value="">--</option>
           <option value="csharp">C#</option>
           <option value="css">CSS</option>
@@ -70,6 +80,7 @@
           type="text"
           name="code-snippet"
           v-model="newExample.codeSnippet"
+          required
         ></textarea>
       </div>
 
@@ -86,27 +97,25 @@
 
       <div class="ae-input add-example-container">
         <label for="attribution">Enter references</label>
-        <small>Use "https://" format for a valid link</small>
-        <input
+        <small>Use "http[s]://" format for a valid link</small>
+        <div
           v-for="(ref, index) in getReferences"
-          :key="ref"
-          type="text"
-          name="attribution"
-          v-model="referenceHolder[index]"
-          placeholder="e.g 'https://www.wikipedia.com' or 'John Doe'"
-        />
-        <!-- NEED ABILITY TO ADD MORE REFERENCES -->
+          :key="index"
+          class="reference"
+        >
+          <input
+            type="text"
+            name="attribution"
+            v-model="referenceHolder[index]"
+            placeholder="e.g 'https://www.wikipedia.com' or 'John Doe'"
+          />
+          <i
+            class="fa-solid fa-plus"
+            v-on:click="addReference"
+            v-show="index + 1 == referenceHolder.length"
+          ></i>
+        </div>
       </div>
-      <!-- var arr = ["You added an example"
-                    , "You added a second example."
-                    , "You added a third example."
-                    , "You added a fourth example."
-                    , "You added a fifth example."
-                    , "You added a sixth example."];
-
-          document.querySelector("button").onclick = function() {
-            this.innerHTML = arr.length > 1 ? arr.shift() : arr[0]
-          } -->
       <button type="submit">Add Code Example</button>
     </form>
   </div>
@@ -123,7 +132,7 @@ export default {
       categories: this.$store.state.getCategories,
       isProcessing: false,
       addedLanguage: "",
-      referenceHolder: [],
+      referenceHolder: [""],
     };
   },
   computed: {
@@ -131,15 +140,17 @@ export default {
       return this.newExample.category.split(" ");
     },
     getReferences() {
-      let references = this.newExample.attribution.split(" ");
-
-      if (references[references.length - 1] != "") {
-        return references.length + 1;
+      if (this.referenceHolder == []) {
+        return 1;
       }
-      return references.length;
+      return this.referenceHolder.length;
     },
   },
   methods: {
+    addReference() {
+      this.referenceHolder.push("");
+    },
+
     addToCategory(event) {
       // Determine if space needs to be pre-pended
       const addSpace = this.newExample.category != "" ? " " : "";
@@ -172,10 +183,10 @@ export default {
         this.newExample.programmingLanguage = this.addedLanguage;
       }
 
-      CatalogService.addExample(this.newExample, this.$store.state.user.userId)
-        .then((response) => {
-          console.log(response);
+      this.newExample.attribution = this.referenceHolder.join(";");
 
+      CatalogService.addExample(this.newExample, this.$store.state.user.userId)
+        .then((/* response */) => {
           if (confirm(`Success! Add more code?`)) {
             this.clearForm();
             return;
@@ -218,6 +229,7 @@ export default {
       ];
 
       this.addedLanguage = "";
+      this.referenceHolder = [""];
       this.isProcessing = false;
     },
   },
@@ -304,6 +316,16 @@ textarea {
 .selected-category > i {
   font-size: 0.8rem;
   font-weight: bold;
+  cursor: pointer;
+}
+
+.reference {
+  display: flex;
+  align-items: center;
+}
+
+.reference i {
+  margin-left: 10px;
   cursor: pointer;
 }
 

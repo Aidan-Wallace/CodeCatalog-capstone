@@ -6,17 +6,26 @@
 </template>
 
 <script>
-import AppNav from "@/components/AppNav"
+import AppNav from "@/components/AppNav";
 
 export default {
   components: {
-    AppNav
+    AppNav,
   },
 };
 </script>
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap");
+
+:root {
+  /* CSS HEX */
+  --paradise-pink: #ef476fff;
+  --orange-yellow-crayola: #ffd166ff;
+  --caribbean-green: #06d6a0ff;
+  --blue-ncs: #118ab2ff;
+  --midnight-green-eagle-green: #073b4cff;
+}
 
 * {
   padding: 0;

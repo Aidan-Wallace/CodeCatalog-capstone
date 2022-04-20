@@ -15,12 +15,12 @@
 
       <div class="full-screen-attribution-container">
         <ul>
-          <li
-            class="full-screen-attribution"
-            v-for="attr in getAttributions"
-            :key="attr"
-          >
-            {{ attr }}
+          <li v-for="ref in getReferences.other" :key="ref">
+            {{ ref }}
+          </li>
+
+          <li v-for="ref in getReferences.links" :key="ref">
+            <example-link :href="ref" />
           </li>
         </ul>
       </div>
@@ -29,6 +29,15 @@
       </div>
     </div>
 
+    <div class="full-screen-copy-button">
+      <button type="button" class="button" v-clipboard="example.codeSnippet">
+        Copy snippet:
+      </button>
+    </div>
+
+    <div class="full-screen-downloader">
+      <button @click="download">Download snippet:</button>
+    </div>
     <div class="full-screen-code-snippet">
       {{ example.codeSnippet }}
     </div>
@@ -36,10 +45,48 @@
 </template>
 
 <script>
+import ExampleLink from "./ExampleLink";
+
 export default {
   name: "FullScreenExample",
   props: ["example"],
+  components: {
+    ExampleLink,
+  },
+  methods: {
+    download() {
+    let text = JSON.stringify(this.example.codeSnippet);
+    let filename = 'snippet.txt';
+    let element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain; charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+
+    element.style.display = 'none';
+    document.body.appendChild(element);
+
+    element.click();
+    document.body.removeChild(element);
+    }
+  },
   computed: {
+    getReferences() {
+      let attrs = this.example.attribution;
+
+      let links = [];
+      let other = [];
+
+      attrs.split(";").forEach((ref) => {
+        if (ref.includes("http://") || ref.includes("https://")) {
+          links.push(ref);
+        } else {
+          other.push(ref);
+        }
+      });
+      return {
+        links: links,
+        other: other,
+      };
+    },
     getCategories() {
       return this.example.category.split(" ");
     },
@@ -66,11 +113,8 @@ export default {
   flex-direction: column;
 }
 
-.full-screen-title {
-}
-
-.full-screen-code-description {
-}
+/* .full-screen-title {} */
+/* .full-screen-code-description {} */
 
 .full-screen-code-snippet {
   width: 40vw;
@@ -80,5 +124,14 @@ export default {
   margin-top: 20vh;
   border-radius: 6px;
   overflow-y: scroll;
+}
+
+.full-screen-copy-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25em 0.75em;
+  min-width: 10ch;
+  min-height: 44px;
 }
 </style>
