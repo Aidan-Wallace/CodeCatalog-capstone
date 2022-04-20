@@ -28,7 +28,7 @@ export default {
     return {
       userId: this.$store.state.user.userId,
       examples: {},
-      pendingExamples: {},
+      pendingExamples: [],
     };
   },
 
@@ -37,8 +37,6 @@ export default {
       ProfileService.getExamples(this.userId)
         .then((response) => {
           if (200 <= response.status && response.status < 300) {
-            console.log(response.status);
-
             this.examples = response.data;
           }
         })
@@ -50,8 +48,6 @@ export default {
       ProfileService.getPending()
         .then((response) => {
           if (200 <= response.status && response.status < 300) {
-            console.log(response.status);
-
             this.pendingExamples = response.data;
           }
         })
@@ -60,33 +56,30 @@ export default {
         });
     },
     updateExampleStatus(codeId, status) {
-      
-      this.pendingExamples.foreach((example) => {
+      this.pendingExamples.forEach((example, i) => {
         if (example.codeId == codeId) {
-          example.status=status;
-          ProfileService.updateExampleStatus(codeId, example)
+          example.submissionStatus = status;
+
+          ProfileService.updateStatus(codeId, example)
             .then((response) => {
               if (200 <= response.status && response.status < 300) {
-                console.log(response.status);
+                this.pendingExamples[i].pop();
 
-                this.pendingExamples = response.data;
+                console.log("Status updated", response);
               }
             })
             .catch((err) => {
               console.log(err);
             });
         }
-      })
-      
+      });
     },
   },
   created() {
     this.getExamplesByUserId();
     this.getExamplesByStatus();
-    this.updateExampleStatus();
   },
 };
 </script>
 
-<style>
-</style>
+<style></style>

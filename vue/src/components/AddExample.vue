@@ -6,7 +6,13 @@
       <div class="ae-input add-title-container">
         <label for="title">Title</label>
         <small>50 Character Limit</small>
-        <input type="text" name="title" v-model="newExample.title" required maxlength="50"/>
+        <input
+          type="text"
+          name="title"
+          v-model="newExample.title"
+          required
+          maxlength="50"
+        />
       </div>
 
       <div class="ae-input add-language-container">
@@ -180,9 +186,7 @@ export default {
       this.newExample.attribution = this.referenceHolder.join(";");
 
       CatalogService.addExample(this.newExample, this.$store.state.user.userId)
-        .then((response) => {
-          console.log(response);
-
+        .then((/* response */) => {
           if (confirm(`Success! Add more code?`)) {
             this.clearForm();
             return;
@@ -225,6 +229,7 @@ export default {
       ];
 
       this.addedLanguage = "";
+      this.referenceHolder = [""];
       this.isProcessing = false;
     },
   },
