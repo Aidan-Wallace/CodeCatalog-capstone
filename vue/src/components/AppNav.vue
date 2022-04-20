@@ -65,9 +65,9 @@ export default {
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
-  background-color: var(--blue-ncs);
+  background-color: #f5f5f5;
   font-size: 1.2rem;
-  color: #eee;
+  color:black;
 }
 
 .title-logo {
@@ -88,8 +88,8 @@ export default {
 }
 
 .title-logo img {
-  width: 50px;
-  margin-right: 10px;
+  width: 100px;
+  margin-right: 5px;
 }
 
 .menu-btns {
@@ -99,10 +99,10 @@ export default {
 }
 
 a {
-  color: #eee;
+  color: rgb(0, 0, 0);
 }
 a:hover {
-  color: #fff;
+  color: rgb(0, 0, 0);
 }
 
 .menu-btns i:hover {
