@@ -7,4 +7,11 @@ export default {
   getExamples(userId) {
     return http.get(`/example/${userId}`);
   },
+  getPending() {
+    return http.get(`/example/status/0`);
+  },
+  updateStatus(codeId, example) {
+    return http.put(`/example/update-status/${codeId}`, example)
+  }
+
 }
