@@ -80,6 +80,7 @@ export default {
 .title-logo h5 {
   font-weight: bold;
   letter-spacing: 3px;
+  margin-bottom: 0;
 }
 
 .title-logo > * {
