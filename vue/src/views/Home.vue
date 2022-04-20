@@ -123,9 +123,9 @@
           <i class="fa-solid fa-droplet"></i>  My lifeblood: learning. Some favorite topics: music, math, languages, history.
           In the spirit of this project: the best mode in which to learn is to be willing to teach, and the best mode in which to teach is to always be open to learning.<br><br>
           <i class="fa-solid fa-droplet"></i>  A fascination: the symbiotic relationship emerging between humans and computers. Neither can be
-          properly understood without the other at this point. Nature still bears many clues about how to navigate this area.<br><br>
-          <i class="fa-solid fa-droplet"></i>  Things I'm working on: IPFS API in Elixir, p2p coffee review app in Clojure, machine learning program to analyze syntactic use of emoji in Mathematica.<br><br>
-          <i class="fa-solid fa-droplet"></i> Motto: 坠落成星星 [falling into stars].
+          properly understood without the other now. Nature still bears many navigational clues around this field.<br><br>
+          <i class="fa-solid fa-droplet"></i>  Things I'm working on: IPFS API in Elixir | p2p coffee review app in Clojure | machine learning program to analyze syntactic use of emoji in Mathematica.<br><br>
+          <i class="fa-solid fa-droplet"></i> Motto: 坠落成星星 | Zhuìluò chéng xīngxīng | falling into stars
         </ul>
       </div>
     </div>
