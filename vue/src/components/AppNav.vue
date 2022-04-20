@@ -59,13 +59,15 @@ export default {
 <style scoped>
 #nav {
   position: fixed;
-  width: 100vw;
-  border: 1px solid;
+  width: 100%;
   height: 7%;
-  max-height: 7%;
 
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
+  background-color: var(--blue-ncs);
+  font-size: 1.2rem;
+  color: #eee;
 }
 
 .title-logo {
@@ -75,12 +77,19 @@ export default {
   justify-content: center;
 }
 
+.title-logo h5 {
+  font-weight: bold;
+  letter-spacing: 3px;
+  margin-bottom: 0;
+}
+
 .title-logo > * {
   cursor: pointer;
 }
 
 .title-logo img {
   width: 50px;
+  margin-right: 10px;
 }
 
 .menu-btns {
@@ -89,12 +98,11 @@ export default {
   align-items: center;
 }
 
-.menu-btns {
-  text-decoration: none;
+a {
+  color: #eee;
 }
-
-.menu-btns *:visited {
-  color: black;
+a:hover {
+  color: #fff;
 }
 
 .menu-btns i:hover {
