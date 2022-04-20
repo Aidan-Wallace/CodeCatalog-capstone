@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <app-nav />
-    <router-view />
+    <div class="router-view">
+      <router-view />
+    </div>
   </div>
 </template>
 
@@ -41,5 +43,9 @@ body {
 
   font-family: Roboto, sans-serif;
   font-weight: 400;
+}
+
+.router-view {
+  padding-top: 7vh;
 }
 </style>
