@@ -6,6 +6,7 @@
 import Axios from "axios";
 export default {
   name: "Download",
+  props: ["href"],
   methods: {
     downloadItem({ url, label }) {
       Axios.get(url, { responseType: "blob" })

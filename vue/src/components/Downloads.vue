@@ -6,7 +6,7 @@
         :key="example.codeId"
         >
         </div>
-        <download />
+        <!-- <download /> -->
     </div>
 </template>
 

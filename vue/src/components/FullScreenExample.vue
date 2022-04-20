@@ -15,12 +15,12 @@
 
       <div class="full-screen-attribution-container">
         <ul>
-          <li
-            class="full-screen-attribution"
-            v-for="attr in getAttributions"
-            :key="attr"
-          >
-            {{ attr }}
+          <li v-for="ref in getReferences.other" :key="ref">
+            {{ ref }}
+          </li>
+
+          <li v-for="ref in getReferences.links" :key="ref">
+            <example-link :href="ref" />
           </li>
         </ul>
       </div>
@@ -36,10 +36,32 @@
 </template>
 
 <script>
+import ExampleLink from "./ExampleLink";
 export default {
   name: "FullScreenExample",
   props: ["example"],
+  components: {
+    ExampleLink,
+  },
   computed: {
+    getReferences() {
+      let attrs = this.example.attribution;
+
+      let links = [];
+      let other = [];
+
+      attrs.split(" ").forEach((ref) => {
+        if (ref.includes("http://") || ref.includes("https://")) {
+          links.push(ref);
+        } else {
+          other.push(ref);
+        }
+      });
+      return {
+        links: links,
+        other: other,
+      };
+    },
     getCategories() {
       return this.example.category.split(" ");
     },
@@ -66,11 +88,8 @@ export default {
   flex-direction: column;
 }
 
-.full-screen-title {
-}
-
-.full-screen-code-description {
-}
+/* .full-screen-title {} */
+/* .full-screen-code-description {} */
 
 .full-screen-code-snippet {
   width: 40vw;
