@@ -120,17 +120,12 @@
       </div>
       <div id="aboutPatrick">
         <ul>
-          <i class="fa-solid fa-droplet"></i>  Learning is my lifeblood. I have spent untold hours researching and discussing countless topics. Some of my favorites are music, 
-          math, languages, and history. I have developed the view that the best mode in which to learn is to be willing to teach, and the 
-          best mode in which to teach is to always be open to learning. I think this disposition is perfectly suited to a career in computing, 
-          where change is the only constant.<br><br>
-          <i class="fa-solid fa-droplet"></i>  I knew I would end up in computing one day, but I took a few years out of my life to study humans first. I'm fascinated by the 
-          symbiotic relationship that has emerged between humans and computers over the past 50 or so years, and feel that neither can be 
-          properly understood without the other at this point. Equally, I feel that there are many clues about how we could compose the 
-          future that lie undiscovered in the past.<br><br>
-          <i class="fa-solid fa-droplet"></i>  Some of my main interests in computing include: programming language design, functional languages, concurrent process modeling, 
-          scheduling and coordination problems, robotic process automation, learning software, peer-to-peer networks and distributed systems 
-          architectures, games and virtual worlds, personal cloud servers, and communications platforms.
+          <i class="fa-solid fa-droplet"></i>  My lifeblood: learning. Some favorite topics: music, math, languages, history.
+          In the spirit of this project: the best mode in which to learn is to be willing to teach, and the best mode in which to teach is to always be open to learning.<br><br>
+          <i class="fa-solid fa-droplet"></i>  A fascination: the symbiotic relationship emerging between humans and computers. Neither can be
+          properly understood without the other at this point. Nature still bears many clues about how to navigate this area.<br><br>
+          <i class="fa-solid fa-droplet"></i>  Things I'm working on: IPFS API in Elixir, p2p coffee review app in Clojure, machine learning program to analyze syntactic use of emoji in Mathematica.<br><br>
+          <i class="fa-solid fa-droplet"></i> Motto: 坠落成星星 [falling into stars].
         </ul>
       </div>
     </div>

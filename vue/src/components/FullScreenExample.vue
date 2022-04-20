@@ -38,6 +38,7 @@
     <div class="full-screen-downloader">
       <button @click="download">Download snippet:</button>
     </div>
+    
     <div class="full-screen-code-snippet">
       {{ example.codeSnippet }}
     </div>
