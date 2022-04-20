@@ -52,7 +52,7 @@ const router = new Router({
     },
     {
       path: "/searchResults/:query",
-      name: "SearchResults",
+      name: "searchResults",
       component: SearchView,
       meta: {
         requiresAuth: false,

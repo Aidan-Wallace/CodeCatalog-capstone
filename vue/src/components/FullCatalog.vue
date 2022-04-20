@@ -5,7 +5,7 @@
     <h3>Show: My Code | All Code</h3>
     <div
       class="outer-example"
-      v-for="example in examples"
+      v-for="example in getExamplesSorted"
       :key="example.codeId"
       v-on:click="
         $router.push({
@@ -35,6 +35,17 @@ export default {
       isContentLoaded: false,
       examples: [],
     };
+  },
+  computed: {
+    getExamplesSorted() {
+      let newList = [];
+
+      for (let i = this.examples.length - 1; i > 0; i--) {
+        newList.push(this.examples[i]);
+      }
+
+      return newList;
+    },
   },
   methods: {
     getExamples() {

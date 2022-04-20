@@ -32,7 +32,6 @@
       <span>Language</span> {{ example.programmingLanguage }}
     </div>
 
-
     <!-- <div class="example-container-child example-attribution">
       <span>References</span>
       <div v-for="ref in getReferences.links" :key="ref">
@@ -42,7 +41,7 @@
       <div v-for="ref in getReferences.other" :key="ref">
         {{ ref }}
       </div>
-    </div> -->    
+    </div> -->
   </div>
 </template>
 
