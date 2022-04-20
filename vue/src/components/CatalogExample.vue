@@ -34,7 +34,11 @@
 
     <div class="example-container-child example-attribution">
       <span>References</span>
-      <div v-for="ref in getReferences" :key="ref">
+      <div v-for="ref in getReferences.links" :key="ref">
+        <example-link :href="ref" />
+      </div>
+
+      <div v-for="ref in getReferences.other" :key="ref">
         {{ ref }}
       </div>
     </div>
@@ -52,6 +56,7 @@
 <script>
 import CodeSnippet from "./CodeSnippet";
 // import Download from "./Download";
+import ExampleLink from "./ExampleLink";
 
 export default {
   name: "FullCatalog",
@@ -59,6 +64,7 @@ export default {
   components: {
     CodeSnippet,
     // Download,
+    ExampleLink,
   },
   computed: {
     getUrl() {
@@ -78,8 +84,10 @@ export default {
           other.push(ref);
         }
       });
-
-      return [...links, ...other];
+      return {
+        links: links,
+        other: other,
+      };
     },
   },
 };
