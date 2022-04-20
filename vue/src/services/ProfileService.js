@@ -12,5 +12,8 @@ export default {
   },
   updateStatus(codeId, example) {
     return http.put(`/example/update-status/${codeId}`, example)
-  }
+  },
+  // makePublic(codeId, example) {
+  //   return http.put(`example/update-public/${codeId}`, example)
+  // }
 }
