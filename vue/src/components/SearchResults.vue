@@ -31,7 +31,7 @@ export default {
     getSearchResults() {
       CatalogService.getQuery(this.query)
         .then((res) => {
-          console.log(res.data);
+          console.log(res);
           this.searchResults = res.data;
         })
         .catch((err) => {
