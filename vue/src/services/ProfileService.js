@@ -5,7 +5,7 @@ const http = axios.create({ baseURL: baseUrl });
 
 export default {
   getExamples(userId) {
-    return http.get(`/example/${userId}`);
+    return http.get(`/example/user-example/${userId}`);
   },
   getPending() {
     return http.get(`/example/status/0`);
