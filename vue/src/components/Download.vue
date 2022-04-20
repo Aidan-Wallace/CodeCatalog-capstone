@@ -3,13 +3,13 @@
 </template>
 
 <script>
-import Axios from "axios";
+import axios from "axios";
 export default {
   name: "Download",
   props: ["href"],
   methods: {
     downloadItem({ url, label }) {
-      Axios.get(url, { responseType: "blob" })
+      axios.get(url, { responseType: "blob" })
         .then((response) => {
           const blob = new Blob([response.data], { type: "text/strings" });
           const link = document.createElement("download");
