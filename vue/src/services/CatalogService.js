@@ -8,7 +8,7 @@ export default {
     return http.get(`/example/${codeId}`);
   },
   getExamples() {
-    return http.get(`/example`);
+    return http.get(`/example/status/1`);
   },
   getQuery(query) {
     /* **FIX AFTER DAO/CONTROLLER IS IMPLEMENTED** */

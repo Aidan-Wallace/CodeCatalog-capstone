@@ -141,7 +141,7 @@ namespace Capstone.DAO
                     SqlCommand cmd = new SqlCommand("SELECT * FROM code WHERE (title LIKE '%' + @keyword + '%') " +
                                                      "OR (category LIKE '%' + @keyword + '%') " +
                                                      "OR (code_description LIKE '%' + @keyword + '%') " +
-                                                     "OR (programming_language LIKE '%' + @keyword + '%'); ", conn);
+                                                     "OR (programming_language LIKE '%' + @keyword + '%') ", conn);
 
                     cmd.Parameters.AddWithValue("@keyword", keyword);
                     SqlDataReader reader = cmd.ExecuteReader();
