@@ -32,7 +32,7 @@
       <span>Language</span> {{ example.programmingLanguage }}
     </div>
 
-    <div class="example-container-child example-attribution">
+    <!-- <div class="example-container-child example-attribution">
       <span>References</span>
       <div v-for="ref in getReferences.links" :key="ref">
         <example-link :href="ref" />
@@ -41,7 +41,7 @@
       <div v-for="ref in getReferences.other" :key="ref">
         {{ ref }}
       </div>
-    </div>
+    </div> -->
 
     <!-- <div class="example-container-child example-download">
       <span>Download</span>
@@ -52,34 +52,12 @@
 
 <script>
 import CodeSnippet from "./CodeSnippet";
-import ExampleLink from "./ExampleLink";
 
 export default {
   name: "FullCatalog",
   props: ["example", "isExpanded"],
   components: {
     CodeSnippet,
-    ExampleLink,
-  },
-  computed: {
-    getReferences() {
-      let attrs = this.example.attribution;
-
-      let links = [];
-      let other = [];
-
-      attrs.split(" ").forEach((ref) => {
-        if (ref.includes("http://") || ref.includes("https://")) {
-          links.push(ref);
-        } else {
-          other.push(ref);
-        }
-      });
-      return {
-        links: links,
-        other: other,
-      };
-    },
   },
 };
 </script>
