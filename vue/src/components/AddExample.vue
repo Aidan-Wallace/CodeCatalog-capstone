@@ -6,14 +6,18 @@
       <div class="ae-input add-title-container">
         <label for="title">Title</label>
         <small>50 Character Limit</small>
-        <input type="text" name="title" v-model="newExample.title" required />
+        <input type="text" name="title" v-model="newExample.title" required maxlength="50"/>
       </div>
 
-      <div class="ae-input add-language-container" required>
+      <div class="ae-input add-language-container">
         <label for="language">Programming Language</label>
         <small>Please Select</small>
-        <select name="language" v-model="newExample.programmingLanguage">
-          <option value="">--</option> 
+        <select
+          name="language"
+          v-model="newExample.programmingLanguage"
+          required
+        >
+          <option value="">--</option>
           <option value="csharp">C#</option>
           <option value="css">CSS</option>
           <option value="html">HTML</option>
@@ -70,6 +74,7 @@
           type="text"
           name="code-snippet"
           v-model="newExample.codeSnippet"
+          required
         ></textarea>
       </div>
 
@@ -101,7 +106,7 @@
           <i
             class="fa-solid fa-plus"
             v-on:click="addReference"
-            :class="index + 1 == referenceHolder.length"
+            v-show="index + 1 == referenceHolder.length"
           ></i>
         </div>
       </div>
@@ -172,7 +177,7 @@ export default {
         this.newExample.programmingLanguage = this.addedLanguage;
       }
 
-      this.newExample.attribution = this.referenceHolder.join(" ");
+      this.newExample.attribution = this.referenceHolder.join(";");
 
       CatalogService.addExample(this.newExample, this.$store.state.user.userId)
         .then((response) => {

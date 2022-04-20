@@ -55,7 +55,7 @@ export default {
       let links = [];
       let other = [];
 
-      attrs.split(" ").forEach((ref) => {
+      attrs.split(";").forEach((ref) => {
         if (ref.includes("http://") || ref.includes("https://")) {
           links.push(ref);
         } else {
