@@ -2,7 +2,7 @@
   <div id="nav">
     <div class="title-logo">
       <img
-        src="@/assets/cloudcodefinal.svg"
+        src="@/assets/cloudcodeFINALLL.svg"
         alt="CodeCatalog Logo"
         v-on:click.prevent="goHome"
       />
