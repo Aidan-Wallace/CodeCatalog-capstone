@@ -47,7 +47,7 @@ export default {
 <style>
 .search-container {
   height: 100%;
-  width: 100%;
+  width: 95%;
 }
 
 .search-form {
@@ -60,7 +60,7 @@ export default {
   width: 100%;
   transition: 0.2s;
   border: none;
-  background-color: #eee;
+  background-color: rgb(221, 219, 219);
   border-radius: 8px;
   padding-left: 8px;
   font-size: 1.4rem;

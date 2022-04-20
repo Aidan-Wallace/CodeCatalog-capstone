@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h1>Manage Profile</h1>
-    <h1>Edit My Code</h1>
+    <button>Manage Profile</button>
+    <button>Edit My Code</button>
     <div v-show="$store.state.user.role == 'admin'">
       Manage Pending
       <div v-for="example in pendingExamples" :key="example.codeId">
@@ -33,17 +33,6 @@ export default {
   },
 
   methods: {
-    getExamplesByUserId() {
-      ProfileService.getExamples(this.userId)
-        .then((response) => {
-          if (200 <= response.status && response.status < 300) {
-            this.examples = response.data;
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },
     getExamplesByStatus() {
       ProfileService.getPending()
         .then((response) => {
@@ -76,7 +65,7 @@ export default {
     },
   },
   created() {
-    this.getExamplesByUserId();
+    
     this.getExamplesByStatus();
   },
 };
