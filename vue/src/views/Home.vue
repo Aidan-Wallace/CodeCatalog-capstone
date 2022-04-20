@@ -30,15 +30,18 @@
     </div>
 
     <div id="site-desc">
-      <h5>Here are Code Cloud the team aims to solve a prevalent issue in the coding community. <br>
-        sdfgdfsgsdfgsdfgdfsgsdfgsdfgsdfgdsfgdsfgsdfgsdfgsdfgdfsgdsfgdfsdfsdfgsdfgsdfgdfgsdfgdfsg</h5>
+      <p>The team created CodeCloud in order to help spread coding knowledge. We allow anyone and everyone to create their
+          own account and upload coding examples for the entire world to see and learn from. On the other end of things we allow 
+          anyone and everyone to download code examples from the CodeCloud so that they can use this new found knowledge for their
+          own personal projects. We believe that we live in a time where coding is still a very underused and misunderstood skill.
+          The more transparent coders are, the faster we will advance our knowledge and technology as a human race.
+        </p>
     </div>
 
     <div id="site-functions">
       <h3>Site Functions</h3>
       <ul>
-        <i class="fa-solid fa-droplet"></i>  Create an account<br>
-        <i class="fa-solid fa-droplet"></i>  Add Code<br>
+        <i class="fa-solid fa-droplet"></i>  Create an Account<br>
         <i class="fa-solid fa-droplet"></i>  Publish Code<br>
         <i class="fa-solid fa-droplet"></i>  Explore Code<br>
         <i class="fa-solid fa-droplet"></i>  Download Code<br>
@@ -46,7 +49,7 @@
     </div>
 
     <div id="MeetTeam">
-      <h3>Meet The Team!</h3>
+      <h3>The Team</h3>
     </div> 
 
     <div id="team-row1">
@@ -167,10 +170,11 @@ export default {
   grid-template-columns: auto;
   /* grid-template-rows: */
   grid-template-areas:
-  "banner banner banner"
+  "banner"
   "logo"
   "title"
   "site-catchphrase"
+  "site-desc"
   "site-func"
   "team1"
   "team2"
@@ -226,12 +230,15 @@ font-weight: bold;
   justify-content: center;
 }
 /* -------------------------------------------------------------------- */
-#site-desc{
+#site-desc p{
   grid-area: "site-desc";
   display: flex;
                                 /*COME BACK TO THIS*/
   align-items: center;
   justify-content: center;
+
+  padding-left:150pt;
+  padding-right:150pt;
 }
 /* -------------------------------------------------------------------- */
 #site-functions{
@@ -244,7 +251,7 @@ font-weight: bold;
 }
 #site-functions h3{
   font-weight: bold;
-  padding-top: 50pt;
+  padding-top: 30pt;
   text-decoration: underline;
 }
 #site-functions ul{
@@ -257,13 +264,11 @@ font-weight: bold;
   display: flex;
   align-items: center;
   justify-content: center;
-  
-  
 }
 #MeetTeam h3{
   font-weight: bold;
   text-decoration: underline;
-  padding-top: 50pt;
+  padding-top: 30pt;
 }
 /* -------------------------------------------------------------------- */
 #team-row1{
@@ -280,8 +285,6 @@ font-weight: bold;
 
   align-items: center;
   justify-content: center;
-
-  
 }
 #team-row1 #Misha h5{
   font-weight: bold;
@@ -290,7 +293,13 @@ font-weight: bold;
 #team-row1 #Misha img{
   width:25vh;
   padding-right: 20pt;
-  padding-bottom: 15pt;
+  padding-bottom: 25pt;
+  margin-bottom: 15pt;
+
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  
 }
 #team-row1 #aboutMisha{
   font-style:italic;
@@ -320,6 +329,11 @@ font-weight: bold;
   width:25vh;
   padding-right: 20pt;
   padding-bottom: 15pt;
+  margin-bottom: 15pt;
+
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
 }
 #team-row1 #aboutAidan{
   font-style:italic;
@@ -357,6 +371,11 @@ font-weight: bold;
   width:25vh;
   padding-right: 20pt;
   padding-bottom: 15pt;
+  margin-bottom: 15pt;
+
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
 }
 #team-row2 #aboutJack{
   font-style:italic;
@@ -386,6 +405,11 @@ font-weight: bold;
   width:25vh;
   padding-right: 20pt;
   padding-bottom: 15pt;
+  margin-bottom: 15pt;
+
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
 }
 #team-row2 #aboutPatrick{
   font-style:italic;
