@@ -13,7 +13,7 @@
         <label for="language">Programming Language</label>
         <small>Please Select</small>
         <select name="language" v-model="newExample.programmingLanguage">
-          <option value="">--</option>
+          <option value="">--</option> 
           <option value="csharp">C#</option>
           <option value="css">CSS</option>
           <option value="html">HTML</option>
