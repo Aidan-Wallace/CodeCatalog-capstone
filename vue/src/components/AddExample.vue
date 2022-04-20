@@ -86,7 +86,7 @@
 
       <div class="ae-input add-example-container">
         <label for="attribution">Enter references</label>
-        <small>Use "https://" format for a valid link</small>
+        <small>Use "http[s]://" format for a valid link</small>
         <input
           v-for="(ref, index) in getReferences"
           :key="ref"
@@ -171,6 +171,8 @@ export default {
       if (this.newExample.programmingLanguage == "other") {
         this.newExample.programmingLanguage = this.addedLanguage;
       }
+
+      this.newExample.attribution = this.referenceHolder.join(" ");
 
       CatalogService.addExample(this.newExample, this.$store.state.user.userId)
         .then((response) => {

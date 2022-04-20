@@ -1,5 +1,5 @@
 <template>
-  <a v-href="href">{{ href }}</a>
+  <a :href="href">{{ href }}</a>
 </template>
 
 <script>

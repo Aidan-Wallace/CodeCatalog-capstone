@@ -34,26 +34,32 @@
 
     <div class="example-container-child example-attribution">
       <span>References</span>
-      <div v-for="ref in getReferences" :key="ref">
+      <div v-for="ref in getReferences.links" :key="ref">
+        <example-link :href="ref" />
+      </div>
+
+      <div v-for="ref in getReferences.other" :key="ref">
         {{ ref }}
       </div>
     </div>
 
-    <div class="example-container-child example-download">
-      <span>Download </span>
+    <!-- <div class="example-container-child example-download">
+      <span>Download</span>
       <download />
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
 import CodeSnippet from "./CodeSnippet";
+import ExampleLink from "./ExampleLink";
 
 export default {
   name: "FullCatalog",
   props: ["example", "isExpanded"],
   components: {
     CodeSnippet,
+    ExampleLink,
   },
   computed: {
     getReferences() {
@@ -69,8 +75,10 @@ export default {
           other.push(ref);
         }
       });
-
-      return [...links, ...other];
+      return {
+        links: links,
+        other: other,
+      };
     },
   },
 };
