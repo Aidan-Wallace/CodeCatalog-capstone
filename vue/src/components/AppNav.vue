@@ -32,7 +32,8 @@
         v-on:click="
           $router.push({
             name: 'ManageProfile',
-          })"
+          })
+        "
         class="fa-solid fa-circle-user"
       ></i>
     </div>
@@ -57,10 +58,11 @@ export default {
 
 <style scoped>
 #nav {
+  position: fixed;
   width: 100vw;
   border: 1px solid;
-  height: 20%;
-  min-height: 20%;
+  height: 7%;
+  max-height: 7%;
 
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;

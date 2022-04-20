@@ -1,15 +1,13 @@
 <template>
   <div class="search-container">
     <form class="search-form" v-on:submit.prevent="getSearch">
-      <div class="search">
-        <input
-          type="text"
-          name="search-input"
-          v-model="searchQuery"
-          placeholder="Search..."
-          autocomplete="off"
-        />
-      </div>
+      <input
+        type="text"
+        name="search-input"
+        v-model="searchQuery"
+        placeholder="Search..."
+        autocomplete="off"
+      />
     </form>
   </div>
 </template>
@@ -64,7 +62,6 @@ export default {
   border: none;
   background-color: #eee;
   border-radius: 8px;
-  width: 100%;
   padding-left: 8px;
 }
 

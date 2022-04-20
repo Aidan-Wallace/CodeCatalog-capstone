@@ -13,5 +13,4 @@ export default {
   updateStatus(codeId, example) {
     return http.put(`/example/update-status/${codeId}`, example)
   }
-
 }
