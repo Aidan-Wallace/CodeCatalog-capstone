@@ -28,25 +28,45 @@
         <strong>Description</strong>: {{ example.codeDescription }}
       </div>
     </div>
-    
+
     <div class="full-screen-copy-button">
-    <button type="button" class="button" v-clipboard="example.codeSnippet"> Copy snippet:</button>    
+      <button type="button" class="button" v-clipboard="example.codeSnippet">
+        Copy snippet:
+      </button>
     </div>
 
+    <div class="full-screen-downloader">
+      <button @click="download">Download snippet:</button>
+    </div>
     <div class="full-screen-code-snippet">
       {{ example.codeSnippet }}
     </div>
-
   </div>
 </template>
 
 <script>
 import ExampleLink from "./ExampleLink";
+
 export default {
   name: "FullScreenExample",
   props: ["example"],
   components: {
     ExampleLink,
+  },
+  methods: {
+    download() {
+    let text = JSON.stringify(this.example.codeSnippet);
+    let filename = 'snippet.txt';
+    let element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain; charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+
+    element.style.display = 'none';
+    document.body.appendChild(element);
+
+    element.click();
+    document.body.removeChild(element);
+    }
   },
   computed: {
     getReferences() {
@@ -114,5 +134,4 @@ export default {
   min-width: 10ch;
   min-height: 44px;
 }
-
 </style>
