@@ -1,6 +1,6 @@
 <template>
   <div class="catalog-container">
-    <h1>Catalog</h1>
+    <h1 v-on:click.prevent="getGenericExamples()">Catalog</h1>
     <h3>Sort By</h3>
     <h3>Show: My Code | All Code</h3>
     <div
@@ -48,8 +48,8 @@ export default {
     },
   },
   methods: {
-    getExamples() {
-      CatalogService.getExamples()
+    getGenericExamples() {
+      CatalogService.getGenericExamples()
         .then((res) => {
           // this.isContentLoaded = true;
           this.examples = res.data;
@@ -69,7 +69,7 @@ export default {
     });
   },
   created() {
-    this.getExamples();
+    this.getGenericExamples();
   },
 };
 </script>
