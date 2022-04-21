@@ -60,7 +60,8 @@ export default {
   width: 100%;
   transition: 0.2s;
   border: none;
-  background-color: rgb(0, 150, 255);
+  background-color: whitesmoke;
+  backdrop-filter: blur(7px);
   border-radius: 8px;
   padding-left: 8px;
   font-size: 1.4rem;

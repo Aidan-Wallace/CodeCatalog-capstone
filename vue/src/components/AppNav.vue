@@ -106,11 +106,14 @@ a {
   color: rgb(0, 0, 0);
 }
 a:hover {
-  color: rgb(0, 0, 0);
+  color: black;
+  text-decoration-line: none;
+  text-shadow:  0 0 15px rgb(0, 150, 255);
 }
 
 .menu-btns i:hover {
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 10px 5px rgb(0, 150, 255);
+  border-radius: 5000px;
 }
 
 router-link {
