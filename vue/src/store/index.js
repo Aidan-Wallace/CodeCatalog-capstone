@@ -81,6 +81,7 @@ export default new Vuex.Store({
       "TOML",
       "TypeScript",
       "Visual Basic.NET",
+      "Wolframlang",
     ],
   },
 
