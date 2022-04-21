@@ -117,6 +117,7 @@ export default {
   flex-direction:column;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   height: 90%;
 }
 .full-screen-attribution-container li{
