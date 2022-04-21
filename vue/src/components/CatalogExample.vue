@@ -1,5 +1,16 @@
 <template>
-  <div class="example-container" v-bind:class="{ expanded: isExpanded }">
+  <div
+    v-on:click="
+      $router.push({
+        name: 'ViewExample',
+        params: {
+          example: example,
+        },
+      })
+    "
+    class="example-container"
+    v-bind:class="{ expanded: isExpanded }"
+  >
     <div class="example-container-child example-title">
       <h2>
         {{ example.title }}
