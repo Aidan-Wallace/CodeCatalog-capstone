@@ -12,9 +12,8 @@ export default {
 
 <style>
 .code-container {
-  background-color: #eee;
   padding: 15px;
-  width: 64%;
+  width: 100%;
 }
 
 .code-container.hide {

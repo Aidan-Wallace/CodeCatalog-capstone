@@ -48,19 +48,21 @@
     </div>
 
     <div class="full-screen-code-snippet">
-      {{ example.codeSnippet }}
+      <code-snippet :code="example.codeSnippet" />
     </div>
   </div>
 </template>
 
 <script>
 import ExampleLink from "./ExampleLink";
+import CodeSnippet from "./CodeSnippet.vue";
 
 export default {
   name: "FullScreenExample",
   props: ["example"],
   components: {
     ExampleLink,
+    CodeSnippet,
   },
   methods: {
     download() {
@@ -79,10 +81,10 @@ export default {
       element.click();
       document.body.removeChild(element);
     },
-    onCopy: function () {
+    onCopy: function() {
       alert("Successful copy.");
     },
-    onError: function () {
+    onError: function() {
       alert("Failed to copy texts");
     },
   },
@@ -127,11 +129,9 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   height: 90%;
 }
-
-/* .full-screen-title {} */
-/* .full-screen-code-description {} */
 
 .full-screen-code-snippet {
   width: 40vw;
