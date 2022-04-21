@@ -1,8 +1,6 @@
 <template>
   <div class="catalog-container">
     <h1>Catalog</h1>
-    <h3>Sort By</h3>
-    <h3>Show: My Code | All Code</h3>
     <div
       class="outer-example"
       v-for="example in getExamplesSorted"
