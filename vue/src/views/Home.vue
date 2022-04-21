@@ -10,14 +10,18 @@
       />
     </div>
 
-    <div id="logo-div">
+    <div class="animatedlogo">
+
+    </div>
+
+    <!-- <div id="logo-div">
       <img
         class="logo"
         src="@/assets/cloudcodeFINALLL.svg"
         alt="CodeCatalog Logo"
         v-on:click.prevent="goHome"
       />
-    </div>
+    </div> -->
 
     <div id="title">
       <h1>
@@ -144,20 +148,14 @@
         alt="Cloudfooter"
       />
     </div>
-    <!-- <catalog-example /> -->
-    <!-- <download /> -->
   </div>
 
 </template>
 
 <script>
-// import Download from '../components/Download.vue';
-// import CatalogExample from "../components/CatalogExample.vue";
 export default {
   name: "home",
   components: {
-    // Download
-    // CatalogExample,
   },
   created() {},
 };
@@ -168,7 +166,6 @@ export default {
 #parent  {
   display: grid;
   grid-template-columns: auto;
-  /* grid-template-rows: */
   grid-template-areas:
   "banner"
   "logo"
@@ -191,10 +188,59 @@ export default {
 }
 #cloud-banner-div img{
   max-height: 100vw;
-  background-repeat:repeat;
 }
 /* -------------------------------------------------------------------- */
-#logo-div{
+.animatedlogo{
+  grid-area: "logo";
+  display:flex;
+  justify-content: center;
+  align-items: center;
+
+  min-width:50vw;
+  min-height:40vh;
+
+  background-image:url(../assets/animatedlogo/cloudcodeanimated1.svg);
+  background-repeat:no-repeat;
+  
+  margin: 0 auto;
+  animation: alternate 3s infinite ;
+}
+@keyframes alternate{
+  9.1%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated2.svg);
+  }
+  18.1%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated3.svg);
+  }
+  27.2%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated4.svg);
+  }
+  36.3%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated5.svg);
+  }
+  45.4%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated6.svg);
+  }
+  54.5%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated7.svg);
+  }
+  63.6%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated8.svg);
+  }
+  72.7%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated9.svg);
+  }
+  81.8%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated10.svg);
+  }
+  90%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated11.svg);
+  }
+  100%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated12.svg);
+  }
+}
+/* #logo-div{
   grid-area: "logo";
   display: flex;
 
@@ -202,14 +248,14 @@ export default {
   justify-content: center;
 
   padding-top: 0pt;
-  padding-bottom: 10pt;;
+  padding-bottom: 10pt;
 }
 #logo-div img{
   border-radius: 5px;
   border-color: rgb(0, 150, 255);
   width: 55vh;
-  box-shadow: 0 0 20px 3px rgb(0, 84, 147);
-}
+  box-shadow: 0 0 20px 3px rgb(0, 84, 147); 
+}*/
 /* -------------------------------------------------------------------- */
 #title{
   grid-area: "title";
@@ -257,7 +303,6 @@ font-weight: bold;
 #site-functions ul{
   font-style: italic;
   justify-content: center;
- 
 }
 /* -------------------------------------------------------------------- */
 #MeetTeam{
@@ -299,7 +344,6 @@ font-weight: bold;
   border: 1px solid #ddd;
   border-radius: 4px;
   padding: 5px;
-  
 }
 #team-row1 #aboutMisha{
   font-style:italic;
