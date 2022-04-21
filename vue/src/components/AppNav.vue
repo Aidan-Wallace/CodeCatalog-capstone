@@ -60,7 +60,7 @@ export default {
 #nav {
   position: fixed;
   width: 100%;
-  height: 75px;
+  height: 85px;
 
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
   display: grid;
