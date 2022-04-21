@@ -1,8 +1,6 @@
 <template>
   <div class="catalog-container">
     <h1 v-on:click.prevent="getGenericExamples()">Catalog</h1>
-    <h3>Sort By</h3>
-    <h3>Show: My Code | All Code</h3>
     <div
       class="outer-example"
       v-for="example in getExamplesSorted"
@@ -40,7 +38,7 @@ export default {
     getExamplesSorted() {
       let newList = [];
 
-      for (let i = this.examples.length - 1; i > 0; i--) {
+      for (let i = this.examples.length - 1; i >= 0; i--) {
         newList.push(this.examples[i]);
       }
 
@@ -80,8 +78,8 @@ export default {
   align-items: center;
   flex-direction: column;
 }
-.catalog-container h1{
-  font-weight:bold;
+.catalog-container h1 {
+  font-weight: bold;
   padding-top: 10pt;
 }
 </style>
