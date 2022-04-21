@@ -28,7 +28,6 @@ export default new Vuex.Store({
       codeSnippet: "",
       difficultyRank: "",
       attribution: "",
-      
     },
     getCategories: [
       "algorithms",
