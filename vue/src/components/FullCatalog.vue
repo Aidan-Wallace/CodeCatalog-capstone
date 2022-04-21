@@ -49,7 +49,7 @@ export default {
   },
   methods: {
     getExamples() {
-      CatalogService.getExamples()
+      CatalogService.getGenericExamples()
         .then((res) => {
           // this.isContentLoaded = true;
           this.examples = res.data;
@@ -69,7 +69,7 @@ export default {
     });
   },
   created() {
-    this.getExamples();
+    this.getGenericExamples();
   },
 };
 </script>

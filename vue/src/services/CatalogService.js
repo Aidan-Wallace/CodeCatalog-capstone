@@ -10,6 +10,9 @@ export default {
   getExamples() {
     return http.get(`/example/status/1`);
   },
+  getGenericExamples(){
+    return http.get(`/example/set-list`);
+  },
   getQuery(query) {
     /* **FIX AFTER DAO/CONTROLLER IS IMPLEMENTED** */
     return http.get(`example/search/${query}`);
