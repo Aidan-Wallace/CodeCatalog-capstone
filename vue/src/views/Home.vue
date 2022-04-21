@@ -194,6 +194,7 @@ export default {
   height:40vh;
 
   background-image:url(../assets/animatedlogo/cloudcodeanimated1.svg);
+  background-position: center;
   background-repeat:no-repeat;
   
   margin: 0 auto;
