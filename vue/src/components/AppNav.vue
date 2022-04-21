@@ -65,8 +65,8 @@ export default {
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
-  background:url(../assets/cloudbannerfooter/cloudbannernav.svg);
-  
+  /* background:url(../assets/cloudbannerfooter/cloudbannernav.svg); */
+  backdrop-filter: blur(10px);
   
   font-size: 1.2rem;
   color:black;
