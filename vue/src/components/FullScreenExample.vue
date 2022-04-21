@@ -30,13 +30,21 @@
     </div>
 
     <div class="full-screen-copy-button">
-      <button type="button" class="button-64" v-clipboard="example.codeSnippet">
+      <button
+        type="button"
+        class="button-64"
+        v-clipboard:copy="example.codeSnippet"
+        v-clipboard:success="onCopy"
+        v-clipboard:error="onError"
+      >
         Copy snippet:
       </button>
     </div>
 
     <div class="full-screen-downloader">
-      <button type="button" class="button-64" @click="download">Download snippet:</button>
+      <button type="button" class="button-64" @click="download">
+        Download snippet:
+      </button>
     </div>
 
     <div class="full-screen-code-snippet">
@@ -56,18 +64,27 @@ export default {
   },
   methods: {
     download() {
-    let text = JSON.stringify(this.example.codeSnippet);
-    let filename = 'snippet.txt';
-    let element = document.createElement('a');
-    element.setAttribute('href', 'data:text/plain; charset=utf-8,' + encodeURIComponent(text));
-    element.setAttribute('download', filename);
+      let text = JSON.stringify(this.example.codeSnippet);
+      let filename = "snippet.txt";
+      let element = document.createElement("a");
+      element.setAttribute(
+        "href",
+        "data:text/plain; charset=utf-8," + encodeURIComponent(text)
+      );
+      element.setAttribute("download", filename);
 
-    element.style.display = 'none';
-    document.body.appendChild(element);
+      element.style.display = "none";
+      document.body.appendChild(element);
 
-    element.click();
-    document.body.removeChild(element);
-    }
+      element.click();
+      document.body.removeChild(element);
+    },
+    onCopy: function () {
+      alert("Successful copy.");
+    },
+    onError: function () {
+      alert("Failed to copy texts");
+    },
   },
   computed: {
     getReferences() {
@@ -137,12 +154,12 @@ export default {
 
 .button-64 {
   align-items: center;
-  background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+  background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
   border: 0;
   border-radius: 8px;
   box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
   box-sizing: border-box;
-  color: #FFFFFF;
+  color: #ffffff;
   display: flex;
   font-family: Phantomsans, sans-serif;
   font-size: 20px;
