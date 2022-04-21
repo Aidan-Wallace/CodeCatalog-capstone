@@ -128,9 +128,9 @@ namespace Capstone.Controllers
 
         //Gets the list of all code examples to be displayed to new users   -----WORKS-----
         [HttpGet("set-list")]
-        public ActionResult<List<CodeExample>> GetGenericExampleList(int genericExample)
+        public ActionResult<List<CodeExample>> GetGenericExampleList()
         {
-            List<CodeExample> currentExamples = exampleDAO.GetGenericExampleList(genericExample);
+            List<CodeExample> currentExamples = exampleDAO.GetGenericExampleList();
             return Ok(currentExamples);
         }
     }
