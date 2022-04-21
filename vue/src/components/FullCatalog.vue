@@ -48,11 +48,7 @@ export default {
     },
   },
   methods: {
-<<<<<<< HEAD
-    getExamples() {
-=======
     getGenericExamples() {
->>>>>>> 8b085253317bb49f44fe4fa4e540e9afa4da2599
       CatalogService.getGenericExamples()
         .then((res) => {
           // this.isContentLoaded = true;
