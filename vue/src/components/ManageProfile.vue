@@ -8,7 +8,7 @@
     <div class="managepending" v-show="$store.state.user.role == 'admin'">
       Manage Pending
       </div>
-      <div class="managepending1" v-show="$store.state.user.role == 'admin'">
+      <div class="managependingdupe" v-show="$store.state.user.role == 'admin'">
       <div v-for="example in pendingExamples" :key="example.codeId">
         <catalog-example :example="example" />
         <button class="approve" v-on:click.prevent="updateExampleStatus(example.codeId, 1)">
@@ -106,7 +106,6 @@ export default {
   transition: all 0.1s linear;
   font-size: 18px;
   color: #fff;
-
 }
 .managepending:hover{
   width: 1%;

@@ -77,9 +77,17 @@ export default {
   display: flex;
   align-items: center;
   flex-direction: column;
+  width:auto;
+  height:auto;
 }
 .catalog-container h1 {
   font-weight: bold;
   padding-top: 10pt;
 }
+/* .outer-example{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+} */
 </style>

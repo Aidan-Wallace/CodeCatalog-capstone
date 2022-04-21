@@ -4,31 +4,26 @@
       <div class="full-screen-title">
         <h1>{{ example.title }}</h1>
       </div>
-
       <div class="full-screen-programming-language">
-        <strong>Language</strong>: {{ example.programmingLanguage }}
+        <strong><i class="fa-solid fa-droplet"></i> Language</strong>: {{ example.programmingLanguage }}
       </div>
-
       <div v-for="category in getCategories" :key="category">
-        <strong>Categories</strong>: {{ category }}
+        <strong><i class="fa-solid fa-droplet"></i> Categories</strong>: {{ category }}
       </div>
-
       <div class="full-screen-attribution-container">
         <ul>
           <li v-for="ref in getReferences.other" :key="ref">
-            {{ ref }}
+            <i class="fa-solid fa-droplet"></i> {{ ref }}
           </li>
-
           <li v-for="ref in getReferences.links" :key="ref">
-            <example-link :href="ref" />
+            <i class="fa-solid fa-droplet"></i> <example-link :href="ref" />
           </li>
         </ul>
       </div>
       <div class="full-screen-code-description">
-        <strong>Description</strong>: {{ example.codeDescription }}
+        <strong><i class="fa-solid fa-droplet"></i> Description</strong>: {{ example.codeDescription }}
       </div>
     </div>
-
     <div class="full-screen-copy-button">
       <button
         type="button"
@@ -37,30 +32,28 @@
         v-clipboard:success="onCopy"
         v-clipboard:error="onError"
       >
-        Copy snippet:
+        Copy Code
       </button>
     </div>
-
     <div class="full-screen-downloader">
       <button type="button" class="button-64" @click="download">
-        Download snippet:
+        Download Code
       </button>
     </div>
-
     <div class="full-screen-code-snippet">
-      {{ example.codeSnippet }}
+      <code-snippet :code="example.codeSnippet" />
     </div>
   </div>
 </template>
-
 <script>
 import ExampleLink from "./ExampleLink";
-
+import CodeSnippet from "./CodeSnippet.vue";
 export default {
   name: "FullScreenExample",
   props: ["example"],
   components: {
     ExampleLink,
+    CodeSnippet,
   },
   methods: {
     download() {
@@ -72,27 +65,23 @@ export default {
         "data:text/plain; charset=utf-8," + encodeURIComponent(text)
       );
       element.setAttribute("download", filename);
-
       element.style.display = "none";
       document.body.appendChild(element);
-
       element.click();
       document.body.removeChild(element);
     },
-    onCopy: function () {
+    onCopy: function() {
       alert("Successful copy.");
     },
-    onError: function () {
+    onError: function() {
       alert("Failed to copy texts");
     },
   },
   computed: {
     getReferences() {
       let attrs = this.example.attribution;
-
       let links = [];
       let other = [];
-
       attrs.split(";").forEach((ref) => {
         if (ref.includes("http://") || ref.includes("https://")) {
           links.push(ref);
@@ -125,66 +114,55 @@ export default {
 .full-screen-example-container {
   overflow: hidden;
   display: flex;
+  flex-direction:column;
   align-items: center;
   justify-content: center;
   height: 90%;
 }
-
+.full-screen-attribution-container li{
+  list-style: none;
+}
 /* .full-screen-title {} */
 /* .full-screen-code-description {} */
 
 .full-screen-code-snippet {
-  width: 40vw;
-  height: 30vh;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 75vw;
+  min-height: 50vh;
+  width: auto;
+  height: auto;
   background-color: rgb(243, 243, 243);
-  padding: 10px;
-  margin-top: 20vh;
+  padding: 0px;
+  margin-top: 2vh;
   border-radius: 6px;
   overflow-y: scroll;
 }
-
+.full-screen-code-description{
+  margin-bottom: 15pt;
+}
 .button-64 {
-  align-items: center;
-  background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
-  border: 0;
-  border-radius: 8px;
-  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
-  box-sizing: border-box;
-  color: #ffffff;
-  display: flex;
-  font-family: Phantomsans, sans-serif;
-  font-size: 20px;
+display:flex;
   justify-content: center;
-  line-height: 1em;
-  max-width: 100%;
-  min-width: 140px;
-  padding: 3px;
-  text-decoration: none;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  white-space: nowrap;
-  cursor: pointer;
+  align-items:center;
+  width: 15vw;
+  border: none;
+  border-radius: 16px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  background-color: var(--paradise-pink);
+  height: 3rem;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+  transition: all 0.1s linear;
+  font-size: 18px;
+  color: #fff;
 }
-
-.button-64:active,
-.button-64:hover {
-  outline: 0;
+.button-64:hover{
+  width: 1%;
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.4);
+  font-size: 20px;
 }
-
-.button-64 span {
-  background-color: rgb(5, 6, 45);
-  padding: 16px 24px;
-  border-radius: 6px;
-  width: 100%;
-  height: 100%;
-  transition: 300ms;
-}
-
-.button-64:hover span {
-  background: none;
-}
-
 @media (min-width: 768px) {
   .button-64 {
     font-size: 24px;
