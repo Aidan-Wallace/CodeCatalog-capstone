@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h1>Manage Profile</h1>
-    <h1>Edit My Code</h1>
+    <button>Manage Profile</button>
+    <button>Edit My Code</button>
     <div v-show="$store.state.user.role == 'admin'">
       Manage Pending
       <div v-for="example in pendingExamples" :key="example.codeId">
