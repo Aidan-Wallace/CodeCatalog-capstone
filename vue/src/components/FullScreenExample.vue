@@ -123,12 +123,11 @@ export default {
 
 <style>
 .full-screen-example-container {
-  height: 100vh;
-  max-height: 100vh;
-  justify-content: center;
+  overflow: hidden;
   display: flex;
   align-items: center;
-  flex-direction: column;
+  justify-content: center;
+  height: 100%;
 }
 
 /* .full-screen-title {} */
@@ -143,14 +142,6 @@ export default {
   border-radius: 6px;
   overflow-y: scroll;
 }
-
-/* .full-screen-copy-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.25em 0.75em;
-  min-width: 10ch;
-  min-height: 44px; }*/
 
 .button-64 {
   align-items: center;
