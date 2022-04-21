@@ -47,7 +47,7 @@ const router = new Router({
       name: "ManageProfile",
       component: ManageProfileView,
       meta: {
-        requiresAuth: false,
+        requiresAuth: true,
       },
     },
     {
@@ -71,7 +71,7 @@ const router = new Router({
       name: "addExample",
       component: AddExampleView,
       meta: {
-        requiresAuth: false,
+        requiresAuth: true,
       },
     },
     {
@@ -87,7 +87,7 @@ const router = new Router({
       name: "download",
       component: DownloadView,
       meta: {
-        requiresAuth: false,
+        requiresAuth: true,
       },
     },
     {
