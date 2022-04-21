@@ -30,7 +30,7 @@ namespace Capstone.DAO.Interfaces
 
         CodeExample UpdateGenericSet(int codeId, CodeExample codeExample);
 
-        List<CodeExample> GetGenericExampleList(int genericExample);
+        List<CodeExample> GetGenericExampleList();
 
     }
 }

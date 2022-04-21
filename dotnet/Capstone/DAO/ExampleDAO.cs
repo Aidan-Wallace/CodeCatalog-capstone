@@ -272,14 +272,14 @@ namespace Capstone.DAO
             return returnNewExample;
         }
 
-        public List<CodeExample> GetGenericExampleList(int genericExample)
+        public List<CodeExample> GetGenericExampleList()
         {
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM code WHERE generic_example = 1 AND is_public = 1", conn);
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM code WHERE generic_example = 1 OR is_public = 1", conn);
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())
