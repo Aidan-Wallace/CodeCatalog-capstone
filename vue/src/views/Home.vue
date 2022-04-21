@@ -194,6 +194,8 @@ export default {
   min-width:50vw;
   min-height:40vh;
 
+  padding-right: 500pt;
+
   background-image:url(../assets/animatedlogo/cloudcodeanimated1.svg);
   background-repeat:no-repeat;
   
