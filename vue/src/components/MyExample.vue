@@ -4,7 +4,7 @@
 
     <div v-show="myExample" v-for="example in examples" :key="example.codeId">
       <catalog-example :example="example" />
-      <button v-on:click.prevent="makePublic" :value="codeId">
+      <button v-on:click.prevent="makePublic">
         Make Public
       </button>
     </div>
@@ -31,7 +31,7 @@ export default {
       ProfileService.getExamples(this.userId)
         .then((response) => {
           if (200 <= response.status && response.status < 300) {
-            this.example = response.data;
+            this.examples = response.data;
           }
         })
         .catch((err) => {
