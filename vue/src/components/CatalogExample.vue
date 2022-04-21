@@ -1,5 +1,16 @@
 <template>
-  <div class="example-container" v-bind:class="{ expanded: isExpanded }">
+  <div
+    v-on:click="
+      $router.push({
+        name: 'ViewExample',
+        params: {
+          example: example,
+        },
+      })
+    "
+    class="example-container"
+    v-bind:class="{ expanded: isExpanded }"
+  >
     <div class="example-container-child example-title">
       <h2>
         {{ example.title }}
@@ -66,7 +77,7 @@ export default {
   box-shadow: 0 0 9px rgba(0, 0, 0, 0.4);
   overflow: hidden;
   padding: 15px 0 15px 0;
-  margin-bottom: 25px;
+  margin-bottom: 10px;
 
   display: flex;
   cursor: pointer;

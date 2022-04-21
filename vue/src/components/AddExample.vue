@@ -1,7 +1,8 @@
 <template>
+<div id="contents">
+  <div id="title"><h1>Add Example(s)</h1></div>
   <div class="form-container isSubmitting">
     <div class="isProcessing" :class="{ hide: !isProcessing }"></div>
-
     <form v-on:submit.prevent="submitNewExample">
       <div class="ae-input add-title-container">
         <label for="title">Title</label>
@@ -118,6 +119,7 @@
       <button type="submit">Add Code Example</button>
     </form>
   </div>
+</div>
 </template>
 
 <script>
@@ -239,6 +241,9 @@ export default {
   justify-content: center;
   height: 100%;
 }
+#contents small{
+  color:white;
+}
 
 .isProcessing {
   position: absolute;
@@ -277,17 +282,20 @@ form {
 
 form::-webkit-scrollbar {
   display: none;
+  
 }
 
 form select {
   background: var(--midnight-green-eagle-green);
   border-radius: 4px;
   color: #eee;
+  background-color: whitesmoke;
 }
 
 form select option {
   background-color: #fff;
   color: #000;
+  
 }
 
 .ae-input {
@@ -295,6 +303,7 @@ form select option {
   flex-direction: column;
   margin: 10px 0;
   width: 90%;
+  
 }
 
 label {
@@ -303,12 +312,10 @@ label {
   color: #fff;
 }
 
-small {
-  color: rgb(0, 0, 0);
-}
 
 input {
-  background-color: transparent;
+  
+  background-color: whitesmoke;
 }
 
 input,
@@ -317,11 +324,13 @@ textarea {
   outline: none;
   border: 1px solid;
   border-radius: 4px;
+  
 }
 
 textarea {
   background-color: rgba(155, 155, 155, 0.178);
   height: 100%;
+  background-color: whitesmoke;
 }
 
 .add-description-container textarea {
