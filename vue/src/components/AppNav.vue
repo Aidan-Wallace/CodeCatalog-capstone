@@ -65,11 +65,13 @@ export default {
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
-  background:url(../assets/cloudbannerfooter/cloudbannernav.svg);
-  
-  
+  /* background:url(../assets/cloudbannerfooter/cloudbannernav.svg); */
+  backdrop-filter: blur(7px);
+  background-color: rgba(158, 154, 154, 0.4); /* Black w/opacity/see-through */
+
   font-size: 1.2rem;
   color:black;
+  font-weight:bold;
 }
 
 .title-logo {
@@ -104,11 +106,14 @@ a {
   color: rgb(0, 0, 0);
 }
 a:hover {
-  color: rgb(0, 0, 0);
+  color: black;
+  text-decoration-line: none;
+  text-shadow:  0 0 15px rgb(0, 150, 255);
 }
 
 .menu-btns i:hover {
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 10px 5px rgb(0, 150, 255);
+  border-radius: 5000px;
 }
 
 router-link {

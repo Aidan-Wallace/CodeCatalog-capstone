@@ -10,7 +10,7 @@
       />
     </div>
 
-    <div class="animatedlogo">
+    <div id="animatedlogo">
 
     </div>
 
@@ -127,17 +127,12 @@
       </div>
       <div id="aboutPatrick">
         <ul>
-          <i class="fa-solid fa-droplet"></i>  Learning is my lifeblood. I have spent untold hours researching and discussing countless topics. Some of my favorites are music, 
-          math, languages, and history. I have developed the view that the best mode in which to learn is to be willing to teach, and the 
-          best mode in which to teach is to always be open to learning. I think this disposition is perfectly suited to a career in computing, 
-          where change is the only constant.<br><br>
-          <i class="fa-solid fa-droplet"></i>  I knew I would end up in computing one day, but I took a few years out of my life to study humans first. I'm fascinated by the 
-          symbiotic relationship that has emerged between humans and computers over the past 50 or so years, and feel that neither can be 
-          properly understood without the other at this point. Equally, I feel that there are many clues about how we could compose the 
-          future that lie undiscovered in the past.<br><br>
-          <i class="fa-solid fa-droplet"></i>  Some of my main interests in computing include: programming language design, functional languages, concurrent process modeling, 
-          scheduling and coordination problems, robotic process automation, learning software, peer-to-peer networks and distributed systems 
-          architectures, games and virtual worlds, personal cloud servers, and communications platforms.
+          <i class="fa-solid fa-droplet"></i>  My lifeblood: learning. Some favorite topics: music, math, languages, history.
+          In the spirit of this project: the best mode in which to learn is to be willing to teach, and the best mode in which to teach is to always be open to learning.<br><br>
+          <i class="fa-solid fa-droplet"></i>  A fascination: the symbiotic relationship emerging between humans and computers. Neither can be
+          properly understood without the other now. Nature still bears many navigational clues around this field.<br><br>
+          <i class="fa-solid fa-droplet"></i>  Things I'm working on: IPFS API in Elixir | p2p coffee review app in Clojure | machine learning program to analyze syntactic use of emoji in Mathematica.<br><br>
+          <i class="fa-solid fa-droplet"></i> Motto: 坠落成星星 | Zhuìluò chéng xīngxīng | falling into stars
         </ul>
       </div>
     </div>
@@ -176,7 +171,6 @@ export default {
   "team1"
   "team2"
   "footer";
-  row-gap: 7pt;
 }
 /* -------------------------------------------------------------------- */
 #cloud-banner-div{
@@ -190,54 +184,115 @@ export default {
   max-height: 100vw;
 }
 /* -------------------------------------------------------------------- */
-.animatedlogo{
-  grid-area: "logo";
-  display:flex;
+#animatedlogo{
+  /* grid-area: "logo";
+  display:fixed;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
 
-  min-width:50vw;
-  min-height:40vh;
+  width:50vw;
+  height:40vh;
 
   background-image:url(../assets/animatedlogo/cloudcodeanimated1.svg);
+  background-position: center;
   background-repeat:no-repeat;
   
   margin: 0 auto;
-  animation: alternate 1s infinite ;
+  animation: alternate 4s infinite ;
 }
 @keyframes alternate{
-  9.1%{
+  3.2%{
     background-image:url(../assets/animatedlogo/cloudcodeanimated2.svg);
   }
-  18.1%{
+  6.4%{
     background-image:url(../assets/animatedlogo/cloudcodeanimated3.svg);
   }
-  27.2%{
+  9.6%{
     background-image:url(../assets/animatedlogo/cloudcodeanimated4.svg);
   }
-  36.3%{
+  12.8%{
     background-image:url(../assets/animatedlogo/cloudcodeanimated5.svg);
   }
-  45.4%{
+  16.1%{
     background-image:url(../assets/animatedlogo/cloudcodeanimated6.svg);
   }
-  54.5%{
+  19.3%{
     background-image:url(../assets/animatedlogo/cloudcodeanimated7.svg);
   }
-  63.6%{
+  22.5%{
     background-image:url(../assets/animatedlogo/cloudcodeanimated8.svg);
   }
-  72.7%{
+  25.7%{
     background-image:url(../assets/animatedlogo/cloudcodeanimated9.svg);
   }
-  81.8%{
+  28.9%{
     background-image:url(../assets/animatedlogo/cloudcodeanimated10.svg);
   }
-  90%{
+  32.2%{
     background-image:url(../assets/animatedlogo/cloudcodeanimated11.svg);
   }
-  100%{
+  35.4%{
     background-image:url(../assets/animatedlogo/cloudcodeanimated12.svg);
+  }
+  38.6%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated12-5.svg);
+  }
+  41.8%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated13.svg);
+  }
+  45%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated14.svg);
+  }
+  48.3%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated15.svg);
+  }
+  51.5%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated16.svg);
+  }
+  54.7%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated17.svg);
+  }
+  57.9%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated18.svg);
+  }
+  61.1%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated19.svg);
+  }
+  64.4%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated20.svg);
+  }
+  67.6%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated21.svg);
+  }
+  70.8%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated22.svg);
+  }
+  74.%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated23.svg);
+  }
+  77.2%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated24.svg);
+  }
+  80.5%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated24-5.svg);
+  }
+  83.7%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated25.svg);
+  }
+  86.9%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated26.svg);
+  }
+  90.1%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated27.svg);
+  }
+  93.3%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated28.svg);
+  }
+  96.6%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated29.svg);
+  }
+  100%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated30.svg);
   }
 }
 /* #logo-div{
