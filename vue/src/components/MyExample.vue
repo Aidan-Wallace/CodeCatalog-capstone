@@ -4,7 +4,7 @@
 
     <div v-show="myExample" v-for="example in examples" :key="example.codeId">
       <catalog-example :example="example" />
-      <button v-on:click.prevent="makePublic">
+      <button v-on:click.prevent="makePublic(example.codeId, 1)">
         Make Public
       </button>
     </div>
@@ -21,7 +21,7 @@ export default {
   data() {
     return {
       userId: this.$store.state.user.userId,
-      examples: {},
+      examples: [],
       myExample: false,
     };
   },
@@ -38,25 +38,24 @@ export default {
           console.log(err);
         });
     },
-    makePublic(event) {
-      console.log(event);
-      //   this.examples.forEach((example, i) => {
-      //     if (example.codeId == codeId) {
-      //       example.isPublic = 1;
+    makePublic(codeId, status) {
+      this.examples.forEach((example, i) => {
+        if (example.codeId == codeId) {
+          example.isPublic = status;
 
-      //       ProfileService.makePublic(this.codeId, example)
-      //         .then((response) => {
-      //           if (200 <= response.status && response.status < 300) {
-      //             this.pendingExamples[i].pop();
+          ProfileService.makePublic(codeId, example)
+            .then((response) => {
+              if (200 <= response.status && response.status < 300) {
+                this.examples[i].pop();
 
-      //             console.log("Code set to public.", response);
-      //           }
-      //         })
-      //         .catch((err) => {
-      //           console.log(err);
-      //         });
-      //     }
-      //   });
+                console.log("Code set to public.", response);
+              }
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        }
+      });
     },
   },
   created() {
