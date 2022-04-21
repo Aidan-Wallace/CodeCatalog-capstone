@@ -244,6 +244,7 @@ export default {
 #contents small{
   color:black;
   font-weight:bolder;
+  font-size: 10pt;
 }
 
 .isProcessing {
@@ -306,6 +307,7 @@ form select option {
 
 label {
   font-weight: bolder;
+  font-size:15pt;
   margin: 0px;
   color: black;
 }
@@ -379,7 +381,8 @@ form button {
   height: 3rem;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
   transition: all 0.1s linear;
-  font-size: 18px;
+  font-size: 25px;
+  font-weight:bold;
   color: #fff;
 }
 

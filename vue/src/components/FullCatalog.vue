@@ -1,6 +1,6 @@
 <template>
   <div class="catalog-container">
-    <h1 v-on:click.prevent="getGenericExamples()">Catalog</h1>
+    <h1 v-on:click.prevent="getGenericExamples()">Code Catalog</h1>
     <div
       class="outer-example"
       v-for="example in getExamplesSorted"
