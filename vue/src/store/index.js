@@ -28,6 +28,7 @@ export default new Vuex.Store({
       codeSnippet: "",
       difficultyRank: "",
       attribution: "",
+      isPublic: "",
     },
     getCategories: [
       "algorithms",
