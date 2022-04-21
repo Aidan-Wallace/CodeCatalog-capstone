@@ -1,8 +1,6 @@
 <template>
   <div class="catalog-container">
     <h1 v-on:click.prevent="getGenericExamples()">Catalog</h1>
-    <h3>Sort By</h3>
-    <h3>Show: My Code | All Code</h3>
     <div
       class="outer-example"
       v-for="example in getExamplesSorted"
@@ -48,11 +46,7 @@ export default {
     },
   },
   methods: {
-<<<<<<< HEAD
-    getExamples() {
-=======
     getGenericExamples() {
->>>>>>> 8b085253317bb49f44fe4fa4e540e9afa4da2599
       CatalogService.getGenericExamples()
         .then((res) => {
           // this.isContentLoaded = true;

@@ -10,11 +10,7 @@ export default {
   getExamples() {
     return http.get(`/example/status/1`);
   },
-<<<<<<< HEAD
-  getGenericExamples(){
-=======
   getGenericExamples() {
->>>>>>> 8b085253317bb49f44fe4fa4e540e9afa4da2599
     return http.get(`/example/set-list`);
   },
   getQuery(query) {
