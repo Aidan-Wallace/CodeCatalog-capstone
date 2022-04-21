@@ -2,7 +2,7 @@
   <div id="nav">
     <div class="title-logo">
       <img
-        src="@/assets/cloudcodeFINALLL.svg"
+        src="@/assets/logo/cloudcode.svg"
         alt="CodeCatalog Logo"
         v-on:click.prevent="goHome"
       />
@@ -65,7 +65,9 @@ export default {
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
-  background-color: #f5f5f5;
+  background:url(../assets/cloudbannerfooter/cloudbannernav.svg);
+  
+  
   font-size: 1.2rem;
   color:black;
 }

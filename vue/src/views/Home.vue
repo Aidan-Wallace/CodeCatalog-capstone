@@ -5,7 +5,7 @@
     <div id="cloud-banner-div">
       <img
         class="cloud-banner"
-        src="@/assets/cloudbanner3.svg"
+        src="@/assets/cloudbannerfooter/cloudbanner.svg"
         alt="CloudBanner"
       />
     </div>
@@ -17,7 +17,7 @@
     <!-- <div id="logo-div">
       <img
         class="logo"
-        src="@/assets/cloudcodeFINALLL.svg"
+        src="@/assets/logo/cloudcode.svg"
         alt="CodeCatalog Logo"
         v-on:click.prevent="goHome"
       />
@@ -61,7 +61,7 @@
         <h5>Misha Shatokhin</h5>
         <img
         class="misha-pic"
-        src="@/assets/MS.jpg"
+        src="@/assets/team/MS.jpg"
         alt="misha"
       />
       </div>
@@ -83,7 +83,7 @@
         <h5>Aidan Wallace</h5>
         <img
         class="aidan-pic"
-        src="@/assets/AW.jpg"
+        src="@/assets/team/AW.jpg"
         alt="aidan"
       />
       </div>
@@ -102,7 +102,7 @@
         <h5>Jack Updyke</h5>
         <img
         class="jack-pic"
-        src="@/assets/JA.jpg"
+        src="@/assets/team/JA.jpg"
         alt="jack"
       />
       </div>
@@ -121,7 +121,7 @@
         <h5>Patrick Arace</h5>
         <img
         class="patrick-pic"
-        src="@/assets/PA.jpg"
+        src="@/assets/team/PA.jpg"
         alt="patrick"
       />
       </div>
@@ -139,7 +139,7 @@
     <div id="cloud-footer-div">
       <img
         class="cloud-footer"
-        src="@/assets/cloudbannerfooter.svg"
+        src="@/assets/cloudbannerfooter/cloudbannerfooter.svg"
         alt="Cloudfooter"
       />
     </div>
@@ -198,7 +198,7 @@ export default {
   background-repeat:no-repeat;
   
   margin: 0 auto;
-  animation: alternate 3s infinite ;
+  animation: alternate 1s infinite ;
 }
 @keyframes alternate{
   9.1%{
