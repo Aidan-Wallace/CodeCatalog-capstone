@@ -40,7 +40,7 @@ export default {
     getExamplesSorted() {
       let newList = [];
 
-      for (let i = this.examples.length - 1; i > 0; i--) {
+      for (let i = this.examples.length - 1; i >= 0; i--) {
         newList.push(this.examples[i]);
       }
 
@@ -80,8 +80,8 @@ export default {
   align-items: center;
   flex-direction: column;
 }
-.catalog-container h1{
-  font-weight:bold;
+.catalog-container h1 {
+  font-weight: bold;
   padding-top: 10pt;
 }
 </style>
