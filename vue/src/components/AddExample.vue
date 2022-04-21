@@ -242,14 +242,15 @@ export default {
   height: 100%;
 }
 #contents small{
-  color:white;
+  color:black;
+  font-weight:bolder;
 }
 
 .isProcessing {
   position: absolute;
   z-index: 999;
 
-  background-color: rgba(236, 236, 236, 0.575);
+  background-color: rgb(224, 224, 224);
 
   width: 100%;
   height: 100%;
@@ -266,7 +267,7 @@ export default {
 
 form {
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
-  background-color: var(--paradise-pink);
+  background-color: var(--blue-ncs);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -282,20 +283,18 @@ form {
 
 form::-webkit-scrollbar {
   display: none;
-  
 }
 
 form select {
   background: var(--midnight-green-eagle-green);
   border-radius: 4px;
-  color: #eee;
-  background-color: whitesmoke;
+  color: black;
+  background-color: rgb(224, 224, 224);
 }
 
 form select option {
-  background-color: #fff;
-  color: #000;
-  
+  background-color: rgb(224, 224, 224);
+  color: #000; 
 }
 
 .ae-input {
@@ -303,19 +302,16 @@ form select option {
   flex-direction: column;
   margin: 10px 0;
   width: 90%;
-  
 }
 
 label {
-  font-weight: 700;
+  font-weight: bolder;
   margin: 0px;
-  color: #fff;
+  color: black;
 }
 
-
 input {
-  
-  background-color: whitesmoke;
+  background-color: rgb(224, 224, 224);
 }
 
 input,
@@ -324,13 +320,12 @@ textarea {
   outline: none;
   border: 1px solid;
   border-radius: 4px;
-  
 }
 
 textarea {
   background-color: rgba(155, 155, 155, 0.178);
   height: 100%;
-  background-color: whitesmoke;
+  background-color: rgb(224, 224, 224);
 }
 
 .add-description-container textarea {
@@ -362,11 +357,17 @@ textarea {
 .reference {
   display: flex;
   align-items: center;
+  color:black;
 }
 
 .reference i {
   margin-left: 10px;
   cursor: pointer;
+  color:black;
+}
+
+.reference ::placeholder{
+  color:black;
 }
 
 form button {
@@ -374,7 +375,7 @@ form button {
   border: none;
   border-radius: 16px;
   margin-top: 10px;
-  background-color: var(--blue-ncs);
+  background-color: var(--paradise-pink);
   height: 3rem;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
   transition: all 0.1s linear;
