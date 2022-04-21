@@ -39,14 +39,14 @@ export default {
         });
     },
     makePublic(codeId, status) {
-      this.examples.forEach((example, i) => {
+      this.examples.forEach((example) => {
         if (example.codeId == codeId) {
           example.isPublic = status;
 
           ProfileService.makePublic(codeId, example)
             .then((response) => {
               if (200 <= response.status && response.status < 300) {
-                this.examples[i].pop();
+                //this.examples[i].pop();
 
                 console.log("Code set to public.", response);
               }
