@@ -66,10 +66,12 @@ export default {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
   /* background:url(../assets/cloudbannerfooter/cloudbannernav.svg); */
-  backdrop-filter: blur(10px);
-  
+  backdrop-filter: blur(7px);
+  background-color: rgba(158, 154, 154, 0.4); /* Black w/opacity/see-through */
+
   font-size: 1.2rem;
   color:black;
+  font-weight:bold;
 }
 
 .title-logo {

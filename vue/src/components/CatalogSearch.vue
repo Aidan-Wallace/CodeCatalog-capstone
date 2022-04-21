@@ -60,10 +60,15 @@ export default {
   width: 100%;
   transition: 0.2s;
   border: none;
-  background-color: rgb(221, 219, 219);
+  background-color: rgb(0, 150, 255);
   border-radius: 8px;
   padding-left: 8px;
   font-size: 1.4rem;
+}
+
+.search-container ::placeholder{
+  color:black;
+  font-style:oblique;
 }
 
 .search-container input:focus {
