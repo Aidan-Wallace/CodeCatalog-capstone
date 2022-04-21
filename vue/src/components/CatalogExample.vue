@@ -66,7 +66,7 @@ export default {
   box-shadow: 0 0 9px rgba(0, 0, 0, 0.4);
   overflow: hidden;
   padding: 15px 0 15px 0;
-  margin-bottom: 25px;
+  margin-bottom: 10px;
 
   display: flex;
   cursor: pointer;

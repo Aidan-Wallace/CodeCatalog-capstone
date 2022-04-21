@@ -80,4 +80,8 @@ export default {
   align-items: center;
   flex-direction: column;
 }
+.catalog-container h1{
+  font-weight:bold;
+  padding-top: 10pt;
+}
 </style>
