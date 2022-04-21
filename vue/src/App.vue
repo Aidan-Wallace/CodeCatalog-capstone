@@ -45,7 +45,12 @@ body {
   font-weight: 400;
 }
 
+#app {
+  height: 100vh;
+}
+
 .router-view {
+  height: 100%;
   padding-top: 7vh;
 }
 </style>

@@ -17,7 +17,7 @@
 
       <div class="ae-input add-language-container">
         <label for="language">Programming Language</label>
-        <small>(optional) Please Select</small>
+        <small>Please Select</small>
         <select
           name="language"
           v-model="newExample.programmingLanguage"
@@ -40,7 +40,7 @@
         /> -->
       </div>
 
-      <div class="ae-input add-description-container">
+      <div class="ae-input text-area add-description-container">
         <label for="description">Code Description</label>
         <small>(optional) Enter a description</small>
         <textarea
@@ -72,7 +72,7 @@
         </div>
       </div>
 
-      <div class="ae-input add-code-snippet-container">
+      <div class="ae-input text-area add-code-snippet-container">
         <label for="code-snippet">Code</label>
         <small>Enter code snippet</small>
         <textarea
@@ -96,7 +96,7 @@
 
       <div class="ae-input add-example-container">
         <label for="attribution">Enter references</label>
-        <small>Use "http[s]://" format for a valid link</small>
+        <small>(optional) Use "http[s]://" format for a valid link</small>
         <div
           v-for="(ref, index) in getReferences"
           :key="index"
@@ -195,13 +195,9 @@ export default {
         })
         .catch((err) => {
           console.log(err);
+          alert(`Error! Server responded with: ${err.status}`);
 
-          if (confirm(`Error! Server responded with: ${err.status}`)) {
-            this.clearForm();
-          } else {
-            return;
-          }
-
+          this.clearForm();
           this.isProcessing = false;
         });
     },
@@ -241,7 +237,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 100%;
 }
 
 .isProcessing {
@@ -273,6 +269,14 @@ form {
   flex-direction: column;
   width: 40vw;
   padding: 50px 0;
+  height: 80%;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+form::-webkit-scrollbar {
+  display: none;
 }
 
 form select {
@@ -303,15 +307,24 @@ small {
   color: rgb(0, 0, 0);
 }
 
+input {
+  background-color: transparent;
+}
+
 input,
 textarea {
   width: 100%;
   outline: none;
-  background: transparent;
+  border: 1px solid;
+  border-radius: 4px;
+}
+
+textarea {
+  background-color: rgba(155, 155, 155, 0.178);
+  height: 100%;
 }
 
 .add-description-container textarea {
-  height: 10vh;
   resize: none;
 }
 
