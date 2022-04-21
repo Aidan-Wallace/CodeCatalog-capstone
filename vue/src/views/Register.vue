@@ -5,6 +5,7 @@
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
+      <div class="username">
       <label for="username" class="sr-only">Username</label>
       <input
         type="text"
@@ -15,6 +16,8 @@
         required
         autofocus
       />
+      </div>
+      <div class="password">
       <label for="password" class="sr-only">Password</label>
       <input
         type="password"
@@ -24,6 +27,8 @@
         v-model="user.password"
         required
       />
+      </div>
+      <div class="passconfirm">
       <input
         type="password"
         id="confirmPassword"
@@ -32,10 +37,13 @@
         v-model="user.confirmPassword"
         required
       />
+      </div>
       <router-link :to="{ name: 'login' }">Have an account?</router-link>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">
+      <div class="submitreg">
+      <button class="createacc" type="submit">
         Create Account
       </button>
+      </div>
     </form>
   </div>
 </template>
@@ -90,4 +98,42 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.username{
+  padding-bottom:5pt;
+}
+.password{
+  padding-bottom:5pt;
+}
+.passconfirm{
+  padding-bottom:5pt;
+}
+#register .submitreg .createacc{
+  display:flex;
+  justify-content: center;
+  align-items:center;
+  width: 15vw;
+  border: none;
+  border-radius: 16px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  background-color: var(--paradise-pink);
+  height: 3rem;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+  transition: all 0.1s linear;
+  font-size: 18px;
+  color: #fff;
+}
+#register .submitreg .createacc:hover{
+  width: 1%;
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.4);
+  font-size: 20px;
+}
+@media (min-width: 768px) {
+  #register .submitreg .createacc{
+    font-size: 24px;
+    min-width: 196px;
+  }
+}
+
+</style>
