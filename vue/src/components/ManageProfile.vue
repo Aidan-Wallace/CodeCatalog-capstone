@@ -5,18 +5,20 @@
     <div class="buttons">
     <button class="button">Manage Profile</button>
     <!-- <button class="button">Edit My Code</button> -->
-    <div v-show="$store.state.user.role == 'admin'">
+    <div class="managepending" v-show="$store.state.user.role == 'admin'">
       Manage Pending
+      </div>
       <div v-for="example in pendingExamples" :key="example.codeId">
         <catalog-example :example="example" />
-        <button v-on:click.prevent="updateExampleStatus(example.codeId, 1)">
+        <button class="approve" v-on:click.prevent="updateExampleStatus(example.codeId, 1)">
           Approve
         </button>
-        <button v-on:click.prevent="updateExampleStatus(example.codeId, 2)">
+        <button class="reject" v-on:click.prevent="updateExampleStatus(example.codeId, 2)">
           Reject
         </button>
       </div>
-    </div>
+      
+    
   </div>
   </div>
 </template>
@@ -84,9 +86,85 @@ export default {
 }
 .buttons{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+}
+.managepending{
+  display:flex;
+  justify-content: center;
+  align-items:center;
+  width: 15vw;
+  border: none;
+  border-radius: 16px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: var(--paradise-pink);
+  height: 3rem;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+  transition: all 0.1s linear;
+  font-size: 18px;
+  color: #fff;
+
+}
+.managepending:hover{
+  width: 1%;
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.4);
+  font-size: 20px;
+}
+@media (min-width: 768px) {
+  .managepending {
+    font-size: 24px;
+    min-width: 196px;
+  }
+}
+.approve{
+width: 10vw;
+  border: none;
+  border-radius: 16px;
+  margin-bottom: 40px;
+  margin-right:5px;
+  background-color: var(--blue-ncs);
+  height: 3rem;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+  transition: all 0.1s linear;
+  font-size: 10px;
+  color: #fff;
+}
+.approve:hover{
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.4);
+  font-size: 15px;
+}
+@media (min-width: 768px) {
+  .approve {
+    font-size: 12.5px;
+    min-width: 100px;
+    max-height:35px;
+  }
+}
+.reject{
+width: 10vw;
+  border: none;
+  border-radius: 16px;
+  margin-bottom: 40px;
+  margin-right:5px;
+  background-color: var(--blue-ncs);
+  height: 3rem;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+  transition: all 0.1s linear;
+  font-size: 10px;
+  color: #fff;
+}
+.reject:hover{
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.4);
+  font-size: 15px;
+}
+@media (min-width: 768px) {
+  .reject {
+    font-size: 12.5px;
+    min-width: 100px;
+    max-height:35px;
+  }
 }
 #title h1{
   display:flex;
@@ -105,6 +183,7 @@ export default {
   border: none;
   border-radius: 16px;
   margin-top: 10px;
+  margin-bottom: 10px;
   background-color: var(--paradise-pink);
   height: 3rem;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
@@ -113,7 +192,7 @@ export default {
   color: #fff;
 }
 .button:hover{
-  width: 92%;
+  width: 1%;
   box-shadow: 0 0 16px rgba(0, 0, 0, 0.4);
   font-size: 20px;
 }
