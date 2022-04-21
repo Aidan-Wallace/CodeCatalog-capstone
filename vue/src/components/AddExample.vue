@@ -17,33 +17,32 @@
 
       <div class="ae-input add-language-container">
         <label for="language">Programming Language</label>
-        <small>Please Select</small>
+        <small>(optional) Please Select</small>
         <select
           name="language"
           v-model="newExample.programmingLanguage"
           required
         >
           <option value="">--</option>
-          <option value="csharp">C#</option>
-          <option value="css">CSS</option>
-          <option value="html">HTML</option>
-          <option value="javascript">JavaScript</option>
-          <option value="react">React JS</option>
-          <option value="vue">Vue JS</option>
-          <option value="other">Other</option>
+          <option
+            v-for="(lang, index) in $store.state.availableLanguages"
+            :key="index"
+            :value="lang.toUpperCase()"
+            >{{ lang }}</option
+          >
         </select>
 
-        <input
+        <!-- <input
           v-if="newExample.programmingLanguage == 'other'"
           v-model="newExample.addedLanguage"
           type="text"
           placeholder="Please enter language used"
-        />
+        /> -->
       </div>
 
       <div class="ae-input add-description-container">
         <label for="description">Code Description</label>
-        <small>(Description of input)</small>
+        <small>(optional) Enter a description</small>
         <textarea
           type="text"
           name="description"
@@ -53,7 +52,7 @@
 
       <div class="ae-input add-category-container">
         <label for="category">Category</label>
-        <small>Please select relevant categories</small>
+        <small>(optional) Please select relevant categories</small>
         <select name="category" v-on:change="addToCategory($event)">
           <option value="">--</option>
           <option v-for="c in categories" :key="c" :value="c">
@@ -74,8 +73,8 @@
       </div>
 
       <div class="ae-input add-code-snippet-container">
-        <label for="code-snippet">Enter Code</label>
-        <small>(Description of input)</small>
+        <label for="code-snippet">Code</label>
+        <small>Enter code snippet</small>
         <textarea
           type="text"
           name="code-snippet"
@@ -86,7 +85,7 @@
 
       <div class="ae-input add-difficulty-container">
         <label for="difficulty">Code Difficulty</label>
-        <small>(Description of input)</small>
+        <small>(optional) Please select a difficulty</small>
         <select name="difficulty" v-model="newExample.difficultyRank">
           <option value="">--</option>
           <option value="easy">Easy</option>
@@ -277,8 +276,14 @@ form {
 }
 
 form select {
-  background: transparent;
+  background: var(--midnight-green-eagle-green);
+  border-radius: 4px;
+  color: #eee;
+}
 
+form select option {
+  background-color: #fff;
+  color: #000;
 }
 
 .ae-input {
@@ -291,6 +296,11 @@ form select {
 label {
   font-weight: 700;
   margin: 0px;
+  color: #fff;
+}
+
+small {
+  color: rgb(0, 0, 0);
 }
 
 input,
