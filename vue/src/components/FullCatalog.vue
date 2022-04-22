@@ -82,7 +82,7 @@ export default {
 }
 .catalog-container h1 {
   font-weight: bold;
-  padding-top: 10pt;
+  padding-top: 1vh;
 }
 /* .outer-example{
   display: flex;

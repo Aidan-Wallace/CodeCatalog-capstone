@@ -60,7 +60,7 @@ for (let i = maxIndex; i >= 0; i--) {
     console.log(`${i} Bottles of Milk On The Wall`);
   }
 }
-', 'Easy', 'functional', 'Aidan Wallace;https://www.freecodecamp.com', 1, 1, 1);
+', 'Easy', 'Functional', 'Aidan Wallace;https://www.freecodecamp.com', 1, 1, 1);
 INSERT INTO code
     (user_id, title, programming_language, example_date, code_description, snippet, difficulty_rank, category, attribution, submission_status, is_public, generic_example)
 VALUES
@@ -88,7 +88,7 @@ public class WordCounter
         }
         Console.Write("Total number of words in the string is : {0}\n", wrd);
     }
-}', 'Easy', 'functional', 'Elon Musk;https://www.geeksforgeeks.com', 1, 1, 1);
+}', 'Easy', 'Functional', 'Elon Musk;https://www.geeksforgeeks.com', 1, 1, 1);
 INSERT INTO code
     (user_id, title, programming_language, example_date, code_description, snippet, difficulty_rank, category, attribution, submission_status, is_public, generic_example)
 VALUES
@@ -114,7 +114,7 @@ for i in range(len(X)):
        for k in range(len(Y)):
            result[i][j] += X[i][k] * Y[k][j]
 for r in result:
-   print(r)', 'Medium', 'mathmatics', 'Jeff Bejos', 1, 1, 1);
+   print(r)', 'Medium', 'Mathmatics', 'Jeff Bejos', 1, 1, 1);
 INSERT INTO code
     (user_id, title, programming_language, example_date, code_description, snippet, difficulty_rank, category, attribution, submission_status, is_public, generic_example)
 VALUES
@@ -135,7 +135,7 @@ func main() {
     default:
         fmt.Printf("%s.\n", os)
     }
-}', 'Easy', 'data other', 'Aidan Wallace;https://www.freecodecamp.com', 1, 1, 1);
+}', 'Easy', 'Data Other', 'Aidan Wallace;https://www.freecodecamp.com', 1, 1, 1);
 INSERT INTO code
     (user_id, title, programming_language, example_date, code_description, snippet, difficulty_rank, category, attribution, submission_status, is_public, generic_example)
 VALUES
@@ -148,5 +148,126 @@ Minute=`date +%M`
 Second=`date +%S`
 echo `date`
 echo "Current Date is: $Day-$Month-$Year"
-echo "Current Time is: $Hour:$Minute:$Second"', 'Easy', 'data', 'Aidan Wallace;https://www.freecodecamp.com', 1, 1, 1);
+echo "Current Time is: $Hour:$Minute:$Second"', 'Easy', 'Data', 'Aidan Wallace;https://www.freecodecamp.com', 1, 1, 1);
+INSERT INTO code
+    (user_id, title, programming_language, example_date, code_description, snippet, difficulty_rank, category, attribution, submission_status, is_public, generic_example)
+VALUES
+    (1, 'Animated Cloud Logo', 'CSS HTML', '01/01/2022 01:00:00 AM', 'Create an animated logo', 
+  '/*HTML*/
+  <div id="animatedlogo">
+
+  </div>
+
+/*CSS*/
+  #animatedlogo{
+  grid-area: "logo";
+  display:fixed;
+  justify-content: center;
+  align-items: center;
+
+  width:50vw;
+  height:40vh;
+
+  background-image:url(../assets/animatedlogo/cloudcodeanimated1.svg);
+  background-position: center;
+  background-repeat:no-repeat;
+  
+  margin: 0 auto;
+  animation: alternate 4s infinite ;
+}
+@keyframes alternate{
+  3.2%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated2.svg);
+  }
+  6.4%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated3.svg);
+  }
+  9.6%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated4.svg);
+  }
+  12.8%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated5.svg);
+  }
+  16.1%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated6.svg);
+  }
+  19.3%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated7.svg);
+  }
+  22.5%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated8.svg);
+  }
+  25.7%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated9.svg);
+  }
+  28.9%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated10.svg);
+  }
+  32.2%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated11.svg);
+  }
+  35.4%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated12.svg);
+  }
+  38.6%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated12-5.svg);
+  }
+  41.8%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated13.svg);
+  }
+  45%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated14.svg);
+  }
+  48.3%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated15.svg);
+  }
+  51.5%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated16.svg);
+  }
+  54.7%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated17.svg);
+  }
+  57.9%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated18.svg);
+  }
+  61.1%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated19.svg);
+  }
+  64.4%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated20.svg);
+  }
+  67.6%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated21.svg);
+  }
+  70.8%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated22.svg);
+  }
+  74.%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated23.svg);
+  }
+  77.2%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated24.svg);
+  }
+  80.5%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated24-5.svg);
+  }
+  83.7%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated25.svg);
+  }
+  86.9%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated26.svg);
+  }
+  90.1%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated27.svg);
+  }
+  93.3%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated28.svg);
+  }
+  96.6%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated29.svg);
+  }
+  100%{
+    background-image:url(../assets/animatedlogo/cloudcodeanimated30.svg);
+  }
+}', 'Medium', 'Web', 'Misha Shatokhin;https://www.codecloud.com', 1, 1, 1);
 GO
