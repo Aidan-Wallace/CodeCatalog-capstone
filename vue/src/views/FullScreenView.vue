@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import FullScreenExample from "@/components/FullScreenExample";
+import FullScreenExample from "@/components/ViewCode/FullScreenExample";
 
 export default {
   name: "FullScreenView",

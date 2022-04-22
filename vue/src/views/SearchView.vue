@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import SearchResults from "@/components/SearchResults";
+import SearchResults from "@/components/Search/SearchResults";
 
 export default {
   name: "SearchView",

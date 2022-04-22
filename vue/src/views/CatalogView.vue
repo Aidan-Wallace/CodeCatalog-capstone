@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <full-catalog />
-  </div>
+  <full-catalog />
 </template>
 
 <script>

@@ -1,11 +1,9 @@
 <template>
-  <div>
-    <download />
-  </div>
+  <download />
 </template>
 
 <script>
-import Download from "@/components/Download";
+import Download from "@/components/Download/Download";
 
 export default {
   name: "DownloadView",

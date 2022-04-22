@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import ManageProfile from "@/components/ManageProfile";
-import MyExample from "@/components/MyExample";
+import ManageProfile from "@/components/ManageProfile/ManageProfile";
+import MyExample from "@/components/ManageProfile/MyExample";
 
 export default {
   name: "ManageProfileView",
@@ -17,6 +17,3 @@ export default {
   },
 };
 </script>
-
-<style>
-</style>

@@ -1,19 +1,20 @@
 import axios from "axios";
 
-const baseUrl = "https://localhost:5001";
-const http = axios.create({ baseURL: baseUrl });
-
 export default {
   getExamples(userId) {
-    return http.get(`/example/user-example/${userId}`);
+    // Get all examples by userId
+    return axios.get(`/example/user-example/${userId}`);
   },
   getPending() {
-    return http.get(`/example/status/0`);
+    // Get all pending snippets
+    return axios.get(`/example/status/0`);
   },
   updateStatus(codeId, example) {
-    return http.put(`/example/update-status/${codeId}`, example)
+    // Update status from default pending(0) to approved(1) or rejected(2) by codeId
+    return axios.put(`/example/update-status/${codeId}`, example);
   },
-  makePublic(codeId, example) {
-    return http.put(`/example/update-public/${codeId}`, example)
-  }
-}
+  togglePrivacy(codeId, example) {
+    // Make public or private by codeId
+    return axios.put(`/example/update-public/${codeId}`, example);
+  },
+};

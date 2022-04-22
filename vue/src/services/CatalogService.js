@@ -1,26 +1,36 @@
 import axios from "axios";
 
-const baseUrl = "https://localhost:5001";
-const http = axios.create({ baseURL: baseUrl });
-
 export default {
+  /* REQUESTS */
   getExample(codeId) {
-    return http.get(`/example/${codeId}`);
+    // Get example by codeId
+    return axios.get(`/example/${codeId}`);
   },
+
   getExamples() {
-    return http.get(`/example/status/1`);
+    // Get all examples by codeId
+    return axios.get(`/example/status/1`);
   },
-  getGenericExamples() {
-    return http.get(`/example/set-list`);
-  },
+
   getQuery(query) {
-    /* **FIX AFTER DAO/CONTROLLER IS IMPLEMENTED** */
-    return http.get(`example/search/${query}`);
+    // Send query to server and get results
+    return axios.get(`example/search/${query}`);
   },
+
+  /* POST REQUESTS */
   addExample(newExample, userId) {
-    return http.post(`/example/${userId}`, newExample);
+    // Add an example to the DB
+    return axios.post(`/example/${userId}`, newExample);
   },
+
+  /* TO REMOVE */
+  getGenericExamples() {
+    // TODO
+    return axios.get(`/example/set-list`);
+  },
+
   fetchScript(codeId) {
-    return http.get(`/script/${codeId}`);
+    // TODO
+    return axios.get(`/script/${codeId}`);
   },
-}
+};
